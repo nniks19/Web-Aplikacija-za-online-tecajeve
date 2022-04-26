@@ -1,0 +1,18 @@
+Tema: Web Aplikacija za online tečajeve 
+
+Opis:
+ - Strana korisnika koji pristupa tečaju:
+   - Korisnike se može registrirati, prijaviti, resetirati lozinku
+   - Korisnik se može prijaviti na tečajeve
+   - Korisnik prije odobrenja može vidjeti prosječnu ocjenu i recenziju tečaja
+   - Nakon što strana osobe/tvrtke odobri korisniku pristup nekom tečaju korisnik tek tada može pristupiti tečaju
+   - Nakon što korisnik dobije pristup tečaju tada on može: pregledavati videozapise, komentirati, ocjenjivati tečaj i svaku cijelinu u tečaju, imati dostupnost kontaktiranja osobe/tvrtke koja pruža usluge tečajeva
+ - Strana osobe/tvrtke koja pruža usluge tečajeva
+   - Osoba/tvrtka može kreirati tečajeve, prenositi videozapise, upravljati tečajevima, dopustiti korisniku pristup tečaju, odgovarati na poruke, komentare, recenzije...
+   - Osoba/tvrtka može vidjeti preview stranice kako će izgledati tečaj
+ - Administratorska strana:
+   - Odobrava registracije korisnika
+   - Odobrava registracije tvrtke/osoba koje pružaju usluge tečajeva
+   - Brisati komentare/recenzije na tečajevima ukoliko su prijavljeni kao neprikladni
+
+Ovo nisu još sve funkcionalnosti koje će imati aplikacija, nego ću uz put još dodavati toga ili izmijeniti neke stvari. 
