@@ -1,0 +1,3 @@
+Tools -> NuGet Package Manager -> Packet Manager Console
+add-migration AddCategoryToDatabase -> ako sve izgleda dobro onda:
+update-database
