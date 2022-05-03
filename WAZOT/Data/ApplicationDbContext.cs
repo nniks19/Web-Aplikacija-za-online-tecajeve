@@ -9,5 +9,5 @@ public class ApplicationDbContext:DbContext
     {
 
     }
-    public DbSet<Razina_Prava> RazinePrava { get; set; }
+    public DbSet<Razina_Prava> Razina_Prava { get; set; }
 }

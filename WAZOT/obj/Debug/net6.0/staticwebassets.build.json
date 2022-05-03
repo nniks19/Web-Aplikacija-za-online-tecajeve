@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "x/nOiQyG5ymbehEA4/SoUuHdDgA322Xc1nGZC1dRhY8=",
+  "Hash": "NRXPJgdqKCUoF2tvYWjPwmaU3XMYYnvXHF+KhkRTfMU=",
   "Source": "WAZOT",
   "BasePath": "_content/WAZOT",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\nniik\\Desktop\\Web-Aplikacija-za-online-tecajeve\\WAZOT\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\WAZOT.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\nniik\\Desktop\\Web-Aplikacija-za-online-tecajeve\\WAZOT\\wwwroot\\css\\bootwatchTheme.css",
+      "SourceId": "WAZOT",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\nniik\\Desktop\\Web-Aplikacija-za-online-tecajeve\\WAZOT\\wwwroot\\",
+      "BasePath": "_content/WAZOT",
+      "RelativePath": "css/bootwatchTheme.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\bootwatchTheme.css"
     },
     {
       "Identity": "C:\\Users\\nniik\\Desktop\\Web-Aplikacija-za-online-tecajeve\\WAZOT\\wwwroot\\css\\site.css",

@@ -6,8 +6,7 @@ namespace WAZOT.Models
     {
         [Key]
         public int Id { get; set; }
-        [Required]
-        public string Naziv { get; set; }
-
+        [Required(ErrorMessage = "Unos naziva razine prava je obavezan!")]
+        public string? Naziv { get; set; }
     }
 }
