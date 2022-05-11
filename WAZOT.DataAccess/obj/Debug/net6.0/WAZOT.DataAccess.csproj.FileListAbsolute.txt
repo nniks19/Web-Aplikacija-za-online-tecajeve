@@ -1,0 +1,15 @@
+C:\Users\nniik\Desktop\Web-Aplikacija-za-online-tecajeve\WAZOT.DataAccess\obj\Debug\net6.0\WAZOT.DataAccess.csproj.AssemblyReference.cache
+C:\Users\nniik\Desktop\Web-Aplikacija-za-online-tecajeve\WAZOT.DataAccess\obj\Debug\net6.0\WAZOT.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nniik\Desktop\Web-Aplikacija-za-online-tecajeve\WAZOT.DataAccess\obj\Debug\net6.0\WAZOT.DataAccess.AssemblyInfoInputs.cache
+C:\Users\nniik\Desktop\Web-Aplikacija-za-online-tecajeve\WAZOT.DataAccess\obj\Debug\net6.0\WAZOT.DataAccess.AssemblyInfo.cs
+C:\Users\nniik\Desktop\Web-Aplikacija-za-online-tecajeve\WAZOT.DataAccess\obj\Debug\net6.0\WAZOT.DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\nniik\Desktop\Web-Aplikacija-za-online-tecajeve\WAZOT.DataAccess\bin\Debug\net6.0\WAZOT.DataAccess.deps.json
+C:\Users\nniik\Desktop\Web-Aplikacija-za-online-tecajeve\WAZOT.DataAccess\bin\Debug\net6.0\WAZOT.DataAccess.dll
+C:\Users\nniik\Desktop\Web-Aplikacija-za-online-tecajeve\WAZOT.DataAccess\bin\Debug\net6.0\WAZOT.DataAccess.pdb
+C:\Users\nniik\Desktop\Web-Aplikacija-za-online-tecajeve\WAZOT.DataAccess\bin\Debug\net6.0\WAZOT.Models.dll
+C:\Users\nniik\Desktop\Web-Aplikacija-za-online-tecajeve\WAZOT.DataAccess\bin\Debug\net6.0\WAZOT.Models.pdb
+C:\Users\nniik\Desktop\Web-Aplikacija-za-online-tecajeve\WAZOT.DataAccess\obj\Debug\net6.0\WAZOT.DataAccess.csproj.CopyComplete
+C:\Users\nniik\Desktop\Web-Aplikacija-za-online-tecajeve\WAZOT.DataAccess\obj\Debug\net6.0\WAZOT.DataAccess.dll
+C:\Users\nniik\Desktop\Web-Aplikacija-za-online-tecajeve\WAZOT.DataAccess\obj\Debug\net6.0\refint\WAZOT.DataAccess.dll
+C:\Users\nniik\Desktop\Web-Aplikacija-za-online-tecajeve\WAZOT.DataAccess\obj\Debug\net6.0\WAZOT.DataAccess.pdb
+C:\Users\nniik\Desktop\Web-Aplikacija-za-online-tecajeve\WAZOT.DataAccess\obj\Debug\net6.0\ref\WAZOT.DataAccess.dll

@@ -1,5 +1,9 @@
 using Microsoft.EntityFrameworkCore;
-using WAZOT.Data;
+using WAZOT.DataAccess;
+using WAZOT.DataAccess.Repository;
+using WAZOT.DataAccess.Repository.IRepository;
+using WAZOT.Repository;
+using WAZOT.Repository.IRepository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +14,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
 options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
 });
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 //builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
 var app = builder.Build();
@@ -31,6 +36,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{area=Korisnik}/{controller=Home}/{action=Index}/{id?}");
 
 app.Run();

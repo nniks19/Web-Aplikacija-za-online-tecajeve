@@ -1,0 +1,12 @@
+C:\Users\nniik\Desktop\Web-Aplikacija-za-online-tecajeve\WAZOT.Models\bin\Debug\net6.0\WAZOT.Models.deps.json
+C:\Users\nniik\Desktop\Web-Aplikacija-za-online-tecajeve\WAZOT.Models\bin\Debug\net6.0\WAZOT.Models.dll
+C:\Users\nniik\Desktop\Web-Aplikacija-za-online-tecajeve\WAZOT.Models\bin\Debug\net6.0\WAZOT.Models.pdb
+C:\Users\nniik\Desktop\Web-Aplikacija-za-online-tecajeve\WAZOT.Models\obj\Debug\net6.0\WAZOT.Models.csproj.AssemblyReference.cache
+C:\Users\nniik\Desktop\Web-Aplikacija-za-online-tecajeve\WAZOT.Models\obj\Debug\net6.0\WAZOT.Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nniik\Desktop\Web-Aplikacija-za-online-tecajeve\WAZOT.Models\obj\Debug\net6.0\WAZOT.Models.AssemblyInfoInputs.cache
+C:\Users\nniik\Desktop\Web-Aplikacija-za-online-tecajeve\WAZOT.Models\obj\Debug\net6.0\WAZOT.Models.AssemblyInfo.cs
+C:\Users\nniik\Desktop\Web-Aplikacija-za-online-tecajeve\WAZOT.Models\obj\Debug\net6.0\WAZOT.Models.csproj.CoreCompileInputs.cache
+C:\Users\nniik\Desktop\Web-Aplikacija-za-online-tecajeve\WAZOT.Models\obj\Debug\net6.0\WAZOT.Models.dll
+C:\Users\nniik\Desktop\Web-Aplikacija-za-online-tecajeve\WAZOT.Models\obj\Debug\net6.0\refint\WAZOT.Models.dll
+C:\Users\nniik\Desktop\Web-Aplikacija-za-online-tecajeve\WAZOT.Models\obj\Debug\net6.0\WAZOT.Models.pdb
+C:\Users\nniik\Desktop\Web-Aplikacija-za-online-tecajeve\WAZOT.Models\obj\Debug\net6.0\ref\WAZOT.Models.dll

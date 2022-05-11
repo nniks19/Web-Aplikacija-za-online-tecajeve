@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32414.318
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WAZOT", "WAZOT.csproj", "{F8A376A6-C876-4166-9603-6D10A0AA8846}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WAZOT", "WAZOT.csproj", "{F8A376A6-C876-4166-9603-6D10A0AA8846}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WAZOT.DataAccess", "..\WAZOT.DataAccess\WAZOT.DataAccess.csproj", "{A9D5E2DA-1F6E-4831-B427-00C074A492EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WAZOT.Models", "..\WAZOT.Models\WAZOT.Models.csproj", "{0D0953D6-5721-429A-B718-B98DC3DE2FF0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WAZOT.Utility", "..\WAZOT.Utility\WAZOT.Utility.csproj", "{9B4F5E89-8813-4C60-B164-55C1E81900C6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{F8A376A6-C876-4166-9603-6D10A0AA8846}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F8A376A6-C876-4166-9603-6D10A0AA8846}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F8A376A6-C876-4166-9603-6D10A0AA8846}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9D5E2DA-1F6E-4831-B427-00C074A492EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9D5E2DA-1F6E-4831-B427-00C074A492EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9D5E2DA-1F6E-4831-B427-00C074A492EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9D5E2DA-1F6E-4831-B427-00C074A492EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D0953D6-5721-429A-B718-B98DC3DE2FF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D0953D6-5721-429A-B718-B98DC3DE2FF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D0953D6-5721-429A-B718-B98DC3DE2FF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D0953D6-5721-429A-B718-B98DC3DE2FF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B4F5E89-8813-4C60-B164-55C1E81900C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B4F5E89-8813-4C60-B164-55C1E81900C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B4F5E89-8813-4C60-B164-55C1E81900C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B4F5E89-8813-4C60-B164-55C1E81900C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

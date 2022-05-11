@@ -4,6 +4,140 @@
     "C:\\Users\\nniik\\Desktop\\Web-Aplikacija-za-online-tecajeve\\WAZOT\\WAZOT.csproj": {}
   },
   "projects": {
+    "C:\\Users\\nniik\\Desktop\\Web-Aplikacija-za-online-tecajeve\\WAZOT.DataAccess\\WAZOT.DataAccess.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\nniik\\Desktop\\Web-Aplikacija-za-online-tecajeve\\WAZOT.DataAccess\\WAZOT.DataAccess.csproj",
+        "projectName": "WAZOT.DataAccess",
+        "projectPath": "C:\\Users\\nniik\\Desktop\\Web-Aplikacija-za-online-tecajeve\\WAZOT.DataAccess\\WAZOT.DataAccess.csproj",
+        "packagesPath": "C:\\Users\\nniik\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\nniik\\Desktop\\Web-Aplikacija-za-online-tecajeve\\WAZOT.DataAccess\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\nniik\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\nniik\\Desktop\\Web-Aplikacija-za-online-tecajeve\\WAZOT.Models\\WAZOT.Models.csproj": {
+                "projectPath": "C:\\Users\\nniik\\Desktop\\Web-Aplikacija-za-online-tecajeve\\WAZOT.Models\\WAZOT.Models.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[6.0.4, )"
+            },
+            "Pomelo.EntityFrameworkCore.MySql": {
+              "target": "Package",
+              "version": "[6.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\nniik\\Desktop\\Web-Aplikacija-za-online-tecajeve\\WAZOT.Models\\WAZOT.Models.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\nniik\\Desktop\\Web-Aplikacija-za-online-tecajeve\\WAZOT.Models\\WAZOT.Models.csproj",
+        "projectName": "WAZOT.Models",
+        "projectPath": "C:\\Users\\nniik\\Desktop\\Web-Aplikacija-za-online-tecajeve\\WAZOT.Models\\WAZOT.Models.csproj",
+        "packagesPath": "C:\\Users\\nniik\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\nniik\\Desktop\\Web-Aplikacija-za-online-tecajeve\\WAZOT.Models\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\nniik\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "C:\\Users\\nniik\\Desktop\\Web-Aplikacija-za-online-tecajeve\\WAZOT\\WAZOT.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -31,7 +165,11 @@
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\nniik\\Desktop\\Web-Aplikacija-za-online-tecajeve\\WAZOT.DataAccess\\WAZOT.DataAccess.csproj": {
+                "projectPath": "C:\\Users\\nniik\\Desktop\\Web-Aplikacija-za-online-tecajeve\\WAZOT.DataAccess\\WAZOT.DataAccess.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -68,7 +206,7 @@
             },
             "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
               "target": "Package",
-              "version": "[1.14.0, )"
+              "version": "[1.15.1, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
