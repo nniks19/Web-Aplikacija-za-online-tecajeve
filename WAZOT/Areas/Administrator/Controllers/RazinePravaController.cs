@@ -106,6 +106,14 @@ namespace WAZOT.Controllers
             TempData["success"] = "Razina prava uspješno obrisana!";
             return RedirectToAction("Index");
         }
+        #region API Calls
+        [HttpGet]
+        public IActionResult GetAll()
+        {
+            var popisRazinaPrava = _unitOfWork.RazinaPrava.GetAll();
+            return Json(new { data = popisRazinaPrava });
+        }
+        #endregion
     }
 
 }

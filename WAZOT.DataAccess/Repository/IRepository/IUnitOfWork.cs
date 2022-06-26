@@ -11,6 +11,12 @@ namespace WAZOT.DataAccess.Repository.IRepository
     {
         IRazinaPravaRepository RazinaPrava { get; }
         IStatusNarudzbeRepository StatusNarudzbe { get; }
+        INacinPlacanjaRepository NacinPlacanja { get; }
+        IOsobaRepository Osoba { get; }
+        ITecajRepository Tecaj { get; }
+        IOcjenaTecajaRepository OcjenaTecaja { get; }
+        IVideozapisRepository Videozapis { get; }
+        INarudzbaRepository Narudzba { get; }
         void Save();
     }
 }

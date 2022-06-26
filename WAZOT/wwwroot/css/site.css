@@ -16,3 +16,22 @@ html {
 body {
   margin-bottom: 60px;
 }
+.dataTables_filter input {
+    color: white;
+    background-color: black;
+}
+.dataTables_length select {
+    color: white;
+    background-color: black;
+}
+.dataTables_length option {
+    color: black;
+    background-color: white;
+}
+.dataTables_wrapper label{
+    color:white;
+}
+.dataTables_info{
+    color:white!important;
+}
+

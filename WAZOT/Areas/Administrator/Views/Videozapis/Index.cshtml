@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Videozapis>
+@{
+    ViewData["Title"] = "Index";
+}
+<partial name="_Notification" />
+<div class="container p-3">
+
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Popis videozapisa</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Videozapis" asp-action="Create" class="btn btn-primary">
+                <i class="bi bi-patch-plus"></i> &nbsp; Prenesi videozapis
+            </a>
+        </div>
+    </div>
+</div>
+    <br />
+<table id="tblVideozapis" class="table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                ID videozapisa
+            </th>
+            <th>
+                Naziv videozapisa
+            </th>
+            <th>
+                Naziv tečaja
+            </th>
+            <th>
+                Putanja do videozapisa
+            </th>
+            <th>
+                Tip videozapisa
+            </th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    
+    </tbody>
+</table>
+@section Scripts{
+    <script src="~/js/videozapis.js"></script>
+}

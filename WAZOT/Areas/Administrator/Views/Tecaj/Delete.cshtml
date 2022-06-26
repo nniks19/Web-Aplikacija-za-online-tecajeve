@@ -1,0 +1,55 @@
+﻿@model WAZOT.Models.ViewModels.TecajVM
+
+<form method="post" asp-action="DeletePOST">
+   <input asp-for="Tecaj.Id" hidden/>
+   <div class="border p-3 mt-4">
+       <div class="row pb-2">
+           <h2 class="text-primary">Brisanje tečaja</h2>
+           <hr />
+       </div>
+       <div class="mb-3">
+            <label asp-for="Tecaj.Id">ID tečaja</label>
+            <input asp-for="Tecaj.Id" class="form-control" disabled/>
+            <span asp-validation-for="Tecaj.Id" class="text-danger" disabled></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Tecaj.naziv">Naziv tečaja</label>
+            <input asp-for="Tecaj.naziv" class="form-control" disabled/>
+            <span asp-validation-for="Tecaj.naziv" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Tecaj.cijena">Cijena</label>
+            <input type="number" asp-for="Tecaj.cijena" class="form-control" min="1" max="100" step="0.01" disabled/>
+            <span asp-validation-for="Tecaj.cijena" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Tecaj.opis">Opis</label>
+            <input asp-for="Tecaj.opis" class="form-control" disabled/>
+            <span asp-validation-for="Tecaj.opis" class="text-danger" ></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Tecaj.OsobaOib">Vlasnik tečaja</label>
+            <select asp-for="Tecaj.OsobaOib" asp-items="@Model.OsobaList" class="form-select">
+                <option disabled selected>--Odaberi osobu--</option>
+            </select>
+            <span asp-validation-for="Tecaj.OsobaOib" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Tecaj.prosjecna_ocjena">Prosječna ocjena</label>
+            <input asp-for="Tecaj.prosjecna_ocjena" class="form-control" disabled/>
+            <span asp-validation-for="Tecaj.prosjecna_ocjena" class="text-danger"></span>
+        </div>
+        <div class="row pt-4">
+            <div class="col-6">
+                <button type="submit" class="btn btn-primary" style="width:150px">Obriši tečaj</button>
+            </div>
+            <div class="col-6 text-end">
+                <a asp-controller="Tecaj" asp-action="Index" class="btn btn-secondary" style="width:150px">Povratak na popis tečajeva</a>
+            </div>
+        </div>
+   </div>
+
+</form>
+
+<section Scripts><partial name="_ValidationScriptsPartial" />
+</section>

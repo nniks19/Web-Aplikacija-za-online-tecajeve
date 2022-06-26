@@ -17,7 +17,7 @@
     </div>
 </div>
     <br />
-<table class="table table-bordered table-striped" style="width:100%">
+<table class="table table-bordered table-striped" id="tblStatusNarudzbe" style="width:100%">
     <thead>
         <tr>
             <th>
@@ -30,26 +30,8 @@
         </tr>
     </thead>
     <tbody>
-    @foreach (var obj in Model)
-    {
-        <tr>
-            <td width="50%">
-                @obj.Id
-            </td>
-            <td width="30%">
-                @obj.naziv
-            </td>
-            <td>
-                <div class="w-75 btn-group" role="group">
-                    <a asp-controller="StatusNarudzbe" asp-action="Edit" asp-route-id="@obj.Id"><i class="bi bi-pencil-square"></i> Uredi</a>
-                </div>
-            </td>
-            <td>
-                <div class="w-75 btn-group" role="group">
-                    <a asp-controller="StatusNarudzbe" asp-action="Delete" asp-route-id="@obj.Id"><i class="bi bi-trash3"></i> Obriši</a>
-                </div>
-            </td>
-        </tr>
-    }
     </tbody>
 </table>
+@section Scripts{
+    <script src="~/js/statusnarudzbe.js"></script>
+}

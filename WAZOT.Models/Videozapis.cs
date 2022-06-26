@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using System.ComponentModel.DataAnnotations;
 
 namespace WAZOT.Models
 {
@@ -6,12 +7,16 @@ namespace WAZOT.Models
     {
         [Key]
         public int Id { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Tečaj mora biti odabran!")]
+        public int? TecajId { get; set; }
+        [ValidateNever]
         public Tecaj Tecaj { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Videozapis mora biti prenesen!")]
         public string videozapis_putanja { get; set; }
         [Required]
         public string videozapis_tip { get; set; }
+        [Required(ErrorMessage = "Videozapis mora imati naziv!")]
+        public string videozapis_naziv { get; set; }
     }
 }
 

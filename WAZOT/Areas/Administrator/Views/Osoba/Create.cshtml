@@ -1,0 +1,54 @@
+﻿@model WAZOT.Models.ViewModels.OsobaVM
+
+<form method="post">
+   <div class="border p-3 mt-4">
+       <div class="row pb-2">
+           <h2 class="text-primary">Kreiranje podataka o osobi</h2>
+           <hr />
+       </div>
+        <div class="mb-3">
+            <label asp-for="Osoba.Oib">Oib</label>
+            <input asp-for="Osoba.Oib" class="form-control"/>
+            <span asp-validation-for="Osoba.Oib" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Osoba.ime">Ime</label>
+            <input asp-for="Osoba.ime" class="form-control"/>
+            <span asp-validation-for="Osoba.ime" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Osoba.prezime">Prezime</label>
+            <input asp-for="Osoba.prezime" class="form-control"/>
+            <span asp-validation-for="Osoba.prezime" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Osoba.Razina_PravaId">Razina prava</label>
+            <select asp-for="Osoba.Razina_PravaId" asp-items="@Model.RazinaPravaList" class="form-select">
+                <option disabled selected>--Odaberi razinu prava--</option>
+            </select>
+            <span asp-validation-for="Osoba.Razina_PravaId" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Osoba.email">Email</label>
+            <input asp-for="Osoba.email" class="form-control"/>
+            <span asp-validation-for="Osoba.email" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Osoba.lozinka">Lozinka</label>
+            <input asp-for="Osoba.lozinka" class="form-control"/>
+            <span asp-validation-for="Osoba.lozinka" class="text-danger"></span>
+        </div>
+        <div class="row pt-4">
+            <div class="col-6">
+                <button type="submit" class="btn btn-primary" style="width:150px">Kreiraj račun</button>
+            </div>
+            <div class="col-6 text-end">
+                <a asp-controller="Osoba" asp-action="Index" class="btn btn-secondary" style="width:150px">Povratak na popis osoba</a>
+            </div>
+        </div>
+   </div>
+
+</form>
+
+<section Scripts><partial name="_ValidationScriptsPartial" />
+</section>

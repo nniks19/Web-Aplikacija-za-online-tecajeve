@@ -6,7 +6,7 @@ namespace WAZOT.Models
     {
         [Key]
         public int Id { get; set; }
-        [Required(ErrorMessage = "Unos naziva statusa narudžbe je obavezan!")]
+        [Required(ErrorMessage = "Unos naziva načina plaćanja je obavezan!")]
         public string naziv { get; set; }
     }
 }

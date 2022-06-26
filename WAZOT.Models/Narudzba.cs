@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using System.ComponentModel.DataAnnotations;
 
 namespace WAZOT.Models
 {
@@ -7,12 +8,20 @@ namespace WAZOT.Models
         [Key]
         public int Id { get; set; }
         [Required]
-        public Status_narudzbe Stats_narudzbe { get; set; }
-        [Required]
+        public int Status_NarudzbeId { get; set; }
+        [ValidateNever]
+        public Status_narudzbe Status_narudzbe { get; set; }
+        [Required(ErrorMessage = "Osoba mora biti odabrana!")]
+        public string OsobaOib { get; set; }
+        [ValidateNever]
         public Osoba Osoba { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Tečaj mora biti odabran!")]
+        public int? TecajId { get; set; }
+        [ValidateNever]
         public Tecaj Tecaj { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Način plaćanja mora biti odabran!")]
+        public int? Nacin_PlacanjaId { get; set; }
+        [ValidateNever]
         public Nacin_placanja Nacin_placanja { get; set; }
         [Required]
         public long datum_pocetak { get; set; }

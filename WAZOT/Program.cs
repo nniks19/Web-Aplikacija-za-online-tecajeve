@@ -36,6 +36,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{area=Korisnik}/{controller=Home}/{action=Index}/{id?}");
+    pattern: "{area=Posjetitelj}/{controller=HomePosjetitelj}/{action=Index}/{id?}");
 
 app.Run();

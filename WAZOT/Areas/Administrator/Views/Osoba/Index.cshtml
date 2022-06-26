@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Osoba>
+@{
+    ViewData["Title"] = "Index";
+}
+<partial name="_Notification" />
+<div class="container p-3">
+
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Popis osoba</h2>
+            <a class="text-secondary">Napomena **<a>
+            <a class="text-secondary">Ukoliko obrišete osobu svi podaci i tečajevi spojeni sa tom osobom će biti obrisani!</a>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Osoba" asp-action="Create" class="btn btn-primary">
+                <i class="bi bi-patch-plus"></i> &nbsp; Kreiraj novi račun
+            </a>
+        </div>
+    </div>
+</div>
+    <br />
+<table id="tblOsoba" class="table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                OIB
+            </th>
+            <th>
+                Ime
+            </th>
+            <th>
+                Prezime
+            </th>
+            <th>
+                Razina prava
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Lozinka
+            </th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    
+    </tbody>
+</table>
+@section Scripts{
+    <script src="~/js/osoba.js"></script>
+}

@@ -106,6 +106,14 @@ namespace WAZOT.Controllers
             TempData["success"] = "Status narudžbe uspješno obrisan!";
             return RedirectToAction("Index");
         }
+        #region API Calls
+        [HttpGet]
+        public IActionResult GetAll()
+        {
+            var popisStatusaNarudzbi = _unitOfWork.StatusNarudzbe.GetAll();
+            return Json(new { data = popisStatusaNarudzbi });
+        }
+        #endregion
     }
 
 }
