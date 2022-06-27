@@ -56,6 +56,11 @@ namespace WAZOT.Controllers
                 Text = i.ime + " " + i.prezime,
                 Value = i.Oib
             });
+            obj.KategorijaList = _unitOfWork.Kategorija.GetAll().Select(i => new SelectListItem
+            {
+                Text = i.Naziv,
+                Value = i.Id.ToString()
+            });
             return View(obj);
         }
 
@@ -73,6 +78,11 @@ namespace WAZOT.Controllers
                 {
                     Text = i.ime + " " + i.prezime,
                     Value = i.Oib
+                }),
+                KategorijaList = _unitOfWork.Kategorija.GetAll().Select(i => new SelectListItem
+                {
+                    Text = i.Naziv,
+                    Value = i.Id.ToString()
                 })
             };
             if (tecajVM.Tecaj == null)
@@ -98,6 +108,11 @@ namespace WAZOT.Controllers
                 Text = i.ime + " " + i.prezime,
                 Value = i.Oib
             });
+            obj.KategorijaList = _unitOfWork.Kategorija.GetAll().Select(i => new SelectListItem
+            {
+                Text = i.Naziv,
+                Value = i.Id.ToString()
+            });
             return View(obj);
         }
 
@@ -112,6 +127,12 @@ namespace WAZOT.Controllers
                     Text = i.ime + " " + i.prezime,
                     Value = i.Oib,
                     Disabled =true,
+                }),
+                KategorijaList = _unitOfWork.Kategorija.GetAll().Select(i => new SelectListItem
+                {
+                    Text = i.Naziv,
+                    Value = i.Id.ToString(),
+                    Disabled = true,
                 })
             };
             if (tecajVM.Tecaj == null)
@@ -139,7 +160,7 @@ namespace WAZOT.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            var popisTecaja = _unitOfWork.Tecaj.GetAll(includeProperties:"Osoba");
+            var popisTecaja = _unitOfWork.Tecaj.GetAll(includeProperties:"Osoba,Kategorija");
             return Json(new { data = popisTecaja });
         }
         #endregion

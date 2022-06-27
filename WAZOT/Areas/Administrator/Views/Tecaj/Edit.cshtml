@@ -1,5 +1,7 @@
 ﻿@model WAZOT.Models.ViewModels.TecajVM
-
+@{
+    ViewData["Title"] = "Uređivanje tečaja";
+}
 <form method="post" asp-action="Edit">
      <input asp-for="Tecaj.Id" hidden/>
       <div class="border p-3 mt-4">
@@ -31,9 +33,21 @@
             <span asp-validation-for="Tecaj.OsobaOib" class="text-danger"></span>
         </div>
         <div class="mb-3">
+            <label asp-for="Tecaj.KategorijaId">Kategorija</label>
+            <select asp-for="Tecaj.KategorijaId" asp-items="@Model.KategorijaList" class="form-select">
+                <option disabled selected>--Odaberi kategoriju--</option>
+            </select>
+            <span asp-validation-for="Tecaj.KategorijaId" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
             <label asp-for="Tecaj.prosjecna_ocjena">Prosječna ocjena</label>
             <input asp-for="Tecaj.prosjecna_ocjena" class="form-control" disabled/>
             <span asp-validation-for="Tecaj.prosjecna_ocjena" class="text-danger"></span>
+        </div>
+       <div class="mb-3">
+            <label asp-for="Tecaj.slika">Slika</label>
+            <input type="file" asp-for="Tecaj.slika" name="file" class="form-control"/>
+            <span asp-validation-for="Tecaj.slika" class="text-danger"></span>
         </div>
         <div class="row pt-4">
             <div class="col-6">

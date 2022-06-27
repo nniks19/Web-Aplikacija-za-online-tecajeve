@@ -1,5 +1,7 @@
 ﻿@model WAZOT.Models.ViewModels.OsobaVM
-
+@{
+    ViewData["Title"] = "Brisanje korisničkog računa";
+}
 <form method="post" asp-action="DeletePOST">
      <input asp-for="Osoba.Oib" hidden/>
    <div class="border p-3 mt-4">

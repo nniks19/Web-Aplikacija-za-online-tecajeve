@@ -23,31 +23,10 @@
     <div class="collapse navbar-collapse" id="navbarColor03">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+          <a class="nav-link" asp-area="" asp-controller="HomeKreatorTecaja" asp-action="Index">Home</a>
         </li>
         <li class="nav-item">
-           <a class="nav-link" asp-area="Administrator" asp-controller="RazinePrava" asp-action="Index">Razine prava</a>
-        </li>
-        <li class="nav-item">
-           <a class="nav-link" asp-area="Administrator" asp-controller="StatusNarudzbe" asp-action="Index">Statusi narudžbi</a>
-        </li>
-        <li class="nav-item">
-           <a class="nav-link" asp-area="Administrator" asp-controller="NacinPlacanja" asp-action="Index">Načini plaćanja</a>
-        </li>
-        <li class="nav-item">
-           <a class="nav-link" asp-area="Administrator" asp-controller="Osoba" asp-action="Index">Osobe</a>
-        </li>
-        <li class="nav-item">
-           <a class="nav-link" asp-area="Administrator" asp-controller="Tecaj" asp-action="Index">Tečajevi</a>
-        </li>
-        <li class="nav-item">
-           <a class="nav-link" asp-area="Administrator" asp-controller="OcjenaTecaja" asp-action="Index">Ocjene tečaja</a>
-        </li>
-        <li class="nav-item">
-           <a class="nav-link" asp-area="Administrator" asp-controller="Videozapis" asp-action="Index">Videozapisi</a>
-        </li>
-       <li class="nav-item">
-           <a class="nav-link" asp-area="Administrator" asp-controller="Narudzba" asp-action="Index">Narudžbe</a>
+           <a class="nav-link" asp-area="Kreator_Tecaja" asp-controller="TecajKreator" asp-action="Index">Vaši tečajevi</a>
         </li>
        @* <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
@@ -61,8 +40,7 @@
         </li>*@
       </ul>
       <form class="d-flex">
-        <input class="form-control me-sm-2" type="text" placeholder="Search">
-        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+        <button asp-area="Posjetitelj" asp-controller="Prijava" asp-Action="Logout" class="btn btn-secondary my-2 my-sm-0" type="submit">Odjava</button>
       </form>
     </div>
   </div>

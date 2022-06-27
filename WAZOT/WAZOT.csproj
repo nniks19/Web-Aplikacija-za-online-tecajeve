@@ -30,7 +30,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Kreator_Tecaja\Controllers\" />
     <Folder Include="wwwroot\videozapisi\tecajevi\" />
   </ItemGroup>
 

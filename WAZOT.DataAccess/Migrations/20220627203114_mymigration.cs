@@ -5,11 +5,26 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WAZOT.DataAccess.Migrations
 {
-    public partial class all : Migration
+    public partial class mymigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterDatabase()
+                .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Kategorija",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Naziv = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Kategorija", x => x.Id);
+                })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
@@ -98,11 +113,20 @@ namespace WAZOT.DataAccess.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     opis = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    prosjecna_ocjena = table.Column<float>(type: "float", nullable: false)
+                    prosjecna_ocjena = table.Column<float>(type: "float", nullable: false),
+                    KategorijaId = table.Column<int>(type: "int", nullable: false),
+                    slika = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Tecaj", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Tecaj_Kategorija_KategorijaId",
+                        column: x => x.KategorijaId,
+                        principalTable: "Kategorija",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Tecaj_Osoba_OsobaOib",
                         column: x => x.OsobaOib,
@@ -249,6 +273,11 @@ namespace WAZOT.DataAccess.Migrations
                 column: "Razina_PravaId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Tecaj_KategorijaId",
+                table: "Tecaj",
+                column: "KategorijaId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Tecaj_OsobaOib",
                 table: "Tecaj",
                 column: "OsobaOib");
@@ -278,6 +307,9 @@ namespace WAZOT.DataAccess.Migrations
 
             migrationBuilder.DropTable(
                 name: "Tecaj");
+
+            migrationBuilder.DropTable(
+                name: "Kategorija");
 
             migrationBuilder.DropTable(
                 name: "Osoba");

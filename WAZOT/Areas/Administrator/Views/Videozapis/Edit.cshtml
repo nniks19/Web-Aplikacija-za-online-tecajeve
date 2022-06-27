@@ -1,5 +1,7 @@
 ﻿@model WAZOT.Models.ViewModels.VideozapisVM
-
+@{
+    ViewData["Title"] = "Uređivanje videozapisa";
+}
 <form method="post" asp-action="Edit">
     <input asp-for="Videozapis.Id" hidden/>
     <input asp-for="Videozapis.videozapis_putanja" hidden/>

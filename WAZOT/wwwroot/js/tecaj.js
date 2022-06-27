@@ -9,12 +9,13 @@ function loadDataTable() {
             "url": "/Administrator/Tecaj/GetAll"
         },
         "columns": [
-            { "data": "id", "width": "15%" },
-            { "data": "naziv", "width": "15%" },
-            { "data": "cijena", "width": "15%"},
-            { "targets": 2, "data": "osoba", "render": function (data) { return data.ime + ' ' + data.prezime;} ,"width": "15%",  },
-            { "data": "opis", "width": "15%" },
-            { "data": "prosjecna_ocjena", "width": "15%" },
+            { "data": "id", "width": "12%" },
+            { "data": "naziv", "width": "13%" },
+            { "data": "cijena", "width": "12%"},
+            { "targets": 2, "data": "osoba", "render": function (data) { return data.ime + ' ' + data.prezime;} ,"width": "13%",  },
+            { "data": "opis", "width": "12%" },
+            { "data": "prosjecna_ocjena", "width": "12%" },
+            { "data": "Kategorija.Naziv", "width": "13%" },
             {
                 "data": "id",
                 "render": function (data) {
@@ -25,11 +26,11 @@ function loadDataTable() {
                         class="btn btn-danger mx-2"> <i class="bi bi-trash-fill"></i></a>
                     </div > `
                 },
-                "width": "10%"
+                "width": "13%"
             }
         ],
         "columnDefs": [
-            { bSortable: false, targets: [5] }
+            { bSortable: false, targets: [6] }
         ],
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.12.0/i18n/hr.json"

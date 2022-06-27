@@ -1,6 +1,7 @@
 ﻿@model WAZOT.Models.ViewModels.OsobaVM
 
 <form method="post">
+    <input hidden asp-for="Osoba.Razina_PravaId" value="3"/>
    <div class="border p-3 mt-4">
        <div class="row pb-2">
            <h2 class="text-primary">Registracija kao kreator tečaja</h2>
@@ -22,13 +23,6 @@
             <span asp-validation-for="Osoba.prezime" class="text-danger"></span>
         </div>
         <div class="mb-3">
-            <label asp-for="Osoba.Razina_PravaId">Razina prava</label>
-            <select asp-for="Osoba.Razina_PravaId" asp-items="@Model.RazinaPravaList" class="form-select">
-                <option disabled selected>--Odaberi razinu prava--</option>
-            </select>
-            <span asp-validation-for="Osoba.Razina_PravaId" class="text-danger"></span>
-        </div>
-        <div class="mb-3">
             <label asp-for="Osoba.email">Email</label>
             <input asp-for="Osoba.email" class="form-control"/>
             <span asp-validation-for="Osoba.email" class="text-danger"></span>
@@ -43,7 +37,7 @@
                 <button type="submit" class="btn btn-primary" style="width:150px">Kreiraj račun</button>
             </div>
             <div class="col-6 text-end">
-                <a asp-controller="Registracija" asp-action="Index" class="btn btn-secondary" style="width:150px">Povratak odabir vrste registracije</a>
+                <a asp-controller="Registracija" asp-action="Index" class="btn btn-secondary" style="width:150px">Povratak na odabir vrste registracije</a>
             </div>
         </div>
    </div>

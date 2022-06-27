@@ -1,6 +1,9 @@
 ﻿@model Razina_Prava
-
+@{
+    ViewData["Title"] = "Uređivanje razine prava";
+}
 <form method="post" asp-action="Edit">
+  <input hidden asp-for="Id" />
    <div class="border p-3 mt-4">
        <div class="row pb-2">
            <h2 class="text-primary">Uređivanje razine prava</h2>

@@ -1,5 +1,7 @@
 ﻿@model Status_narudzbe
-
+@{
+    ViewData["Title"] = "Brisanje statusa narudžbe";
+}
 <form method="post" asp-action="DeletePOST">
     <input asp-for="Id" hidden/>
    <div class="border p-3 mt-4">

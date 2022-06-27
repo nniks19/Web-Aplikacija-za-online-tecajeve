@@ -1,0 +1,32 @@
+﻿@model Kategorija
+@{
+    ViewData["Title"] = "Uređivanje kategorije";
+}
+<form method="post" asp-action="Edit">
+    <input hidden asp-for="Id" />
+   <div class="border p-3 mt-4">
+       <div class="row pb-2">
+           <h2 class="text-primary">Uređivanje kategorije</h2>
+           <hr />
+       </div>
+
+        <div class="mb-3">
+            <label asp-for="Naziv">Naziv kategorije</label>
+            <input asp-for="Naziv" class="form-control"/>
+            <span asp-validation-for="Naziv" class="text-danger"></span>
+        </div>
+        <div class="row pt-4">
+            <div class="col-6">
+                <button type="submit" class="btn btn-primary" style="width:150px">Ažuriraj kategoriju
+                </button>
+            </div>
+            <div class="col-6 text-end">
+                <a asp-controller="Kategorija" asp-action="Index" class="btn btn-secondary" style="width:150px">Povratak na popis kategorija</a>
+            </div>
+        </div>
+   </div>
+
+</form>
+
+<section Scripts><partial name="_ValidationScriptsPartial" />
+</section>

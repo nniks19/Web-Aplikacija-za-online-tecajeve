@@ -1,5 +1,7 @@
 ﻿@model WAZOT.Models.ViewModels.VideozapisVM
-
+@{
+    ViewData["Title"] = "Brisanje videozapisa";
+}
 <form method="post" asp-action="DeletePOST">
     <input asp-for="Videozapis" hidden/>
    <div class="border p-3 mt-4">

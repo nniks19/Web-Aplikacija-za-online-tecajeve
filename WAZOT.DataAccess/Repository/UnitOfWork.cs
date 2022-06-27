@@ -23,6 +23,7 @@ namespace WAZOT.DataAccess.Repository
             OcjenaTecaja = new OcjenaTecajaRepository(_db);
             Videozapis = new VideozapisRepository(_db);
             Narudzba = new NarudzbaRepository(_db);
+            Kategorija = new KategorijaRepository(_db);
         }
         public IRazinaPravaRepository RazinaPrava { get; private set; }
         public IStatusNarudzbeRepository StatusNarudzbe { get; private set; }
@@ -32,6 +33,7 @@ namespace WAZOT.DataAccess.Repository
         public IOcjenaTecajaRepository OcjenaTecaja { get; private set; }
         public IVideozapisRepository Videozapis { get; private set; }
         public INarudzbaRepository Narudzba { get; private set; }
+        public IKategorijaRepository Kategorija { get; private set; }
         public void Save()
         {
             _db.SaveChanges();

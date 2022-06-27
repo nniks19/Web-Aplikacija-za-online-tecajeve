@@ -3,6 +3,7 @@ using System.Diagnostics;
 using WAZOT.DataAccess.Repository.IRepository;
 using WAZOT.Models;
 using WAZOT.Models.ViewModels;
+using WAZOT.Services;
 
 namespace WAZOT.Controllers
 {
@@ -12,11 +13,14 @@ namespace WAZOT.Controllers
     {
         private readonly ILogger<HomeAdminController> _logger;
         private readonly IUnitOfWork _unitOfWork;
+        private OsobaService _osobaService;
 
-        public HomeAdminController(ILogger<HomeAdminController> logger, IUnitOfWork unitOfWork)
+
+        public HomeAdminController(ILogger<HomeAdminController> logger, IUnitOfWork unitOfWork, OsobaService osobaService)
         {
             _logger = logger;
             _unitOfWork = unitOfWork;
+            _osobaService = osobaService;
         }
 
         public IActionResult Index(StatistikaVM StatistikaVM)
@@ -29,6 +33,7 @@ namespace WAZOT.Controllers
             IEnumerable<Status_narudzbe> objStatusNarudzbeList = _unitOfWork.StatusNarudzbe.GetAll();
             IEnumerable<Tecaj> objTecajlist = _unitOfWork.Tecaj.GetAll();
             IEnumerable<Videozapis> objVideozapisList = _unitOfWork.Videozapis.GetAll();
+            IEnumerable<Kategorija> objKategorijaList = _unitOfWork.Kategorija.GetAll();
             StatistikaVM.brNacinaPlacanja = objNacinPlacanjaList.Count();
             StatistikaVM.brNarudzbi = objNarudzbaList.Count();
             StatistikaVM.brOcjenaTecaja = objOcjenaTecajaList.Count();
@@ -37,6 +42,18 @@ namespace WAZOT.Controllers
             StatistikaVM.brRazinePrava = objRazinaPravaList.Count();
             StatistikaVM.brVideozapisa = objVideozapisList.Count();
             StatistikaVM.brTecaja = objTecajlist.Count();
+            StatistikaVM.brKategorija = objKategorijaList.Count();
+            //int _ignoreme = 0;
+            //if(Int32.TryParse(HttpContext.Session.GetString("razina_prava"), out _ignoreme))
+            //{
+            //    var account = _osobaService.CheckPermissionAndLogin(HttpContext.Session.GetString("email"),HttpContext.Session.GetString("razina_prava"));
+            //}
+            //else
+            //{
+            //    return RedirectToAction("Index", "", new { area = "Posjetitelj" });
+            //}
+            ViewBag.ime = HttpContext.Session.GetString("ime");
+            ViewBag.prezime = HttpContext.Session.GetString("prezime");
             return View(StatistikaVM);
         }
 

@@ -23,6 +23,7 @@ namespace WAZOT.Repository
                 objFromDb.OsobaOib = obj.OsobaOib;
                 objFromDb.prosjecna_ocjena = obj.prosjecna_ocjena;
                 objFromDb.cijena = obj.cijena;
+                objFromDb.KategorijaId = obj.KategorijaId;
             }
         }
     }

@@ -19,6 +19,21 @@ namespace WAZOT.DataAccess.Migrations
                 .HasAnnotation("ProductVersion", "6.0.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
+            modelBuilder.Entity("WAZOT.Models.Kategorija", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Naziv")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Kategorija");
+                });
+
             modelBuilder.Entity("WAZOT.Models.Nacin_placanja", b =>
                 {
                     b.Property<int>("Id")
@@ -173,6 +188,10 @@ namespace WAZOT.DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<int?>("KategorijaId")
+                        .IsRequired()
+                        .HasColumnType("int");
+
                     b.Property<string>("OsobaOib")
                         .IsRequired()
                         .HasColumnType("varchar(11)");
@@ -191,7 +210,13 @@ namespace WAZOT.DataAccess.Migrations
                     b.Property<float>("prosjecna_ocjena")
                         .HasColumnType("float");
 
+                    b.Property<string>("slika")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("KategorijaId");
 
                     b.HasIndex("OsobaOib");
 
@@ -241,7 +266,7 @@ namespace WAZOT.DataAccess.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("WAZOT.Models.Status_narudzbe", "Stats_narudzbe")
+                    b.HasOne("WAZOT.Models.Status_narudzbe", "Status_narudzbe")
                         .WithMany()
                         .HasForeignKey("Status_NarudzbeId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -257,7 +282,7 @@ namespace WAZOT.DataAccess.Migrations
 
                     b.Navigation("Osoba");
 
-                    b.Navigation("Stats_narudzbe");
+                    b.Navigation("Status_narudzbe");
 
                     b.Navigation("Tecaj");
                 });
@@ -294,11 +319,19 @@ namespace WAZOT.DataAccess.Migrations
 
             modelBuilder.Entity("WAZOT.Models.Tecaj", b =>
                 {
+                    b.HasOne("WAZOT.Models.Kategorija", "Kategorija")
+                        .WithMany()
+                        .HasForeignKey("KategorijaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("WAZOT.Models.Osoba", "Osoba")
                         .WithMany()
                         .HasForeignKey("OsobaOib")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Kategorija");
 
                     b.Navigation("Osoba");
                 });

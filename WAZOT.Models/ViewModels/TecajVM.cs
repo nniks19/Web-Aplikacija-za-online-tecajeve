@@ -14,5 +14,7 @@ namespace WAZOT.Models.ViewModels
         public Tecaj? Tecaj { get; set; }
         [ValidateNever]
         public IEnumerable<SelectListItem>? OsobaList { get; set; }
+        [ValidateNever]
+        public IEnumerable<SelectListItem>? KategorijaList { get; set; }
     }
 }

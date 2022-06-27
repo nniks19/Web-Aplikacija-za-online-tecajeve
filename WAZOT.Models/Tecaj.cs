@@ -19,6 +19,13 @@ namespace WAZOT.Models
         public string opis { get; set; }
         //[Required] - dodat kasnije dok dodam ocjene
         public float prosjecna_ocjena { get; set; }
+        [Required(ErrorMessage = "Kategorija mora biti odabrana!")]
+        public int? KategorijaId { get; set; }
+        [ValidateNever]
+        public Kategorija? Kategorija { get; set; }
+        [Required(ErrorMessage = "Tečaj mora imati sliku!")]
+        public String slika { get; set; }
+
     }
 }
 

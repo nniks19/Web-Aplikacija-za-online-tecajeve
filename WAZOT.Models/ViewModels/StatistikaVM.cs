@@ -19,5 +19,6 @@ namespace WAZOT.Models.ViewModels
         public int? brStatusaNarudzbi { get; set; }
         public int? brTecaja { get; set; }
         public int? brVideozapisa { get; set; }
+        public int? brKategorija { get; set; }
     }
 }

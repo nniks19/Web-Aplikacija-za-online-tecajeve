@@ -1,5 +1,7 @@
 ﻿@model WAZOT.Models.ViewModels.NarudzbaVM
-
+@{
+    ViewData["Title"] = "Brisanje narudžbe";
+}
 <form method="post" asp-action="DeletePOST">
     <input asp-for="Narudzba" hidden/>
    <div class="border p-3 mt-4">
@@ -27,14 +29,14 @@
             <span asp-validation-for="Narudzba.OsobaOib" class="text-danger"></span>
         </div>
         <div class="mb-3">
-            <label asp-for="Narudzba.Status_NarudzbeId">Osoba</label>
+            <label asp-for="Narudzba.Status_NarudzbeId">Status narudžbe</label>
             <select asp-for="Narudzba.Status_NarudzbeId" asp-items="@Model.StatusNarudzbeList" class="form-select">
                 <option disabled selected>--Odaberi status narudžbe--</option>
             </select>
             <span asp-validation-for="Narudzba.Status_NarudzbeId" class="text-danger"></span>
         </div>
         <div class="mb-3">
-            <label asp-for="Narudzba.Nacin_PlacanjaId">Osoba</label>
+            <label asp-for="Narudzba.Nacin_PlacanjaId">Način plaćanja</label>
             <select asp-for="Narudzba.Nacin_PlacanjaId" asp-items="@Model.NacinPlacanjaList" class="form-select">
                 <option disabled selected>--Odaberi način plaćanja--</option>
             </select>

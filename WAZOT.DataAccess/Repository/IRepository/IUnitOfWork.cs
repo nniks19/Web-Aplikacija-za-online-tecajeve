@@ -17,6 +17,7 @@ namespace WAZOT.DataAccess.Repository.IRepository
         IOcjenaTecajaRepository OcjenaTecaja { get; }
         IVideozapisRepository Videozapis { get; }
         INarudzbaRepository Narudzba { get; }
+        IKategorijaRepository Kategorija { get; }
         void Save();
     }
 }

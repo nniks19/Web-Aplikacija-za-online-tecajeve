@@ -51,6 +51,9 @@
        <li class="nav-item">
            <a class="nav-link" asp-area="Administrator" asp-controller="Narudzba" asp-action="Index">Narudžbe</a>
         </li>
+       <li class="nav-item">
+           <a class="nav-link" asp-area="Administrator" asp-controller="Kategorija" asp-action="Index">Kategorije</a>
+        </li>
        @* <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
           <div class="dropdown-menu">
@@ -63,7 +66,7 @@
         </li>*@
       </ul>
       <form class="d-flex">
-        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Odjava</button>
+        <button asp-area="Posjetitelj" asp-controller="Prijava" asp-Action="Logout" class="btn btn-secondary my-2 my-sm-0" type="submit">Odjava</button>
       </form>
     </div>
   </div>

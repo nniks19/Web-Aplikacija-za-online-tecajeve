@@ -17,4 +17,5 @@ public class ApplicationDbContext:DbContext
     public DbSet<Videozapis> Videozapis { get; set; }
     public DbSet<Ocjena_tecaja> OcjeneTecaja { get; set; }
     public DbSet<Narudzba> Narudzba { get; set; }
+    public DbSet<Kategorija> Kategorija { get; set; }
 }
