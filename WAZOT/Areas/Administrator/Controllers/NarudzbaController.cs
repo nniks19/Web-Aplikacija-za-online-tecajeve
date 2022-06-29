@@ -57,9 +57,13 @@ namespace WAZOT.Controllers
         [ValidateAntiForgeryToken] //Zastita od Cross Site Forgery
         public IActionResult Create(NarudzbaVM obj)
         {
-            obj.Narudzba.datum_pocetak = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();
-            if (ModelState.IsValid)
+            if(obj.Narudzba == null)
             {
+                ViewBag.notfilled = "Potrebno je odabrati ponuđene stavke.";
+            }
+            if (obj.Narudzba != null & ModelState.IsValid)
+            {
+                obj.Narudzba.datum_pocetak = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();
                 _unitOfWork.Narudzba.Add(obj.Narudzba);
                 _unitOfWork.Save();
                 TempData["success"] = "Narudzba uspješno dodana!";

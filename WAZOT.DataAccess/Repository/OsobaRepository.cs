@@ -21,6 +21,7 @@ namespace WAZOT.Repository
                 objFromDb.ime = obj.ime;
                 objFromDb.prezime = obj.prezime;
                 objFromDb.email = obj.email;
+                objFromDb.lozinka = obj.lozinka;
                 objFromDb.Razina_PravaId = obj.Razina_PravaId;
             }
         }

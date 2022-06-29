@@ -45,17 +45,11 @@ namespace WAZOT.Controllers
         public IActionResult Create(VideozapisVM obj, IFormFile? file)
         {
             string wwwRootPath = _hostEnvironment.WebRootPath;
+
             if (file != null)
             {
-                string filename = Guid.NewGuid().ToString();
-                var uploads = Path.Combine(wwwRootPath, @"videozapisi\tecajevi");
-                var extension = Path.GetExtension(file.FileName);
-                using (var FileStreams = new FileStream(Path.Combine(uploads, filename + extension), FileMode.Create))
-                {
-                    file.CopyTo(FileStreams);
-                }
-                obj.Videozapis.videozapis_putanja = @"\videozapisi\tecajevi\" + filename + extension;
-                obj.Videozapis.videozapis_tip = extension;
+                obj.Videozapis.videozapis_putanja = "soon";
+                obj.Videozapis.videozapis_tip = ".mp4";
                 ModelState.Remove("Videozapis.videozapis_putanja");
                 ModelState.Remove("Videozapis.videozapis_tip");
             }
@@ -64,6 +58,19 @@ namespace WAZOT.Controllers
                 _unitOfWork.Videozapis.Add(obj.Videozapis);
                 _unitOfWork.Save();
                 TempData["success"] = "Videozapis uspješno dodan!";
+
+                string filename = _unitOfWork.Videozapis.Max().ToString();
+                var uploads_first = Path.Combine(wwwRootPath, @"videozapisi\tecajevi");
+                var uploads = Path.Combine(uploads_first, obj.Videozapis.TecajId.ToString());
+                var extension = Path.GetExtension(file.FileName);
+                using (var FileStreams = new FileStream(Path.Combine(uploads, filename + extension), FileMode.Create))
+                {
+                    file.CopyTo(FileStreams);
+                }
+                obj.Videozapis.videozapis_putanja = @"\videozapisi\tecajevi\" + obj.Videozapis.TecajId.ToString() + @"\" + filename + extension;
+                obj.Videozapis.videozapis_tip = extension;
+                _unitOfWork.Videozapis.Update(obj.Videozapis);
+                _unitOfWork.Save();
                 return RedirectToAction("Index");
             }
             obj.TecajList = _unitOfWork.Tecaj.GetAll().Select(i => new SelectListItem
@@ -146,6 +153,15 @@ namespace WAZOT.Controllers
             {
                 return NotFound();
             }
+            string wwwRootPath = _hostEnvironment.WebRootPath;
+            var putanjaDoVideozapisa = wwwRootPath + obj.videozapis_putanja;
+            FileInfo file = new FileInfo(putanjaDoVideozapisa);
+            if (file.Exists)//check file exist or not  
+            {
+                file.Delete();
+            }
+
+
             _unitOfWork.Videozapis.Remove(obj);
             _unitOfWork.Save();
             TempData["success"] = "Videozapis uspješno obrisan!";

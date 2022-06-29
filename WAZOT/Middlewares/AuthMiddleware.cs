@@ -22,6 +22,34 @@ namespace WAZOT.Middlewares
                 if(httpContext.Session.GetString("email") == null)
                 {
                     httpContext.Response.Redirect("/");
+                    if(httpContext.Session.GetString("razina_prava") != "1")
+                    {
+                        httpContext.Response.Redirect("/");
+                    }
+
+                }
+            }
+            if (path.Value.StartsWith("/Korisnik"))
+            {
+                if (httpContext.Session.GetString("email") == null)
+                {
+                    httpContext.Response.Redirect("/");
+                    if (httpContext.Session.GetString("razina_prava") != "2")
+                    {
+                        httpContext.Response.Redirect("/");
+                    }
+
+                }
+            }
+            if (path.Value.StartsWith("/Kreator_Tecaja"))
+            {
+                if (httpContext.Session.GetString("email") == null)
+                {
+                    httpContext.Response.Redirect("/");
+                    if (httpContext.Session.GetString("razina_prava") != "3")
+                    {
+                        httpContext.Response.Redirect("/");
+                    }
 
                 }
             }

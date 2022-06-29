@@ -12,11 +12,9 @@ namespace WAZOT.Controllers
     public class OsobaController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
-
         public OsobaController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
-
         }
         public IActionResult Index()
         {
@@ -90,6 +88,13 @@ namespace WAZOT.Controllers
             {
                 _unitOfWork.Osoba.Update(obj.Osoba);
                 _unitOfWork.Save();
+                if (obj.Osoba.email == HttpContext.Session.GetString("email") && obj.Osoba.Razina_PravaId != 1)
+                {
+                    HttpContext.Session.Remove("email");
+                    HttpContext.Session.Remove("razina_prava");
+                    HttpContext.Session.Remove("ime");
+                    HttpContext.Session.Remove("prezime");
+                }
                 TempData["success"] = "Podaci o osobi uspješno uređeni!";
                 return RedirectToAction("Index");
             }
@@ -135,6 +140,13 @@ namespace WAZOT.Controllers
             }
             _unitOfWork.Osoba.Remove(obj);
             _unitOfWork.Save();
+            if (obj.email == HttpContext.Session.GetString("email"))
+            {
+                HttpContext.Session.Remove("email");
+                HttpContext.Session.Remove("razina_prava");
+                HttpContext.Session.Remove("ime");
+                HttpContext.Session.Remove("prezime");
+            }
             TempData["success"] = "Podaci o osobi uspješno obrisani!";
             return RedirectToAction("Index");
         }

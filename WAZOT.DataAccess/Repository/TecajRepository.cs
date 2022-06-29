@@ -26,5 +26,10 @@ namespace WAZOT.Repository
                 objFromDb.KategorijaId = obj.KategorijaId;
             }
         }
+        public int Max()
+        {
+            var idFromDb = _db.Tecaj.Max(item => item.Id);
+            return idFromDb;
+        }
     }
 }

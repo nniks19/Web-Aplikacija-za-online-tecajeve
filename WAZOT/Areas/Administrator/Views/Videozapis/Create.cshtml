@@ -22,7 +22,7 @@
         </div>
         <div class="mb-3">
             <label asp-for="Videozapis.videozapis_putanja">Videozapis</label>
-            <input type="file" asp-for="Videozapis.videozapis_putanja" name="file" class="form-control"/>
+            <input type="file" id="file" asp-for="Videozapis.videozapis_putanja" name="file" class="form-control" onchange="return checkAndFilterVideos()" accept="video/mp4"/>
             <span asp-validation-for="Videozapis.videozapis_putanja" class="text-danger"></span>
         </div>
         <div class="row pt-4">
@@ -30,7 +30,7 @@
                 <button type="submit" class="btn btn-primary" style="width:150px">Prenesi videozapis</button>
             </div>
             <div class="col-6 text-end">
-                <a asp-controller="OcjenaTecaja" asp-action="Index" class="btn btn-secondary" style="width:150px">Povratak na popis ocjena tečaja</a>
+                <a asp-controller="Videozapis" asp-action="Index" class="btn btn-secondary" style="width:150px">Povratak na popis videozapisa</a>
             </div>
         </div>
    </div>
@@ -39,3 +39,6 @@
 
 <section Scripts><partial name="_ValidationScriptsPartial" />
 </section>
+@section Scripts{
+    <script src="~/js/videozapis_validation.js"></script>
+}

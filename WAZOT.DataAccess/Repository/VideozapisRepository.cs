@@ -24,5 +24,10 @@ namespace WAZOT.Repository
                 objFromDb.TecajId = obj.TecajId;
             }
         }
+        public int Max()
+        {
+            var idFromDb = _db.Videozapis.Max(item => item.Id);
+            return idFromDb;
+        }
     }
 }

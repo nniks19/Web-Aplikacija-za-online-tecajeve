@@ -31,6 +31,7 @@ namespace WAZOT.Controllers
             if (account != null)
             {
                 HttpContext.Session.SetString("email", email);
+                HttpContext.Session.SetString("oib", account.Oib);
                 HttpContext.Session.SetString("razina_prava", account.Razina_PravaId.ToString());
                 HttpContext.Session.SetString("ime", account.ime);
                 HttpContext.Session.SetString("prezime", account.prezime);
@@ -45,7 +46,7 @@ namespace WAZOT.Controllers
                 }
                 if (account.Razina_PravaId == 3)
                 {
-                    return RedirectToAction("Index", "Index", new { area = "Kreator_Tecaja" });
+                    return RedirectToAction("Index", "HomeKreatorTecaja", new { area = "Kreator_Tecaja" });
                 }
             }
             ViewBag.msgaaa = "Neispravan email ili lozinka!";
@@ -57,6 +58,7 @@ namespace WAZOT.Controllers
             HttpContext.Session.Remove("razina_prava");
             HttpContext.Session.Remove("ime");
             HttpContext.Session.Remove("prezime");
+            HttpContext.Session.Remove("oib");
             return RedirectToAction("Index", "", new { area = "Posjetitelj" });
         }
     }

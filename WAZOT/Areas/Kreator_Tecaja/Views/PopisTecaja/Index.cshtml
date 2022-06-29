@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Tecaj>
+@{
+    ViewData["Title"] = "Prikaz tečaja";
+}
+<partial name="_Notification" />
+<div class="container p-3">
+
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Popis tečaja</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="PopisTecaja" asp-action="Create" class="btn btn-primary">
+                <i class="bi bi-patch-plus"></i> &nbsp; Kreiraj novi tečaj
+            </a>
+        </div>
+    </div>
+</div>
+    <br />
+<table id="tblTecaj" class="table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                ID Tečaja
+            </th>
+            <th>
+                Naziv tečaja
+            </th>
+            <th>
+                Cijena tečaja
+            </th>
+            <th>
+                Tečaj kreirao
+            </th>
+            <th>
+                Opis tečaja
+            </th>
+            <th>
+                Prosječna ocjena
+            </th>
+            <th>
+                Kategorija
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    
+    </tbody>
+</table>
+@section Scripts{
+    <script src="~/js/kreatortecaj.js"></script>
+}

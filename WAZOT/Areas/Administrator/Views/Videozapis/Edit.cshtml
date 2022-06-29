@@ -6,37 +6,16 @@
     <input asp-for="Videozapis.Id" hidden/>
     <input asp-for="Videozapis.videozapis_putanja" hidden/>
     <input asp-for="Videozapis.videozapis_tip" hidden/>
+    <input asp-for="Videozapis.TecajId" hidden/>
    <div class="border p-3 mt-4">
        <div class="row pb-2">
            <h2 class="text-primary">Prijenos videozapisa</h2>
            <hr />
        </div>
-       <div class="mb-3">
-            <label asp-for="Videozapis.Id">Videozapis</label>
-            <input type="text" asp-for="Videozapis.Id" class="form-control" disabled/>
-            <span asp-validation-for="Videozapis.Id" class="text-danger"></span>
-        </div>
         <div class="mb-3">
             <label asp-for="Videozapis.videozapis_naziv">Naziv videozapisa</label>
             <input type="text" asp-for="Videozapis.videozapis_naziv" class="form-control"/>
             <span asp-validation-for="Videozapis.videozapis_naziv" class="text-danger"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="Videozapis.TecajId">Tečaj</label>
-            <select asp-for="Videozapis.TecajId" asp-items="@Model.TecajList" class="form-select">
-                <option disabled selected>--Odaberi tečaj--</option>
-            </select>
-            <span asp-validation-for="Videozapis.TecajId" class="text-danger"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="Videozapis.videozapis_putanja">Putanja do videozapisa</label>
-            <input type="text" asp-for="Videozapis.videozapis_putanja" class="form-control" disabled/>
-            <span asp-validation-for="Videozapis.videozapis_putanja" class="text-danger"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="Videozapis.videozapis_tip">Tip videozapisa</label>
-            <input type="text" asp-for="Videozapis.videozapis_tip" class="form-control" disabled/>
-            <span asp-validation-for="Videozapis.videozapis_tip" class="text-danger"></span>
         </div>
         <div class="row pt-4">
             <div class="col-6">

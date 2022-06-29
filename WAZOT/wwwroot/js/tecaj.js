@@ -15,7 +15,7 @@ function loadDataTable() {
             { "targets": 2, "data": "osoba", "render": function (data) { return data.ime + ' ' + data.prezime;} ,"width": "13%",  },
             { "data": "opis", "width": "12%" },
             { "data": "prosjecna_ocjena", "width": "12%" },
-            { "data": "Kategorija.Naziv", "width": "13%" },
+            { "data": "kategorija.naziv", "width": "13%" },
             {
                 "data": "id",
                 "render": function (data) {

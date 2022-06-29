@@ -7,22 +7,22 @@ namespace WAZOT.Models
     {
         [Key]
         public int Id { get; set; }
-        [Required]
-        public int Status_NarudzbeId { get; set; }
+        [Required(ErrorMessage = "Status narudžbe mora biti odabran!")]
+        public int? Status_NarudzbeId { get; set; }
         [ValidateNever]
-        public Status_narudzbe Status_narudzbe { get; set; }
+        public Status_narudzbe? Status_narudzbe { get; set; }
         [Required(ErrorMessage = "Osoba mora biti odabrana!")]
         public string OsobaOib { get; set; }
         [ValidateNever]
-        public Osoba Osoba { get; set; }
+        public Osoba? Osoba { get; set; }
         [Required(ErrorMessage = "Tečaj mora biti odabran!")]
         public int? TecajId { get; set; }
         [ValidateNever]
-        public Tecaj Tecaj { get; set; }
+        public Tecaj? Tecaj { get; set; }
         [Required(ErrorMessage = "Način plaćanja mora biti odabran!")]
         public int? Nacin_PlacanjaId { get; set; }
         [ValidateNever]
-        public Nacin_placanja Nacin_placanja { get; set; }
+        public Nacin_placanja? Nacin_placanja { get; set; }
         [Required]
         public long datum_pocetak { get; set; }
         [Required]

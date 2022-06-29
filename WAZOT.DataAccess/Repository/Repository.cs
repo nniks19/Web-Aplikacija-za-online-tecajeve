@@ -48,7 +48,6 @@ namespace WAZOT.Repository
             }
             return query.FirstOrDefault();
         }
-
         public void Remove(T entity)
         {
             dbSet.Remove(entity);

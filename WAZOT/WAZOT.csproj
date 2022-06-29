@@ -30,6 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="wwwroot\slike\tecajevi\" />
     <Folder Include="wwwroot\videozapisi\tecajevi\" />
   </ItemGroup>
 

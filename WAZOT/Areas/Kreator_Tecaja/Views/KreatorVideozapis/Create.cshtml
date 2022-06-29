@@ -1,0 +1,44 @@
+﻿@model WAZOT.Models.ViewModels.VideozapisVM
+@{
+    ViewData["Title"] = "Kreiranje videozapisa";
+}
+<form method="post" enctype="multipart/form-data">
+   <div class="border p-3 mt-4">
+       <div class="row pb-2">
+           <h2 class="text-primary">Prijenos videozapisa</h2>
+           <hr />
+       </div>
+       <div class="mb-3">
+            <label asp-for="Videozapis.videozapis_naziv">Naziv videozapisa</label>
+            <input asp-for="Videozapis.videozapis_naziv" class="form-control"/>
+            <span asp-validation-for="Videozapis.videozapis_naziv" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Videozapis.TecajId">Tečaj</label>
+            <select asp-for="Videozapis.TecajId" asp-items="@Model.TecajList" class="form-select">
+                <option disabled selected>--Odaberi tečaj--</option>
+            </select>
+            <span asp-validation-for="Videozapis.TecajId" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Videozapis.videozapis_putanja">Videozapis</label>
+            <input type="file" id="file" asp-for="Videozapis.videozapis_putanja" name="file" class="form-control" onchange="return checkAndFilterVideos()" accept="video/mp4"/>
+            <span asp-validation-for="Videozapis.videozapis_putanja" class="text-danger"></span>
+        </div>
+        <div class="row pt-4">
+            <div class="col-6">
+                <button type="submit" class="btn btn-primary" style="width:150px">Prenesi videozapis</button>
+            </div>
+            <div class="col-6 text-end">
+                <a asp-controller="KreatorVideozapis" asp-action="Index" class="btn btn-secondary" style="width:150px">Povratak na popis videozapisa</a>
+            </div>
+        </div>
+   </div>
+
+</form>
+
+<section Scripts><partial name="_ValidationScriptsPartial" />
+</section>
+@section Scripts{
+    <script src="~/js/videozapis_validation.js"></script>
+}
