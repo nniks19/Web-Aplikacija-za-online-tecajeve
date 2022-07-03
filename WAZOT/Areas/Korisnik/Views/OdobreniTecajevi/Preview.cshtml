@@ -1,0 +1,140 @@
+﻿@model WAZOT.Models.ViewModels.TecajPreviewVM
+@{
+    ViewData["Title"] = "Prikaz tečaja";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="mt-4 mb-4 text-center">Pregled tečaja</h2>
+        </div>
+        <div class="progress">
+            <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <div class="col-12">
+            <h2 class="mt-4 mb-4 text-center">Opis</h2>
+        </div>
+        <div class="progress">
+            <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <div class="text-center">
+            @Model.Tecaj.opis
+        </div>
+        <div class="progress">
+            <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <div class="card-thumbnail text-center">
+            <img src="@Model.Tecaj.slika" class="img-fluid" alt="@Model.Tecaj.naziv">
+        </div>
+        <div class="progress">
+            <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <div class="col-12">
+            <h2 class="mt-4 mb-4 text-center">Videozapisi</h2>
+        </div>
+        <div class="progress">
+            <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <div class="accordion" id="accordionVideozapisi">
+            @if (Model.VideozapisList.Count() > 0)
+            {
+                @foreach (Videozapis obj in Model.VideozapisList)
+                {
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading_@obj.Id">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_@obj.Id" aria-expanded="false" aria-controls="collapse_@obj.Id">
+                                @obj.videozapis_naziv
+                            </button>
+                        </h2>
+                        <div id="collapse_@obj.Id" class="accordion-collapse collapse" aria-labelledby="heading_@obj.Id" data-bs-parent="#accordionVideozapisi" style="">
+                            <div class="accordion-body text-center">
+                                <video width="720" controls>
+                                    <source src="@obj.videozapis_putanja" type="video/@obj.videozapis_tip.Replace(".","")">
+                                    Vaš browser ne podržava ovaj videozapis
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="col-12">
+                    <h4 class="mt-4 mb-4 text-center">Ovaj tečaj ne sadržava videozapis</h4>
+                </div>
+            }
+        </div>
+        <div class="progress">
+            <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <div class="col-12">
+            <h2 class="mt-4 mb-4 text-center">Komentari i ocjene</h2>
+        </div>
+        <div class="progress">
+            <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <div class="row mt-3">
+            @if (Model.OcjenaTecajaList.Count() > 0)
+            {
+                @foreach (Ocjena_tecaja obj in Model.OcjenaTecajaList)
+                {
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card border-light mb-3" style="max-width: 20rem;">
+                            <div class="card-header text-center">
+                                @for (int i = 0; i < obj.ocjena; i++)
+                                {
+                                    <i class="fa fa-star fa-6 text-warning" aria-hidden="true"></i>
+                                }
+                            </div>
+                            <div class="card-body">
+                                <h4 class="card-title text-center">@obj.Osoba.ime @obj.Osoba.prezime</h4>
+                                <p class="card-text text-center">@obj.komentar</p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="col-12">
+                    <h4 class="mt-4 mb-4 text-center">Ovaj tečaj još nije ocijenjen.</h4>
+                </div>
+            }
+        </div>
+        <div class="progress">
+            <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        @if (Model.vecKomentirao == false)
+        {
+            <form method="post" asp-controller="OdobreniTecajevi" asp-action="OcjeniTecaj">
+                <div class="form-group">
+                    <label for="exampleTextarea" class="form-label mt-4">Komentar</label>
+                    <textarea required class="form-control" name="komentar" rows="3"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label >Ocjena</label>
+                    <select name="ocjena" class="form-select" required>
+                        <option value="" disabled selected>--Odaberi ocjenu--</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <input hidden value="@Model.oibosobe" name="oibosobe">
+                <input hidden value="@Model.Tecaj.Id" name="tecajid">
+
+                <button class="btn btn-outline-light" type="submit">Ocjeni tečaj</button>
+            </form>
+        }
+        else
+        {
+            <div class="col-12">
+                <h2 class="mt-4 mb-4 text-center">Već ste ocjenili ovaj tečaj!</h2>
+            </div>
+        }
+        <div class="progress mt-3">
+            <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+    </div>
+</div>

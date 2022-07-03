@@ -44,7 +44,6 @@ namespace WAZOT.Controllers
         public IActionResult Create(VideozapisVM obj, IFormFile? file)
         {
             string wwwRootPath = _hostEnvironment.WebRootPath;
-
             if (file != null)
             {
                 obj.Videozapis.videozapis_putanja = "soon";
@@ -56,7 +55,7 @@ namespace WAZOT.Controllers
             {
                 _unitOfWork.Videozapis.Add(obj.Videozapis);
                 _unitOfWork.Save();
-                TempData["success"] = "Videozapis uspješno dodan!";
+                TempData["success"] = "Videozapis uspješno prenesen!";
 
                 string filename = _unitOfWork.Videozapis.Max().ToString();
                 var uploads_first = Path.Combine(wwwRootPath, @"videozapisi\tecajevi");

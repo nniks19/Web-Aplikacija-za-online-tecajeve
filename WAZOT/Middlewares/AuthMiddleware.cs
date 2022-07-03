@@ -22,11 +22,13 @@ namespace WAZOT.Middlewares
                 if(httpContext.Session.GetString("email") == null)
                 {
                     httpContext.Response.Redirect("/");
-                    if(httpContext.Session.GetString("razina_prava") != "1")
+                }
+                else
+                {
+                    if (httpContext.Session.GetString("razina_prava") != "1")
                     {
                         httpContext.Response.Redirect("/");
                     }
-
                 }
             }
             if (path.Value.StartsWith("/Korisnik"))
@@ -34,11 +36,14 @@ namespace WAZOT.Middlewares
                 if (httpContext.Session.GetString("email") == null)
                 {
                     httpContext.Response.Redirect("/");
+
+                }
+                else
+                {
                     if (httpContext.Session.GetString("razina_prava") != "2")
                     {
                         httpContext.Response.Redirect("/");
                     }
-
                 }
             }
             if (path.Value.StartsWith("/Kreator_Tecaja"))
@@ -46,11 +51,14 @@ namespace WAZOT.Middlewares
                 if (httpContext.Session.GetString("email") == null)
                 {
                     httpContext.Response.Redirect("/");
+
+                }
+                else
+                {
                     if (httpContext.Session.GetString("razina_prava") != "3")
                     {
                         httpContext.Response.Redirect("/");
                     }
-
                 }
             }
             return _next(httpContext);

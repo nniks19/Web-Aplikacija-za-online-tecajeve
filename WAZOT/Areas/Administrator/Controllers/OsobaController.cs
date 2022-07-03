@@ -44,6 +44,16 @@ namespace WAZOT.Controllers
             ModelState.Remove("RazinaPravaList");
             if (ModelState.IsValid)
             {
+                if(_unitOfWork.Osoba.GetAll().Where(x=>x.Oib == obj.Osoba.Oib).Count() > 0)
+                {
+                    ViewBag.msgOsobaPostoji = "OIB već postoji!";
+                    return View(obj);
+                }
+                if (_unitOfWork.Osoba.GetAll().Where(x => x.email == obj.Osoba.email).Count() > 0)
+                {
+                    ViewBag.msgEmailPostoji = "Email već postoji!";
+                    return View(obj);
+                }
                 _unitOfWork.Osoba.Add(obj.Osoba);
                 _unitOfWork.Save();
                 TempData["success"] = "Osoba uspješno dodana!";

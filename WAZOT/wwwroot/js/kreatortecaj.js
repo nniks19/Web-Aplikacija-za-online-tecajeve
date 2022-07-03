@@ -9,28 +9,27 @@ function loadDataTable() {
             "url": "/Kreator_Tecaja/PopisTecaja/GetAll"
         },
         "columns": [
-            { "data": "id", "width": "12%" },
-            { "data": "naziv", "width": "13%" },
-            { "data": "cijena", "width": "12%"},
-            { "targets": 2, "data": "osoba", "render": function (data) { return data.ime + ' ' + data.prezime;} ,"width": "13%",  },
-            { "data": "opis", "width": "12%" },
-            { "data": "prosjecna_ocjena", "width": "12%" },
-            { "data": "kategorija.naziv", "width": "13%" },
+            { "data": "id", "width": "14%" },
+            { "data": "naziv", "width": "14%" },
+            { "data": "cijena", "width": "14%" },
+            { "targets": 2, "data": "osoba", "render": function (data) { return data.ime + ' ' + data.prezime; }, "width": "14%", },
+            { "targets": 1, "data": "opis", "render": function (data) { return data.slice(0, 14) + "..."; }, "width": "14%" },
+            { "data": "kategorija.naziv", "width": "14%" },
             {
                 "data": "id",
                 "render": function (data) {
                     return `<div class="w-75 btn-group" role="group">
                         <a href="/Kreator_Tecaja/PopisTecaja/Edit?id=${data}"
-                    class="btn btn-primary mx-2" > <i class="bi bi-pencil-square"></i></a>
+                    class="btn btn-outline-primary mx-2" > <i class="bi bi-pencil-square"></i></a>
                         <a href="/Kreator_Tecaja/PopisTecaja/Delete?id=${data}"
-                        class="btn btn-danger mx-2"> <i class="bi bi-trash-fill"></i></a>
+                        class="btn btn-outline-danger mx-2"> <i class="bi bi-trash-fill"></i></a>
                     </div > `
                 },
-                "width": "13%"
+                "width": "14%"
             }
         ],
         "columnDefs": [
-            { bSortable: false, targets: [7] }
+            { bSortable: false, targets: [6] }
         ],
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.12.0/i18n/hr.json"

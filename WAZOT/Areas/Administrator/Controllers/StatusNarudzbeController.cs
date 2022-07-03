@@ -37,7 +37,7 @@ namespace WAZOT.Controllers
             {
                 _unitOfWork.StatusNarudzbe.Add(obj);
                 _unitOfWork.Save();
-                TempData["success"] = "Status narudžbe uspješno dodan!";
+                TempData["success"] = "Status narudžbe uspješno kreiran!";
                 return RedirectToAction("Index");
             }
             return View(obj);

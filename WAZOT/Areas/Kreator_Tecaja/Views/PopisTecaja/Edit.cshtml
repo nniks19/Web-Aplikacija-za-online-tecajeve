@@ -6,7 +6,6 @@
      <input asp-for="Tecaj.Id" hidden/>
      <input asp-for="Tecaj.slika" hidden/>
      <input asp-for="Tecaj.OsobaOib" hidden/>
-     <input asp-for="Tecaj.prosjecna_ocjena" hidden />
       <div class="border p-3 mt-4">
        <div class="row pb-2">
            <h2 class="text-primary">Uređivanje tečaja</h2>
@@ -37,10 +36,10 @@
         </div>
         <div class="row pt-4">
             <div class="col-6">
-                <button type="submit" class="btn btn-primary" style="width:150px">Uredi tečaj</button>
+                <button type="submit" class="btn btn-outline-primary">Uredi tečaj</button>
             </div>
             <div class="col-6 text-end">
-                <a asp-controller="PopisTecaja" asp-action="Index" class="btn btn-secondary" style="width:150px">Povratak na popis tečajeva</a>
+                <a asp-controller="PopisTecaja" asp-action="Index" class="btn btn-outline-secondary w-auto">Povratak na popis tečajeva</a>
             </div>
         </div>
    </div>

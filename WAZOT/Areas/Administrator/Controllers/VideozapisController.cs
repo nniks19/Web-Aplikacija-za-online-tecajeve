@@ -57,7 +57,7 @@ namespace WAZOT.Controllers
             {
                 _unitOfWork.Videozapis.Add(obj.Videozapis);
                 _unitOfWork.Save();
-                TempData["success"] = "Videozapis uspješno dodan!";
+                TempData["success"] = "Videozapis uspješno prenesen!";
 
                 string filename = _unitOfWork.Videozapis.Max().ToString();
                 var uploads_first = Path.Combine(wwwRootPath, @"videozapisi\tecajevi");

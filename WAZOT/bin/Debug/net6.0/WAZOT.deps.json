@@ -44,6 +44,7 @@
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "6.0.3",
           "Pomelo.EntityFrameworkCore.MySql": "6.0.1",
           "Swashbuckle.AspNetCore": "6.3.0",
+          "System.Configuration.ConfigurationManager": "6.0.0",
           "WAZOT.DataAccess": "1.0.0",
           "Microsoft.AspNetCore.Antiforgery.Reference": "6.0.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions.Reference": "6.0.0.0",

@@ -21,7 +21,6 @@ namespace WAZOT.Repository
                 objFromDb.naziv = obj.naziv;
                 objFromDb.opis = obj.opis;
                 objFromDb.OsobaOib = obj.OsobaOib;
-                objFromDb.prosjecna_ocjena = obj.prosjecna_ocjena;
                 objFromDb.cijena = obj.cijena;
                 objFromDb.KategorijaId = obj.KategorijaId;
             }

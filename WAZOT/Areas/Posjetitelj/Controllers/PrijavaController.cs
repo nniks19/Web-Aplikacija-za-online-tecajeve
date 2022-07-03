@@ -41,7 +41,7 @@ namespace WAZOT.Controllers
                 }
                 if (account.Razina_PravaId == 2)
                 {
-                    return RedirectToAction("Index", "Korisnik", new { area = "Korisnik" });
+                    return RedirectToAction("Index", "HomeKorisnik", new { area = "Korisnik" });
 
                 }
                 if (account.Razina_PravaId == 3)

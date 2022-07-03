@@ -1,0 +1,54 @@
+﻿@model WAZOT.Models.ViewModels.NarudzbaVM
+@{
+    ViewData["Title"] = "Kreiranje narudžbe";
+}
+<form method="post">
+    <div class="border p-3 mt-4">
+        @ViewBag.notfilled
+        <div class="row pb-2">
+            <h2 class="text-primary">Kreiranje narudžbe</h2>
+            <hr />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Narudzba.TecajId">Tečaj</label>
+            <select asp-for="Narudzba.TecajId" asp-items="@Model.TecajList" class="form-select">
+                <option disabled selected>--Odaberi tečaj--</option>
+            </select>
+            <span asp-validation-for="Narudzba.TecajId" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Narudzba.OsobaOib">Osoba</label>
+            <select asp-for="Narudzba.OsobaOib" asp-items="@Model.OsobaList" class="form-select">
+                <option disabled selected>--Odaberi osobu--</option>
+            </select>
+            <span asp-validation-for="Narudzba.OsobaOib" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Narudzba.Status_NarudzbeId">Status narudžbe</label>
+            <select asp-for="Narudzba.Status_NarudzbeId" asp-items="@Model.StatusNarudzbeList" class="form-select">
+                <option disabled selected>--Odaberi status narudžbe--</option>
+            </select>
+            <span asp-validation-for="Narudzba.Status_NarudzbeId" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Narudzba.Nacin_PlacanjaId">Način plaćanja</label>
+            <select asp-for="Narudzba.Nacin_PlacanjaId" asp-items="@Model.NacinPlacanjaList" class="form-select">
+                <option disabled selected>--Odaberi način plaćanja--</option>
+            </select>
+            <span asp-validation-for="Narudzba.Nacin_PlacanjaId" class="text-danger"></span>
+        </div>
+        <div class="row pt-4">
+            <div class="col-6">
+                <button type="submit" class="btn btn-outline-primary">Kreiraj narudžbu</button>
+            </div>
+            <div class="col-6 text-end">
+                <a class="btn btn-lg btn-outline-secondary" type="button" asp-controller="TecajPrijava" asp-action="Index">Povratak na popis tečaja</a>
+            </div>
+        </div>
+    </div>
+
+</form>
+
+<section Scripts>
+    <partial name="_ValidationScriptsPartial" />
+</section>

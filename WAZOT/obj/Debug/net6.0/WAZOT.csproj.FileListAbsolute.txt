@@ -575,3 +575,4 @@ C:\Users\nniik\Desktop\Web-Aplikacija-za-online-tecajeve\WAZOT\obj\Debug\net6.0\
 C:\Users\nniik\Desktop\Web-Aplikacija-za-online-tecajeve\WAZOT\obj\Debug\net6.0\scopedcss\Views\Shared\_LayoutKreatorTecaja.cshtml.rz.scp.css
 C:\Users\nniik\Desktop\Web-Aplikacija-za-online-tecajeve\WAZOT\obj\Debug\net6.0\scopedcss\Views\Shared\_LayoutAdministrator.cshtml.rz.scp.css
 C:\Users\nniik\Desktop\Web-Aplikacija-za-online-tecajeve\WAZOT\obj\Debug\net6.0\WAZOT.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\nniik\Desktop\Web-Aplikacija-za-online-tecajeve\WAZOT\bin\Debug\net6.0\web.config

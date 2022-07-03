@@ -28,48 +28,16 @@
                         <li class="nav-item">
                             <a class="nav-link" asp-area="Posjetitelj" asp-controller="HomePosjetitelj" asp-action="ONama">O Nama </a>
                         </li>
-                        @*        <li class="nav-item">
-                            <a class="nav-link" asp-area="Administrator" asp-controller="RazinePrava" asp-action="Index">Razine prava</a>
-                            </li>
-                            <li class="nav-item">
-                            <a class="nav-link" asp-area="Administrator" asp-controller="StatusNarudzbe" asp-action="Index">Statusi narudžbi</a>
-                            </li>
-                            <li class="nav-item">
-                            <a class="nav-link" asp-area="Administrator" asp-controller="NacinPlacanja" asp-action="Index">Načini plaćanja</a>
-                            </li>
-                            <li class="nav-item">
-                            <a class="nav-link" asp-area="Administrator" asp-controller="Osoba" asp-action="Index">Osobe</a>
-                            </li>
-                            <li class="nav-item">
-                            <a class="nav-link" asp-area="Administrator" asp-controller="Tecaj" asp-action="Index">Tečajevi</a>
-                            </li>
-                            <li class="nav-item">
-                            <a class="nav-link" asp-area="Administrator" asp-controller="OcjenaTecaja" asp-action="Index">Ocjene tečaja</a>
-                            </li>
-                            <li class="nav-item">
-                            <a class="nav-link" asp-area="Administrator" asp-controller="Videozapis" asp-action="Index">Videozapisi</a>
-                            </li>
-                            <li class="nav-item">
-                            <a class="nav-link" asp-area="Administrator" asp-controller="Narudzba" asp-action="Index">Narudžbe</a>
-                            </li>*@
-                        @* <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                            <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Separated link</a>
-                            </div>
-                            </li>*@
                     </ul>
                     <form class="d-flex">
-                        <li class="nav-item">
-                            <button asp-area="Posjetitelj" asp-controller="Prijava" asp-action="Index" class="btn btn-secondary my-2 my-sm-0" type="submit">Prijava</button>
-                        </li>
-                        <li class="nav-item">
-                            <button asp-area="Posjetitelj" asp-controller="Registracija" asp-action="Index" class="btn btn-secondary my-2 my-sm-0" type="submit">Registracija</button>
-                        </li>
+                        <div class="row">
+                        <a class="col">
+                            <button asp-area="Posjetitelj" asp-controller="Prijava" asp-action="Index" class="btn btn-outline-light my-2 my-sm-0" type="submit">Prijava</button>
+                        </a>
+                        <a class="col">
+                            <button asp-area="Posjetitelj" asp-controller="Registracija" asp-action="Index" class="btn btn-outline-light my-2 my-sm-0" type="submit">Registracija</button>
+                        </a>
+                    </div>
                     </form>
                 </div>
             </div>
@@ -84,7 +52,7 @@
 
     <footer class="footer text-muted bg-dark">
         <div class="container">
-            &copy; 2022 - WAZOT - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2022 - WAZOT
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

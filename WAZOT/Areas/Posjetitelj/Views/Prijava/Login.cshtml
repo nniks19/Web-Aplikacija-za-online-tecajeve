@@ -8,7 +8,7 @@
        </div>
         <div class="mb-3">
             <label asp-for="email">Email</label>
-            <input asp-for="email" class="form-control"/>
+            <input asp-for="email" class="form-control" type="email"/>
         </div>
         <div class="mb-3">
             <label asp-for="lozinka">Lozinka</label>
@@ -16,10 +16,10 @@
         </div>
         <div class="row pt-4">
             <div class="col-6">
-                <button type="submit" class="btn btn-primary" style="width:150px">Prijavi se</button>
+                <button type="submit" class="btn btn-outline-primary" style="width:150px">Prijavi se</button>
             </div>
             <div class="col-6 text-end">
-                <a asp-controller="Login" asp-action="Index" class="btn btn-secondary" style="width:150px">Povratak na odabir vrste prijave</a>
+                <a asp-controller="Prijava" asp-action="Index" class="btn btn-outline-secondary w-auto">Povratak</a>
             </div>
         </div>
    </div>

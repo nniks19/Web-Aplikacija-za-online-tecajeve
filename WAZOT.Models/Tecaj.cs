@@ -17,8 +17,6 @@ namespace WAZOT.Models
         public string naziv { get; set; }
         [Required(ErrorMessage = "Opis je obavezan!")]
         public string opis { get; set; }
-        //[Required] - dodat kasnije dok dodam ocjene
-        public float prosjecna_ocjena { get; set; }
         [Required(ErrorMessage = "Kategorija mora biti odabrana!")]
         public int? KategorijaId { get; set; }
         [ValidateNever]
@@ -35,7 +33,6 @@ namespace WAZOT.Models
  vlasnik_tecaja varchar(11),
  naziv varchar(50),
  opis TEXT,
- prosjecna_ocjena float,
  CONSTRAINT PK_Tecaj PRIMARY KEY (id),
  CONSTRAINT FK_Tecaj_vlasnik_tecaja FOREIGN KEY(vlasnik_tecaja) REFERENCES Osoba(oib)
 );

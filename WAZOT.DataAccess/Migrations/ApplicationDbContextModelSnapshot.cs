@@ -63,7 +63,8 @@ namespace WAZOT.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(11)");
 
-                    b.Property<int>("Status_NarudzbeId")
+                    b.Property<int?>("Status_NarudzbeId")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<int?>("TecajId")
@@ -206,9 +207,6 @@ namespace WAZOT.DataAccess.Migrations
                     b.Property<string>("opis")
                         .IsRequired()
                         .HasColumnType("longtext");
-
-                    b.Property<float>("prosjecna_ocjena")
-                        .HasColumnType("float");
 
                     b.Property<string>("slika")
                         .IsRequired()

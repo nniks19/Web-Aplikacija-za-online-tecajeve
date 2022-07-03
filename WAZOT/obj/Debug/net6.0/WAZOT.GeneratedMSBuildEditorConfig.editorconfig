@@ -207,6 +207,46 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcS29yaXNuaWtcVmlld3NcSG9tZUtvcmlzbmlrXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/nniik/Desktop/Web-Aplikacija-za-online-tecajeve/WAZOT/Areas/Korisnik/Views/HomeKorisnik/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcS29yaXNuaWtcVmlld3NcSG9tZUtvcmlzbmlrXF9WaWV3SW1wb3J0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nniik/Desktop/Web-Aplikacija-za-online-tecajeve/WAZOT/Areas/Korisnik/Views/OdobreniTecajevi/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcS29yaXNuaWtcVmlld3NcT2RvYnJlbmlUZWNhamV2aVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nniik/Desktop/Web-Aplikacija-za-online-tecajeve/WAZOT/Areas/Korisnik/Views/OdobreniTecajevi/Preview.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcS29yaXNuaWtcVmlld3NcT2RvYnJlbmlUZWNhamV2aVxQcmV2aWV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nniik/Desktop/Web-Aplikacija-za-online-tecajeve/WAZOT/Areas/Korisnik/Views/OdobreniTecajevi/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcS29yaXNuaWtcVmlld3NcT2RvYnJlbmlUZWNhamV2aVxfVmlld0ltcG9ydHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nniik/Desktop/Web-Aplikacija-za-online-tecajeve/WAZOT/Areas/Korisnik/Views/Pregled/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcS29yaXNuaWtcVmlld3NcUHJlZ2xlZFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nniik/Desktop/Web-Aplikacija-za-online-tecajeve/WAZOT/Areas/Korisnik/Views/Pregled/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcS29yaXNuaWtcVmlld3NcUHJlZ2xlZFxfVmlld0ltcG9ydHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nniik/Desktop/Web-Aplikacija-za-online-tecajeve/WAZOT/Areas/Korisnik/Views/TecajPrijava/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcS29yaXNuaWtcVmlld3NcVGVjYWpQcmlqYXZhXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nniik/Desktop/Web-Aplikacija-za-online-tecajeve/WAZOT/Areas/Korisnik/Views/TecajPrijava/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcS29yaXNuaWtcVmlld3NcVGVjYWpQcmlqYXZhXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nniik/Desktop/Web-Aplikacija-za-online-tecajeve/WAZOT/Areas/Korisnik/Views/TecajPrijava/Preview.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcS29yaXNuaWtcVmlld3NcVGVjYWpQcmlqYXZhXFByZXZpZXcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nniik/Desktop/Web-Aplikacija-za-online-tecajeve/WAZOT/Areas/Korisnik/Views/TecajPrijava/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcS29yaXNuaWtcVmlld3NcVGVjYWpQcmlqYXZhXF9WaWV3SW1wb3J0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/nniik/Desktop/Web-Aplikacija-za-online-tecajeve/WAZOT/Areas/Korisnik/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcS29yaXNuaWtcVmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -257,6 +297,34 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/nniik/Desktop/Web-Aplikacija-za-online-tecajeve/WAZOT/Areas/Kreator_Tecaja/Views/PopisTecaja/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcS3JlYXRvcl9UZWNhamFcVmlld3NcUG9waXNUZWNhamFcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nniik/Desktop/Web-Aplikacija-za-online-tecajeve/WAZOT/Areas/Kreator_Tecaja/Views/PretpregledTecaja/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcS3JlYXRvcl9UZWNhamFcVmlld3NcUHJldHByZWdsZWRUZWNhamFcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nniik/Desktop/Web-Aplikacija-za-online-tecajeve/WAZOT/Areas/Kreator_Tecaja/Views/PretpregledTecaja/Preview.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcS3JlYXRvcl9UZWNhamFcVmlld3NcUHJldHByZWdsZWRUZWNhamFcUHJldmlldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nniik/Desktop/Web-Aplikacija-za-online-tecajeve/WAZOT/Areas/Kreator_Tecaja/Views/PretpregledTecaja/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcS3JlYXRvcl9UZWNhamFcVmlld3NcUHJldHByZWdsZWRUZWNhamFcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nniik/Desktop/Web-Aplikacija-za-online-tecajeve/WAZOT/Areas/Kreator_Tecaja/Views/UpravljanjeNarudzbama/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcS3JlYXRvcl9UZWNhamFcVmlld3NcVXByYXZsamFuamVOYXJ1ZHpiYW1hXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nniik/Desktop/Web-Aplikacija-za-online-tecajeve/WAZOT/Areas/Kreator_Tecaja/Views/UpravljanjeNarudzbama/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcS3JlYXRvcl9UZWNhamFcVmlld3NcVXByYXZsamFuamVOYXJ1ZHpiYW1hXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nniik/Desktop/Web-Aplikacija-za-online-tecajeve/WAZOT/Areas/Kreator_Tecaja/Views/UpravljanjeNarudzbama/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcS3JlYXRvcl9UZWNhamFcVmlld3NcVXByYXZsamFuamVOYXJ1ZHpiYW1hXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nniik/Desktop/Web-Aplikacija-za-online-tecajeve/WAZOT/Areas/Kreator_Tecaja/Views/UpravljanjeNarudzbama/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcS3JlYXRvcl9UZWNhamFcVmlld3NcVXByYXZsamFuamVOYXJ1ZHpiYW1hXF9WaWV3SW1wb3J0cy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/nniik/Desktop/Web-Aplikacija-za-online-tecajeve/WAZOT/Areas/Kreator_Tecaja/Views/_ViewStart.cshtml]

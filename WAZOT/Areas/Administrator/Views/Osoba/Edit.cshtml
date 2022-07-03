@@ -33,7 +33,7 @@
         </div>
         <div class="mb-3">
             <label asp-for="Osoba.email">Email</label>
-            <input asp-for="Osoba.email" class="form-control"/>
+            <input asp-for="Osoba.email" class="form-control" type="email"/>
             <span asp-validation-for="Osoba.email" class="text-danger"></span>
         </div>
         <div class="mb-3">
@@ -43,10 +43,10 @@
         </div>
         <div class="row pt-4">
             <div class="col-6">
-                <button type="submit" class="btn btn-primary" style="width:150px">Uredi račun</button>
+                <button type="submit" class="btn btn-outline-primary">Uredi račun</button>
             </div>
             <div class="col-6 text-end">
-                <a asp-controller="Osoba" asp-action="Index" class="btn btn-secondary" style="width:150px">Povratak na popis osoba</a>
+                <a asp-controller="Osoba" asp-action="Index" class="btn btn-outline-secondary w-auto">Povratak na popis osoba</a>
             </div>
         </div>
    </div>

@@ -33,7 +33,7 @@ namespace WAZOT.Controllers
                     Text = i.naziv,
                     Value = i.Id.ToString(),
                 }),
-                OsobaList = _unitOfWork.Osoba.GetAll().Select(i => new SelectListItem
+                OsobaList = _unitOfWork.Osoba.GetAll().Where(x => x.Razina_PravaId == 2).Select(i => new SelectListItem
                 {
                     Text = i.ime + " " + i.prezime,
                     Value = i.Oib,
@@ -59,7 +59,7 @@ namespace WAZOT.Controllers
                 Text = i.naziv,
                 Value = i.Id.ToString(),
             });
-            obj.OsobaList = _unitOfWork.Osoba.GetAll().Select(i => new SelectListItem
+            obj.OsobaList = _unitOfWork.Osoba.GetAll().Where(x => x.Razina_PravaId == 2).Select(i => new SelectListItem
             {
                 Text = i.ime + " " + i.prezime,
                 Value = i.Oib
@@ -82,7 +82,7 @@ namespace WAZOT.Controllers
                     Text = i.naziv,
                     Value = i.Id.ToString(),
                 }),
-                OsobaList = _unitOfWork.Osoba.GetAll().Select(i => new SelectListItem
+                OsobaList = _unitOfWork.Osoba.GetAll().Where(x => x.Razina_PravaId == 2).Select(i => new SelectListItem
                 {
                     Text = i.ime + " " + i.prezime,
                     Value = i.Oib
@@ -111,7 +111,7 @@ namespace WAZOT.Controllers
                 Text = i.naziv,
                 Value = i.Id.ToString(),
             });
-            obj.OsobaList = _unitOfWork.Osoba.GetAll().Select(i => new SelectListItem
+            obj.OsobaList = _unitOfWork.Osoba.GetAll().Where(x => x.Razina_PravaId == 2).Select(i => new SelectListItem
             {
                 Text = i.ime + " " + i.prezime,
                 Value = i.Oib
@@ -132,7 +132,7 @@ namespace WAZOT.Controllers
                     Value = i.Id.ToString(),
                     Disabled = true,
                 }),
-                OsobaList = _unitOfWork.Osoba.GetAll().Select(i => new SelectListItem
+                OsobaList = _unitOfWork.Osoba.GetAll().Where(x => x.Razina_PravaId == 2).Select(i => new SelectListItem
                 {
                     Text = i.ime + " " + i.prezime,
                     Value = i.Oib,

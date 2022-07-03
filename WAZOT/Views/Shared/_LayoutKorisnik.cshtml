@@ -10,63 +10,38 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
     <link rel="stylesheet" href="//cdn.datatables.net/1.12.0/css/jquery.dataTables.min.css" />
+    <script src="https://kit.fontawesome.com/33ab154de2.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">WAZOT</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">WAZOT</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-    <div class="collapse navbar-collapse" id="navbarColor03">
-      <ul class="navbar-nav me-auto">
-        <li class="nav-item">
-          <a class="nav-link" asp-area="" asp-controller="HomeKorisnikController" asp-action="Index">Home</a>
-        </li>
-        <li class="nav-item">
-           <a class="nav-link" asp-area="Administrator" asp-controller="RazinePrava" asp-action="Index">Razine prava</a>
-        </li>
-        <li class="nav-item">
-           <a class="nav-link" asp-area="Administrator" asp-controller="StatusNarudzbe" asp-action="Index">Statusi narudžbi</a>
-        </li>
-        <li class="nav-item">
-           <a class="nav-link" asp-area="Administrator" asp-controller="NacinPlacanja" asp-action="Index">Načini plaćanja</a>
-        </li>
-        <li class="nav-item">
-           <a class="nav-link" asp-area="Administrator" asp-controller="Osoba" asp-action="Index">Osobe</a>
-        </li>
-        <li class="nav-item">
-           <a class="nav-link" asp-area="Administrator" asp-controller="Tecaj" asp-action="Index">Tečajevi</a>
-        </li>
-        <li class="nav-item">
-           <a class="nav-link" asp-area="Administrator" asp-controller="OcjenaTecaja" asp-action="Index">Ocjene tečaja</a>
-        </li>
-        <li class="nav-item">
-           <a class="nav-link" asp-area="Administrator" asp-controller="Videozapis" asp-action="Index">Videozapisi</a>
-        </li>
-       <li class="nav-item">
-           <a class="nav-link" asp-area="Administrator" asp-controller="Narudzba" asp-action="Index">Narudžbe</a>
-        </li>
-       @* <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Separated link</a>
-          </div>
-        </li>*@
-      </ul>
-      <form class="d-flex">
-        <input class="form-control me-sm-2" type="text" placeholder="Search">
-        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-      </form>
-    </div>
-  </div>
-</nav>
+                <div class="collapse navbar-collapse" id="navbarColor03">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="Korisnik" asp-controller="HomeKorisnik" asp-action="Index">Početna</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="Korisnik" asp-controller="TecajPrijava" asp-action="Index">Prijava na tečaj</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="Korisnik" asp-controller="Pregled" asp-action="Index">Pregled prijava</a>
+                        </li>
+                       <li class="nav-item">
+                            <a class="nav-link" asp-area="Korisnik" asp-controller="OdobreniTecajevi" asp-action="Index">Odobreni tečajevi</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex">
+                        <button asp-area="Posjetitelj" asp-controller="Prijava" asp-Action="Logout" class="btn btn-outline-light my-2 my-sm-0" type="submit">Odjava</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
 
     </header>
     <div class="container">
@@ -77,7 +52,7 @@
 
     <footer class="footer text-muted bg-dark">
         <div class="container">
-            &copy; 2022 - WAZOT - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2022 - WAZOT
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

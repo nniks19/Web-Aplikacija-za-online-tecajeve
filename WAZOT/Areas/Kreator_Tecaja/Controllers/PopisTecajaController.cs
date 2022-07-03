@@ -151,7 +151,7 @@ namespace WAZOT.Controllers
             TecajVM tecajVM = new TecajVM()
             {
                 Tecaj = _unitOfWork.Tecaj.GetFirstOrDefault(u => u.Id == id),
-                OsobaList = _unitOfWork.Osoba.GetAll().Select(i => new SelectListItem
+                OsobaList = _unitOfWork.Osoba.GetAll().Where(x=>x.Oib == HttpContext.Session.GetString("oib")).Select(i => new SelectListItem
                 {
                     Text = i.ime + " " + i.prezime,
                     Value = i.Oib,
