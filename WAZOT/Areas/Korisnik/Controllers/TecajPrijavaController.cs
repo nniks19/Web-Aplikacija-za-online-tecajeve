@@ -57,28 +57,15 @@ namespace WAZOT.Controllers
             NarudzbaVM NarudzbaVM = new NarudzbaVM()
             {
                 Narudzba = new(),
-                TecajList = _unitOfWork.Tecaj.GetAll().Where(x=>x.Id == id).Select(i => new SelectListItem
-                {
-                    Text = i.naziv,
-                    Value = i.Id.ToString(),
-                }),
-                StatusNarudzbeList = _unitOfWork.StatusNarudzbe.GetAll().Where(x => x.Id == 2).Select(i => new SelectListItem
-                {
-                    Text = i.naziv,
-                    Value = i.Id.ToString(),
-                }),
-                OsobaList = _unitOfWork.Osoba.GetAll().Where(x => x.Oib == HttpContext.Session.GetString("oib")).Select(i => new SelectListItem
-                {
-                    Text = i.ime + " " + i.prezime,
-                    Value = i.Oib,
-                }),
                 NacinPlacanjaList = _unitOfWork.NacinPlacanja.GetAll().Select(i => new SelectListItem
                 {
                     Text = i.naziv,
                     Value = i.Id.ToString(),
                 }),
             };
-
+            NarudzbaVM.Narudzba.Status_NarudzbeId = 2;
+            NarudzbaVM.Narudzba.OsobaOib = HttpContext.Session.GetString("oib");
+            NarudzbaVM.Narudzba.TecajId = id;
             return View(NarudzbaVM);
         }
         //POST
@@ -98,26 +85,14 @@ namespace WAZOT.Controllers
                 TempData["success"] = "Uspješno ste se prijavili na tečaj!";
                 return RedirectToAction("Index");
             }
-            obj.TecajList = _unitOfWork.Tecaj.GetAll().Where(x=>x.Id == id).Select(i => new SelectListItem
-            {
-                Text = i.naziv,
-                Value = i.Id.ToString(),
-            });
-            obj.StatusNarudzbeList = _unitOfWork.StatusNarudzbe.GetAll().Where(x => x.Id == 2).Select(i => new SelectListItem
-            {
-                Text = i.naziv,
-                Value = i.Id.ToString(),
-            });
-            obj.OsobaList = _unitOfWork.Osoba.GetAll().Where(x => x.Oib == HttpContext.Session.GetString("oib")).Where(x => x.Razina_PravaId == 2).Select(i => new SelectListItem
-            {
-                Text = i.ime + " " + i.prezime,
-                Value = i.Oib,
-            });
             obj.NacinPlacanjaList = _unitOfWork.NacinPlacanja.GetAll().Select(i => new SelectListItem
             {
                 Text = i.naziv,
                 Value = i.Id.ToString()
             });
+            obj.Narudzba.Status_NarudzbeId = 2;
+            obj.Narudzba.OsobaOib = HttpContext.Session.GetString("oib");
+            obj.Narudzba.TecajId = id;
             return View(obj);
         }
         #region API Calls
