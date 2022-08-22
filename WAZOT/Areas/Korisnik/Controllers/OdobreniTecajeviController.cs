@@ -35,7 +35,17 @@ namespace WAZOT.Controllers
             {
                 vecKomentirao = true;
             }
-            
+            IEnumerable<Pracenje_Korisnika> pracenjeKorisnikaList = _unitOfWork.PracenjeKorisnika.GetAll().Where(x=> x.OsobaOib == HttpContext.Session.GetString("oib") && Convert.ToInt32(id) == x.TecajId);
+            if(pracenjeKorisnikaList == null)
+            {
+                Pracenje_Korisnika oPracenjeKorisnika = new Pracenje_Korisnika();
+                oPracenjeKorisnika.OsobaOib = HttpContext.Session.GetString("oib");
+                oPracenjeKorisnika.TecajId = Convert.ToInt32(id);
+                oPracenjeKorisnika.Datum_posjete = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();
+                oPracenjeKorisnika.Vrijeme_videozapis = 0;
+                _unitOfWork.PracenjeKorisnika.Add(oPracenjeKorisnika);
+                _unitOfWork.Save();
+            }
             TecajPreviewVM tecajPreviewVM = new TecajPreviewVM()
             {
                 Tecaj = oTecaj,
@@ -91,8 +101,8 @@ namespace WAZOT.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            IEnumerable<Narudzba> popisAktivnihNarudzbi = _unitOfWork.Narudzba.GetAll().Where(x=>x.OsobaOib == HttpContext.Session.GetString("oib") && x.Status_NarudzbeId == 1);
-            var popisTecaja = _unitOfWork.Tecaj.GetAll(includeProperties: "Osoba,Kategorija").Where(x => popisAktivnihNarudzbi.Any(y => y.TecajId == x.Id));
+            IEnumerable<Prijava_Na_Tecaj> popisAktivnihPrijava = _unitOfWork.PrijavaNaTecaj.GetAll().Where(x=>x.OsobaOib == HttpContext.Session.GetString("oib") && x.Status_PrijaveId == 1);
+            var popisTecaja = _unitOfWork.Tecaj.GetAll(includeProperties: "Osoba,Kategorija").Where(x => popisAktivnihPrijava.Any(y => y.TecajId == x.Id));
             return Json(new { data = popisTecaja });
         }
         #endregion

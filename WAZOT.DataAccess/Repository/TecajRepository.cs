@@ -21,8 +21,11 @@ namespace WAZOT.Repository
                 objFromDb.naziv = obj.naziv;
                 objFromDb.opis = obj.opis;
                 objFromDb.OsobaOib = obj.OsobaOib;
-                objFromDb.cijena = obj.cijena;
                 objFromDb.KategorijaId = obj.KategorijaId;
+            }
+            if (obj.prosjecna_ocjena != null)
+            {
+                objFromDb.prosjecna_ocjena = obj.prosjecna_ocjena;
             }
         }
         public int Max()

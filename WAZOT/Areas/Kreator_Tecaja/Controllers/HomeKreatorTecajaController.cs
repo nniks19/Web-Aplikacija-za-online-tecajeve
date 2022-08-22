@@ -22,13 +22,13 @@ namespace WAZOT.Controllers
         {
             IEnumerable<Tecaj> objTecajlist = _unitOfWork.Tecaj.GetAll();
             objTecajlist = objTecajlist.Where(x => x.OsobaOib == HttpContext.Session.GetString("oib"));
-            IEnumerable<Narudzba> objNarudzbaList = _unitOfWork.Narudzba.GetAll();
-            objNarudzbaList = objNarudzbaList.Where(x => objTecajlist.Any(y => y.Id == x.TecajId));
+            IEnumerable<Prijava_Na_Tecaj> objPrijavaList = _unitOfWork.PrijavaNaTecaj.GetAll();
+            objPrijavaList = objPrijavaList.Where(x => objTecajlist.Any(y => y.Id == x.TecajId));
             IEnumerable<Ocjena_tecaja> objOcjenaTecajaList = _unitOfWork.OcjenaTecaja.GetAll();
             objOcjenaTecajaList = objOcjenaTecajaList.Where(x => objTecajlist.Any(y => y.Id == x.TecajId));
             IEnumerable<Videozapis> objVideozapisList = _unitOfWork.Videozapis.GetAll();
             objVideozapisList = objVideozapisList.Where(x => objTecajlist.Any(y => y.Id == x.TecajId));
-            statistikaKreatoraVM.brNarudzbi = objNarudzbaList.Count();
+            statistikaKreatoraVM.brPrijava = objPrijavaList.Count();
             statistikaKreatoraVM.brOcjenaTecaja = objOcjenaTecajaList.Count();
             statistikaKreatoraVM.brTecaja = objTecajlist.Count();
             statistikaKreatoraVM.brVideozapisa = objVideozapisList.Count();

@@ -21,6 +21,10 @@ namespace WAZOT.Models
         public string? email { get; set; }
         [Required(ErrorMessage = "Unos lozinke je obavezan!")]
         public string? lozinka { get; set; }
+        [Required(ErrorMessage = "Korisnik mora biti odobren!")]
+        public int? odobreno { get; set; }
+        [Required(ErrorMessage = "Unos PIN-a je obavezan!")]
+        public string? pin { get; set; }
     }
 }
 

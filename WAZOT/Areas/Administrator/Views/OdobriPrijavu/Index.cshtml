@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Osoba>
+@{
+    ViewData["Title"] = "Popis korisničkih računa";
+}
+<partial name="_Notification" />
+<div class="container p-3">
+
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Popis osoba za dobravanja računa.</h2>
+        </div>
+    </div>
+</div>
+    <br/>
+<table id="tblOsoba" class="table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                OIB
+            </th>
+            <th>
+                Ime
+            </th>
+            <th>
+                Prezime
+            </th>
+            <th>
+                Razina prava
+            </th>
+            <th>
+                Email
+            </th>
+            <th class="text-center">
+                Račun odobren
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    
+    </tbody>
+</table>
+@section Scripts{
+    <script src="~/js/odobriprijavu.js"></script>
+}

@@ -17,6 +17,13 @@
             <input type="text" asp-for="Videozapis.videozapis_naziv" class="form-control"/>
             <span asp-validation-for="Videozapis.videozapis_naziv" class="text-danger"></span>
         </div>
+       <div class="mb-3">
+            <label asp-for="Videozapis.CjelinaTecajaId">Cjelina</label>
+            <select asp-for="Videozapis.CjelinaTecajaId" asp-items="@Model.CjelinaList" class="form-select">
+                <option disabled selected>--Odaberi cjelinu--</option>
+            </select>
+            <span asp-validation-for="Videozapis.CjelinaTecajaId" class="text-danger"></span>
+        </div>
         <div class="row pt-4">
             <div class="col-6">
                 <button type="submit" class="btn btn-outline-primary">Uredi videozapis</button>

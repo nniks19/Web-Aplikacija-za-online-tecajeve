@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Status_prijave>
+@{
+    ViewData["Title"] = "Pregled statusa prijava";
+}
+<partial name="_Notification" />
+<div class="container p-3">
+
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Lista statusa prijava</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="StatusPrijave" asp-action="Create" class="btn btn-outline-primary">
+                <i class="fa fa-plus"></i> &nbsp; Kreiraj novi status prijave
+            </a>
+        </div>
+    </div>
+</div>
+    <br />
+<table class="table table-bordered table-striped" id="tblStatusPrijave" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                ID statusa prijave
+            </th>
+            <th>
+                Naziv statusa prijave
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+@section Scripts{
+    <script src="~/js/statusprijave.js"></script>
+}

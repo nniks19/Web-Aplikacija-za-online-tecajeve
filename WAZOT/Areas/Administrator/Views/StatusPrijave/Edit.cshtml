@@ -1,0 +1,31 @@
+﻿@model Status_prijave
+@{
+    ViewData["Title"] = "Uređivanje statusa prijave";
+}
+<form method="post" asp-action="Edit">
+   <input hidden asp-for="Id" />
+   <div class="border p-3 mt-4">
+       <div class="row pb-2">
+           <h2 class="text-primary">Uređivanje statusa prijava</h2>
+           <hr />
+       </div>
+
+        <div class="mb-3">
+            <label asp-for="naziv">Naziv statusa prijave</label>
+            <input asp-for="naziv" class="form-control"/>
+            <span asp-validation-for="naziv" class="text-danger"></span>
+        </div>
+        <div class="row pt-4">
+            <div class="col-6">
+                <button type="submit" class="btn btn-outline-primary">Ažuriraj status prijave</button>
+            </div>
+            <div class="col-6 text-end">
+                <a asp-controller="StatusPrijave" asp-action="Index" class="btn btn-outline-secondary w-auto">Povratak na popis statusa prijava</a>
+            </div>
+        </div>
+   </div>
+
+</form>
+
+<section Scripts><partial name="_ValidationScriptsPartial" />
+</section>

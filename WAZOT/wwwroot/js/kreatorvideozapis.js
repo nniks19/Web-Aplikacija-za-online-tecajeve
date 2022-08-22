@@ -14,6 +14,7 @@ function loadDataTable() {
             { "data": "tecaj.naziv", "width": "18%" },
             { "data": "videozapis_putanja", "width": "18%" },
             { "data": "videozapis_tip", "width": "18%" },
+            { "data": "cjelinaTecaja.naziv_cjeline", "width": "15%" },
             {
                 "data": "id",
                 "render": function (data) {

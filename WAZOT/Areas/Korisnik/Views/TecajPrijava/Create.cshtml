@@ -1,27 +1,20 @@
-﻿@model WAZOT.Models.ViewModels.NarudzbaVM
+﻿@model WAZOT.Models.ViewModels.PrijavaNaTecajVM
 @{
-    ViewData["Title"] = "Kreiranje narudžbe";
+    ViewData["Title"] = "Kreiranje prijave";
 }
 <form method="post">
-    <input hidden asp-for="Narudzba.OsobaOib" />
-    <input hidden asp-for="Narudzba.TecajId" />
-    <input hidden asp-for="Narudzba.Status_NarudzbeId" />
+    <input hidden asp-for="PrijavaNaTecaj.OsobaOib" />
+    <input hidden asp-for="PrijavaNaTecaj.TecajId" />
+    <input hidden asp-for="PrijavaNaTecaj.Status_PrijaveId" />
     <div class="border p-3 mt-4">
         @ViewBag.notfilled
         <div class="row pb-2">
-            <h2 class="text-primary">Kreiranje narudžbe</h2>
+            <h2 class="text-primary">Prijavljivanje na tečaj</h2>
             <hr />
-        </div>
-        <div class="mb-3">
-            <label asp-for="Narudzba.Nacin_PlacanjaId">Način plaćanja</label>
-            <select asp-for="Narudzba.Nacin_PlacanjaId" asp-items="@Model.NacinPlacanjaList" class="form-select">
-                <option disabled selected>--Odaberi način plaćanja--</option>
-            </select>
-            <span asp-validation-for="Narudzba.Nacin_PlacanjaId" class="text-danger"></span>
         </div>
         <div class="row pt-4">
             <div class="col-6">
-                <button type="submit" class="btn btn-outline-primary">Kreiraj narudžbu</button>
+                <button type="submit" class="btn btn-outline-primary">Kreiraj prijavu</button>
             </div>
             <div class="col-6 text-end">
                 <a class="btn btn-lg btn-outline-secondary" type="button" asp-controller="TecajPrijava" asp-action="Index">Povratak na popis tečaja</a>

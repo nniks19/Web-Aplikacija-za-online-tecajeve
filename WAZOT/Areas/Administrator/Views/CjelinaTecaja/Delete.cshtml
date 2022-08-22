@@ -1,0 +1,41 @@
+﻿@model WAZOT.Models.ViewModels.CjelinaTecajaVM
+@{
+    ViewData["Title"] = "Brisanje cjeline tečaja";
+}
+<form method="post" asp-action="DeletePOST">
+   <input asp-for="Cjelina_tecaja.TecajId" hidden/>
+   <input asp-for="Cjelina_tecaja.Id" hidden/>
+   <div class="border p-3 mt-4">
+       <div class="row pb-2">
+           <h2 class="text-primary">Brisanje tečaja</h2>
+           <hr />
+       </div>
+       <div class="mb-3">
+            <label asp-for="Cjelina_tecaja.Id">ID cjeline</label>
+            <input asp-for="Cjelina_tecaja.Id" class="form-control" disabled/>
+            <span asp-validation-for="Cjelina_tecaja.Id" class="text-danger" disabled></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Cjelina_tecaja.naziv_cjeline">Naziv cjeline</label>
+            <input asp-for="Cjelina_tecaja.naziv_cjeline" class="form-control" disabled/>
+            <span asp-validation-for="Cjelina_tecaja.naziv_cjeline" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Cjelina_tecaja.opis_cjeline">Opis cjeline tečaja</label>
+            <input asp-for="Cjelina_tecaja.opis_cjeline" class="form-control" disabled/>
+            <span asp-validation-for="Cjelina_tecaja.opis_cjeline" class="text-danger"></span>
+        </div>
+        <div class="row pt-4">
+            <div class="col-6">
+                <button type="submit" class="btn btn-outline-primary">Obriši cjelinu</button>
+            </div>
+            <div class="col-6 text-end">
+                <a asp-controller="CjelinaTecaja" asp-action="Index" class="btn btn-outline-secondary w-auto">Povratak na popis tečajeva</a>
+            </div>
+        </div>
+   </div>
+
+</form>
+
+<section Scripts><partial name="_ValidationScriptsPartial" />
+</section>

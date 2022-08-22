@@ -77,7 +77,11 @@ namespace WAZOT.Controllers
                 obj.Tecaj.slika = @"\slike\tecajevi\" + filename + extension;
                 obj.Tecaj.Id = lastTecajId;
                 Directory.CreateDirectory(Path.Combine(Path.Combine(wwwRootPath, @"videozapisi\tecajevi\"), filename));
-
+                Cjelina_tecaja cjelina_Tecaja = new Cjelina_tecaja();
+                cjelina_Tecaja.naziv_cjeline = "Nekategorizirano";
+                cjelina_Tecaja.opis_cjeline = "Nekategorizirano";
+                cjelina_Tecaja.TecajId = lastTecajId;
+                _unitOfWork.CjelinaTecaja.Add(cjelina_Tecaja);
                 _unitOfWork.Tecaj.Update(obj.Tecaj);
                 _unitOfWork.Save();
                 return RedirectToAction("Index");

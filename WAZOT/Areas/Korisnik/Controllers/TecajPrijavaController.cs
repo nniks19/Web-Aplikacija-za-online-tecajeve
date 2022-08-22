@@ -54,53 +54,43 @@ namespace WAZOT.Controllers
         //GET
         public IActionResult Create(int? id)
         {
-            NarudzbaVM NarudzbaVM = new NarudzbaVM()
+            PrijavaNaTecajVM prijavaNaTecajVM = new PrijavaNaTecajVM()
             {
-                Narudzba = new(),
-                NacinPlacanjaList = _unitOfWork.NacinPlacanja.GetAll().Select(i => new SelectListItem
-                {
-                    Text = i.naziv,
-                    Value = i.Id.ToString(),
-                }),
+                PrijavaNaTecaj = new(),
             };
-            NarudzbaVM.Narudzba.Status_NarudzbeId = 2;
-            NarudzbaVM.Narudzba.OsobaOib = HttpContext.Session.GetString("oib");
-            NarudzbaVM.Narudzba.TecajId = id;
-            return View(NarudzbaVM);
+            prijavaNaTecajVM.PrijavaNaTecaj.Status_PrijaveId = 2;
+            prijavaNaTecajVM.PrijavaNaTecaj.OsobaOib = HttpContext.Session.GetString("oib");
+            prijavaNaTecajVM.PrijavaNaTecaj.TecajId = id;
+            return View(prijavaNaTecajVM);
         }
         //POST
         [HttpPost]
         [ValidateAntiForgeryToken] //Zastita od Cross Site Forgery
-        public IActionResult Create(NarudzbaVM obj, int? id)
+        public IActionResult Create(PrijavaNaTecajVM obj, int? id)
         {
-            if (obj.Narudzba == null)
+            if (obj.PrijavaNaTecaj == null)
             {
                 ViewBag.notfilled = "Potrebno je odabrati ponuđene stavke.";
             }
-            if (obj.Narudzba != null & ModelState.IsValid)
+            if (obj.PrijavaNaTecaj != null & ModelState.IsValid)
             {
-                obj.Narudzba.datum_pocetak = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();
-                _unitOfWork.Narudzba.Add(obj.Narudzba);
+                obj.PrijavaNaTecaj.datum_pocetak = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();
+                _unitOfWork.PrijavaNaTecaj.Add(obj.PrijavaNaTecaj);
                 _unitOfWork.Save();
                 TempData["success"] = "Uspješno ste se prijavili na tečaj!";
                 return RedirectToAction("Index");
             }
-            obj.NacinPlacanjaList = _unitOfWork.NacinPlacanja.GetAll().Select(i => new SelectListItem
-            {
-                Text = i.naziv,
-                Value = i.Id.ToString()
-            });
-            obj.Narudzba.Status_NarudzbeId = 2;
-            obj.Narudzba.OsobaOib = HttpContext.Session.GetString("oib");
-            obj.Narudzba.TecajId = id;
+            obj.PrijavaNaTecaj.Status_PrijaveId = 2;
+            obj.PrijavaNaTecaj.OsobaOib = HttpContext.Session.GetString("oib");
+            obj.PrijavaNaTecaj.TecajId = id;
             return View(obj);
         }
         #region API Calls
         [HttpGet]
         public IActionResult GetAll()
         {
-            IEnumerable<Narudzba> popisAktivnihNarudzbi = _unitOfWork.Narudzba.GetAll().Where(x=> x.OsobaOib == HttpContext.Session.GetString("oib"));
-            var popisTecaja = _unitOfWork.Tecaj.GetAll(includeProperties: "Osoba,Kategorija").Where(x => !popisAktivnihNarudzbi.Any(y => y.TecajId == x.Id));
+            IEnumerable<Prijava_Na_Tecaj> popisAktivnihPrijava = _unitOfWork.PrijavaNaTecaj.GetAll().Where(x=> x.OsobaOib == HttpContext.Session.GetString("oib"));
+            var popisTecaja = _unitOfWork.Tecaj.GetAll(includeProperties: "Osoba,Kategorija").Where(x => !popisAktivnihPrijava.Any(y => y.TecajId == x.Id));
             return Json(new { data = popisTecaja });
         }
         #endregion

@@ -14,5 +14,7 @@ namespace WAZOT.Models.ViewModels
         public Videozapis? Videozapis { get; set; }
         [ValidateNever]
         public IEnumerable<SelectListItem>? TecajList { get; set; }
+        [ValidateNever]
+        public IEnumerable<SelectListItem>? CjelinaList { get; set; }
     }
 }

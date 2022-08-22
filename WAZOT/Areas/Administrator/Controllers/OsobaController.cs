@@ -41,17 +41,26 @@ namespace WAZOT.Controllers
         [ValidateAntiForgeryToken] //Zastita od Cross Site Forgery
         public IActionResult Create(OsobaVM obj)
         {
-            ModelState.Remove("RazinaPravaList");
             if (ModelState.IsValid)
             {
                 if(_unitOfWork.Osoba.GetAll().Where(x=>x.Oib == obj.Osoba.Oib).Count() > 0)
                 {
                     ViewBag.msgOsobaPostoji = "OIB već postoji!";
+                    obj.RazinaPravaList = _unitOfWork.RazinaPrava.GetAll().Select(i => new SelectListItem
+                    {
+                        Text = i.Naziv,
+                        Value = i.Id.ToString()
+                    });
                     return View(obj);
                 }
                 if (_unitOfWork.Osoba.GetAll().Where(x => x.email == obj.Osoba.email).Count() > 0)
                 {
                     ViewBag.msgEmailPostoji = "Email već postoji!";
+                    obj.RazinaPravaList = _unitOfWork.RazinaPrava.GetAll().Select(i => new SelectListItem
+                    {
+                        Text = i.Naziv,
+                        Value = i.Id.ToString()
+                    });
                     return View(obj);
                 }
                 _unitOfWork.Osoba.Add(obj.Osoba);

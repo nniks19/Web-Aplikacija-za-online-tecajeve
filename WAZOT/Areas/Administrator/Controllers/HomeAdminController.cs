@@ -25,33 +25,22 @@ namespace WAZOT.Controllers
 
         public IActionResult Index(StatistikaVM StatistikaVM)
         {
-            IEnumerable<Nacin_placanja> objNacinPlacanjaList = _unitOfWork.NacinPlacanja.GetAll();
-            IEnumerable<Narudzba> objNarudzbaList = _unitOfWork.Narudzba.GetAll();
+            IEnumerable<Prijava_Na_Tecaj> objPrijavaNaTecajList = _unitOfWork.PrijavaNaTecaj.GetAll();
             IEnumerable<Ocjena_tecaja> objOcjenaTecajaList = _unitOfWork.OcjenaTecaja.GetAll();
             IEnumerable<Osoba> objOsobaList = _unitOfWork.Osoba.GetAll();
             IEnumerable<Razina_Prava> objRazinaPravaList = _unitOfWork.RazinaPrava.GetAll();
-            IEnumerable<Status_narudzbe> objStatusNarudzbeList = _unitOfWork.StatusNarudzbe.GetAll();
+            IEnumerable<Status_prijave> objStatusPrijaveList = _unitOfWork.StatusPrijave.GetAll();
             IEnumerable<Tecaj> objTecajlist = _unitOfWork.Tecaj.GetAll();
             IEnumerable<Videozapis> objVideozapisList = _unitOfWork.Videozapis.GetAll();
             IEnumerable<Kategorija> objKategorijaList = _unitOfWork.Kategorija.GetAll();
-            StatistikaVM.brNacinaPlacanja = objNacinPlacanjaList.Count();
-            StatistikaVM.brNarudzbi = objNarudzbaList.Count();
+            StatistikaVM.brPrijava = objPrijavaNaTecajList.Count();
             StatistikaVM.brOcjenaTecaja = objOcjenaTecajaList.Count();
-            StatistikaVM.brStatusaNarudzbi = objStatusNarudzbeList.Count();
+            StatistikaVM.brStatusaPrijava = objStatusPrijaveList.Count();
             StatistikaVM.brOsoba = objOsobaList.Count();
             StatistikaVM.brRazinePrava = objRazinaPravaList.Count();
             StatistikaVM.brVideozapisa = objVideozapisList.Count();
             StatistikaVM.brTecaja = objTecajlist.Count();
             StatistikaVM.brKategorija = objKategorijaList.Count();
-            //int _ignoreme = 0;
-            //if(Int32.TryParse(HttpContext.Session.GetString("razina_prava"), out _ignoreme))
-            //{
-            //    var account = _osobaService.CheckPermissionAndLogin(HttpContext.Session.GetString("email"),HttpContext.Session.GetString("razina_prava"));
-            //}
-            //else
-            //{
-            //    return RedirectToAction("Index", "", new { area = "Posjetitelj" });
-            //}
             ViewBag.ime = HttpContext.Session.GetString("ime");
             ViewBag.prezime = HttpContext.Session.GetString("prezime");
             return View(StatistikaVM);

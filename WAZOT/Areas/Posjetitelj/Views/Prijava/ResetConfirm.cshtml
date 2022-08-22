@@ -1,0 +1,30 @@
+﻿@model WAZOT.Models.Osoba
+<p class="text-danger">@ViewBag.PrijavaMsg</p>
+<form method="post">
+   <input asp-for="Oib" hidden />
+   <div class="border p-3 mt-4">
+       <div class="row pb-2">
+           <h2 class="text-primary">Zaboravljena lozinka</h2>
+           <hr />
+       </div>
+        <div class="mb-3">
+            <label asp-for="lozinka">Lozinka</label>
+            <input asp-for="lozinka" class="form-control" type="password"/>
+        </div>
+        <div class="row pt-4">
+            <div class="col-6">
+                <button type="submit" class="btn btn-outline-primary" style="width:150px">Resetiraj lozinku</button>
+            </div>
+            <div class="col-6 text-end">
+                <a asp-controller="Prijava" asp-action="Index" class="btn btn-outline-secondary w-auto">Povratak</a>
+            </div>
+        </div>
+   </div>
+
+</form>
+
+<section Scripts><partial name="_ValidationScriptsPartial" />
+</section>
+@section Scripts{
+    <script src="~/js/osoba.js"></script>
+}

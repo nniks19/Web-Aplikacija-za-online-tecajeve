@@ -16,6 +16,10 @@ namespace WAZOT.Models
         public int? TecajId { get; set; }
         [ValidateNever]
         public Tecaj Tecaj { get; set; }
+        [Required(ErrorMessage = "Cjelina tečaja mora biti odabrana!")]
+        public int? CjelinaTecajaId { get; set; }
+        [ValidateNever]
+        public Cjelina_tecaja Cjelina_tecaja { get; set; }
         [Required(ErrorMessage = "Komentar je obavezan!")]
         public string komentar { get; set; }
         [Required(ErrorMessage = "Ocjena je obavezna!")]

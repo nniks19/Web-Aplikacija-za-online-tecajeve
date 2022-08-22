@@ -23,6 +23,8 @@ namespace WAZOT.Repository
                 objFromDb.email = obj.email;
                 objFromDb.lozinka = obj.lozinka;
                 objFromDb.Razina_PravaId = obj.Razina_PravaId;
+                objFromDb.odobreno = obj.odobreno;
+                objFromDb.pin = obj.pin;
             }
         }
     }

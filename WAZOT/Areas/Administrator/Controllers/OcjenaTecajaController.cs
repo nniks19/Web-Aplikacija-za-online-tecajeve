@@ -22,52 +22,6 @@ namespace WAZOT.Controllers
         {
             return View();
         }
-        //GET
-        public IActionResult Create()
-        {
-            OcjenaTecajaVM OcjenaTecajaVM = new OcjenaTecajaVM()
-            {
-                Ocjena_tecaja = new(),
-                TecajList = _unitOfWork.Tecaj.GetAll().Select(i => new SelectListItem
-                {
-                    Text = i.naziv,
-                    Value = i.Id.ToString(),
-                }),
-                OsobaList = _unitOfWork.Osoba.GetAll().Where(x => x.Razina_PravaId == 2).Select(i => new SelectListItem
-                {
-                    Text = i.ime + " " + i.prezime,
-                    Value = i.Oib,
-                })
-            };
-
-            return View(OcjenaTecajaVM);
-        }
-        //POST
-        [HttpPost]
-        [ValidateAntiForgeryToken] //Zastita od Cross Site Forgery
-        public IActionResult Create(OcjenaTecajaVM obj)
-        {
-            if (ModelState.IsValid)
-            {
-                _unitOfWork.OcjenaTecaja.Add(obj.Ocjena_tecaja);
-                _unitOfWork.Save();
-                TempData["success"] = "Ocjena tečaja uspješno dodana!";
-                return RedirectToAction("Index");
-            }
-            obj.TecajList = _unitOfWork.Tecaj.GetAll().Select(i => new SelectListItem
-            {
-                Text = i.naziv,
-                Value = i.Id.ToString(),
-            });
-            obj.OsobaList = _unitOfWork.Osoba.GetAll().Where(x => x.Razina_PravaId == 2).Select(i => new SelectListItem
-            {
-                Text = i.ime + " " + i.prezime,
-                Value = i.Oib
-            });
-            return View(obj);
-        }
-
-
 
 
         //GET

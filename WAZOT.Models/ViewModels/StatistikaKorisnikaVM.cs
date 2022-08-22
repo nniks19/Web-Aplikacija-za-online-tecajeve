@@ -11,7 +11,7 @@ namespace WAZOT.Models.ViewModels
 {
     public class StatistikaKorisnikaVM
     {
-        public int? brNarudzbi { get; set; }
+        public int? brPrijava { get; set; }
         public int? brOcjenaTecaja { get; set; }
         public int? brTecaja { get; set; }
     }

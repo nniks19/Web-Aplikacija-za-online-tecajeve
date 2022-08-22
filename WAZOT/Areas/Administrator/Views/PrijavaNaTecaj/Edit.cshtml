@@ -1,0 +1,46 @@
+﻿@model WAZOT.Models.ViewModels.PrijavaNaTecajVM
+@{
+    ViewData["Title"] = "Uređivanje prijave";
+}
+<form method="post">
+   <div class="border p-3 mt-4">
+           <input asp-for="PrijavaNaTecaj.Id" hidden/>
+       <div class="row pb-2">
+           <h2 class="text-primary">Uređivanje prijave</h2>
+           <hr />
+       </div>
+        <div class="mb-3">
+            <label asp-for="PrijavaNaTecaj.TecajId">Tečaj</label>
+            <select asp-for="PrijavaNaTecaj.TecajId" asp-items="@Model.TecajList" class="form-select">
+                <option disabled selected>--Odaberi tečaj--</option>
+            </select>
+            <span asp-validation-for="PrijavaNaTecaj.TecajId" class="text-danger"></span>
+        </div>
+       <div class="mb-3">
+            <label asp-for="PrijavaNaTecaj.OsobaOib">Osoba</label>
+            <select asp-for="PrijavaNaTecaj.OsobaOib" asp-items="@Model.OsobaList" class="form-select">
+                <option disabled selected>--Odaberi osobu--</option>
+            </select>
+            <span asp-validation-for="PrijavaNaTecaj.OsobaOib" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="PrijavaNaTecaj.Status_PrijaveId">Status prijave</label>
+            <select asp-for="PrijavaNaTecaj.Status_PrijaveId" asp-items="@Model.StatusPrijavaList" class="form-select">
+                <option disabled selected>--Odaberi status prijave--</option>
+            </select>
+            <span asp-validation-for="PrijavaNaTecaj.Status_PrijaveId" class="text-danger"></span>
+        </div>
+        <div class="row pt-4">
+            <div class="col-6">
+                <button type="submit" class="btn btn-outline-primary">Uredi prijavu</button>
+            </div>
+            <div class="col-6 text-end">
+                <a asp-controller="PrijavaNaTecaj" asp-action="Index" class="btn btn-outline-secondary w-auto">Povratak na popis prijava</a>
+            </div>
+        </div>
+   </div>
+
+</form>
+
+<section Scripts><partial name="_ValidationScriptsPartial" />
+</section>

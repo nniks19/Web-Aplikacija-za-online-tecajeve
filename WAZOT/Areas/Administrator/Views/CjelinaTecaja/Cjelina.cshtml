@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Cjelina_tecaja>
+@{
+    ViewData["Title"] = "Popis cjelina tečaja";
+}
+<partial name="_Notification" />
+<div class="container p-3">
+
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Popis cjelina tečaja</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a class="idzaputanju btn btn-outline-primary">
+                <i class="fa fa-plus"></i> &nbsp; Kreiraj cjelinu tečaja
+            </a>
+        </div>
+    </div>
+</div>
+    <br />
+<table id="tblCjelina" class="table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                ID Cjeline
+            </th>
+            <th>
+                Naziv cjeline
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    
+    </tbody>
+</table>
+@section Scripts{
+    <script src="~/js/cjelina.js"></script>
+}

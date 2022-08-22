@@ -43,6 +43,20 @@
             <input asp-for="Osoba.lozinka" class="form-control"/>
             <span asp-validation-for="Osoba.lozinka" class="text-danger"></span>
         </div>
+       <div class="mb-3">
+            <label asp-for="Osoba.pin">PIN (4 znamenke)</label>
+            <input asp-for="Osoba.pin" maxlength="4" pattern="^[0-9]{4}$" required class="form-control"/>
+            <span asp-validation-for="Osoba.pin" class="text-danger"></span>
+        </div>
+       <div class="mb-3">
+            <label asp-for="Osoba.odobreno">Ocjena</label>
+            <select asp-for="Osoba.odobreno" class="form-select">
+                <option disabled selected>--Odaberi status--</option>
+                <option value="1">Odobri prijavu</option>
+                <option value="0">Zaključaj račun</option>
+            </select>
+            <span asp-validation-for="Osoba.odobreno" class="text-danger"></span>
+        </div>
         <div class="row pt-4">
             <div class="col-6">
                 <button type="submit" class="btn btn-outline-primary">Kreiraj račun</button>

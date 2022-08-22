@@ -16,8 +16,33 @@ namespace WAZOT.DataAccess.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.4")
+                .HasAnnotation("ProductVersion", "6.0.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
+
+            modelBuilder.Entity("WAZOT.Models.Cjelina_tecaja", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int?>("TecajId")
+                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.Property<string>("naziv_cjeline")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("opis_cjeline")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TecajId");
+
+                    b.ToTable("CjelinaTecaja");
+                });
 
             modelBuilder.Entity("WAZOT.Models.Kategorija", b =>
                 {
@@ -34,66 +59,52 @@ namespace WAZOT.DataAccess.Migrations
                     b.ToTable("Kategorija");
                 });
 
-            modelBuilder.Entity("WAZOT.Models.Nacin_placanja", b =>
+            modelBuilder.Entity("WAZOT.Models.Neprikladni_komentar", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("naziv")
+                    b.Property<int>("OcjenaId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Ocjena_tecajaId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PrijavaOsobaOib")
+                        .IsRequired()
+                        .HasColumnType("varchar(11)");
+
+                    b.Property<string>("PrijavljenOsobaOib")
+                        .IsRequired()
+                        .HasColumnType("varchar(11)");
+
+                    b.Property<string>("PrijavljujeOsobaOib")
                         .IsRequired()
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");
 
-                    b.ToTable("NacinPlacanja");
-                });
+                    b.HasIndex("Ocjena_tecajaId");
 
-            modelBuilder.Entity("WAZOT.Models.Narudzba", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                    b.HasIndex("PrijavaOsobaOib");
 
-                    b.Property<int?>("Nacin_PlacanjaId")
-                        .IsRequired()
-                        .HasColumnType("int");
+                    b.HasIndex("PrijavljenOsobaOib");
 
-                    b.Property<string>("OsobaOib")
-                        .IsRequired()
-                        .HasColumnType("varchar(11)");
-
-                    b.Property<int?>("Status_NarudzbeId")
-                        .IsRequired()
-                        .HasColumnType("int");
-
-                    b.Property<int?>("TecajId")
-                        .IsRequired()
-                        .HasColumnType("int");
-
-                    b.Property<long>("datum_pocetak")
-                        .HasColumnType("bigint");
-
-                    b.Property<long>("datum_zavrsetak")
-                        .HasColumnType("bigint");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("Nacin_PlacanjaId");
-
-                    b.HasIndex("OsobaOib");
-
-                    b.HasIndex("Status_NarudzbeId");
-
-                    b.HasIndex("TecajId");
-
-                    b.ToTable("Narudzba");
+                    b.ToTable("NeprikladniKomentar");
                 });
 
             modelBuilder.Entity("WAZOT.Models.Ocjena_tecaja", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CjelinaTecajaId")
+                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.Property<int>("Cjelina_tecajaId")
                         .HasColumnType("int");
 
                     b.Property<string>("OsobaOib")
@@ -112,6 +123,8 @@ namespace WAZOT.DataAccess.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Cjelina_tecajaId");
 
                     b.HasIndex("OsobaOib");
 
@@ -142,6 +155,14 @@ namespace WAZOT.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<int?>("odobreno")
+                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.Property<string>("pin")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.Property<string>("prezime")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -151,6 +172,116 @@ namespace WAZOT.DataAccess.Migrations
                     b.HasIndex("Razina_PravaId");
 
                     b.ToTable("Osoba");
+                });
+
+            modelBuilder.Entity("WAZOT.Models.Poruka", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<long>("Datum_slanja")
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("RazgovorId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Tekst")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RazgovorId");
+
+                    b.ToTable("Poruka");
+                });
+
+            modelBuilder.Entity("WAZOT.Models.Pracenje_Korisnika", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<long>("Datum_posjete")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("OsobaOib")
+                        .IsRequired()
+                        .HasColumnType("varchar(11)");
+
+                    b.Property<int?>("TecajId")
+                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.Property<long>("Vrijeme_videozapis")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OsobaOib");
+
+                    b.HasIndex("TecajId");
+
+                    b.ToTable("Pracenje_Korisnika");
+                });
+
+            modelBuilder.Entity("WAZOT.Models.Prijava_Na_Tecaj", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("OsobaOib")
+                        .IsRequired()
+                        .HasColumnType("varchar(11)");
+
+                    b.Property<int?>("Status_PrijaveId")
+                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.Property<int?>("TecajId")
+                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.Property<long>("datum_pocetak")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("datum_zavrsetak")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OsobaOib");
+
+                    b.HasIndex("Status_PrijaveId");
+
+                    b.HasIndex("TecajId");
+
+                    b.ToTable("PrijavaNaTecaj");
+                });
+
+            modelBuilder.Entity("WAZOT.Models.Razgovor", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("PosiljateljOsobaOib")
+                        .IsRequired()
+                        .HasColumnType("varchar(11)");
+
+                    b.Property<string>("PrimateljOsobaOib")
+                        .IsRequired()
+                        .HasColumnType("varchar(11)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PosiljateljOsobaOib");
+
+                    b.HasIndex("PrimateljOsobaOib");
+
+                    b.ToTable("Razgovor");
                 });
 
             modelBuilder.Entity("WAZOT.Models.Razina_Prava", b =>
@@ -168,7 +299,7 @@ namespace WAZOT.DataAccess.Migrations
                     b.ToTable("Razina_Prava");
                 });
 
-            modelBuilder.Entity("WAZOT.Models.Status_narudzbe", b =>
+            modelBuilder.Entity("WAZOT.Models.Status_prijave", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -180,7 +311,7 @@ namespace WAZOT.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Status_Narudzbe");
+                    b.ToTable("Status_Prijave");
                 });
 
             modelBuilder.Entity("WAZOT.Models.Tecaj", b =>
@@ -197,9 +328,6 @@ namespace WAZOT.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(11)");
 
-                    b.Property<float>("cijena")
-                        .HasColumnType("float");
-
                     b.Property<string>("naziv")
                         .IsRequired()
                         .HasColumnType("longtext");
@@ -207,6 +335,9 @@ namespace WAZOT.DataAccess.Migrations
                     b.Property<string>("opis")
                         .IsRequired()
                         .HasColumnType("longtext");
+
+                    b.Property<float>("prosjecna_ocjena")
+                        .HasColumnType("float");
 
                     b.Property<string>("slika")
                         .IsRequired()
@@ -227,6 +358,9 @@ namespace WAZOT.DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<int?>("CjelinaTecajaId")
+                        .HasColumnType("int");
+
                     b.Property<int?>("TecajId")
                         .IsRequired()
                         .HasColumnType("int");
@@ -245,48 +379,59 @@ namespace WAZOT.DataAccess.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CjelinaTecajaId");
+
                     b.HasIndex("TecajId");
 
                     b.ToTable("Videozapis");
                 });
 
-            modelBuilder.Entity("WAZOT.Models.Narudzba", b =>
+            modelBuilder.Entity("WAZOT.Models.Cjelina_tecaja", b =>
                 {
-                    b.HasOne("WAZOT.Models.Nacin_placanja", "Nacin_placanja")
-                        .WithMany()
-                        .HasForeignKey("Nacin_PlacanjaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("WAZOT.Models.Osoba", "Osoba")
-                        .WithMany()
-                        .HasForeignKey("OsobaOib")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("WAZOT.Models.Status_narudzbe", "Status_narudzbe")
-                        .WithMany()
-                        .HasForeignKey("Status_NarudzbeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("WAZOT.Models.Tecaj", "Tecaj")
                         .WithMany()
                         .HasForeignKey("TecajId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Nacin_placanja");
-
-                    b.Navigation("Osoba");
-
-                    b.Navigation("Status_narudzbe");
 
                     b.Navigation("Tecaj");
                 });
 
+            modelBuilder.Entity("WAZOT.Models.Neprikladni_komentar", b =>
+                {
+                    b.HasOne("WAZOT.Models.Ocjena_tecaja", "Ocjena_tecaja")
+                        .WithMany()
+                        .HasForeignKey("Ocjena_tecajaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WAZOT.Models.Osoba", "PrijavaOsoba")
+                        .WithMany()
+                        .HasForeignKey("PrijavaOsobaOib")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WAZOT.Models.Osoba", "PrijavljenOsoba")
+                        .WithMany()
+                        .HasForeignKey("PrijavljenOsobaOib")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Ocjena_tecaja");
+
+                    b.Navigation("PrijavaOsoba");
+
+                    b.Navigation("PrijavljenOsoba");
+                });
+
             modelBuilder.Entity("WAZOT.Models.Ocjena_tecaja", b =>
                 {
+                    b.HasOne("WAZOT.Models.Cjelina_tecaja", "Cjelina_tecaja")
+                        .WithMany()
+                        .HasForeignKey("Cjelina_tecajaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("WAZOT.Models.Osoba", "Osoba")
                         .WithMany()
                         .HasForeignKey("OsobaOib")
@@ -298,6 +443,8 @@ namespace WAZOT.DataAccess.Migrations
                         .HasForeignKey("TecajId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Cjelina_tecaja");
 
                     b.Navigation("Osoba");
 
@@ -313,6 +460,82 @@ namespace WAZOT.DataAccess.Migrations
                         .IsRequired();
 
                     b.Navigation("Razina_Prava");
+                });
+
+            modelBuilder.Entity("WAZOT.Models.Poruka", b =>
+                {
+                    b.HasOne("WAZOT.Models.Razgovor", "Razgovor")
+                        .WithMany()
+                        .HasForeignKey("RazgovorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Razgovor");
+                });
+
+            modelBuilder.Entity("WAZOT.Models.Pracenje_Korisnika", b =>
+                {
+                    b.HasOne("WAZOT.Models.Osoba", "Osoba")
+                        .WithMany()
+                        .HasForeignKey("OsobaOib")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WAZOT.Models.Tecaj", "Tecaj")
+                        .WithMany()
+                        .HasForeignKey("TecajId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Osoba");
+
+                    b.Navigation("Tecaj");
+                });
+
+            modelBuilder.Entity("WAZOT.Models.Prijava_Na_Tecaj", b =>
+                {
+                    b.HasOne("WAZOT.Models.Osoba", "Osoba")
+                        .WithMany()
+                        .HasForeignKey("OsobaOib")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WAZOT.Models.Status_prijave", "Status_prijave")
+                        .WithMany()
+                        .HasForeignKey("Status_PrijaveId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WAZOT.Models.Tecaj", "Tecaj")
+                        .WithMany()
+                        .HasForeignKey("TecajId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Osoba");
+
+                    b.Navigation("Status_prijave");
+
+                    b.Navigation("Tecaj");
+                });
+
+            modelBuilder.Entity("WAZOT.Models.Razgovor", b =>
+                {
+                    b.HasOne("WAZOT.Models.Osoba", "PosiljateljOsoba")
+                        .WithMany()
+                        .HasForeignKey("PosiljateljOsobaOib")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WAZOT.Models.Osoba", "PrimateljOsoba")
+                        .WithMany()
+                        .HasForeignKey("PrimateljOsobaOib")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("PosiljateljOsoba");
+
+                    b.Navigation("PrimateljOsoba");
                 });
 
             modelBuilder.Entity("WAZOT.Models.Tecaj", b =>
@@ -336,11 +559,17 @@ namespace WAZOT.DataAccess.Migrations
 
             modelBuilder.Entity("WAZOT.Models.Videozapis", b =>
                 {
+                    b.HasOne("WAZOT.Models.Cjelina_tecaja", "CjelinaTecaja")
+                        .WithMany()
+                        .HasForeignKey("CjelinaTecajaId");
+
                     b.HasOne("WAZOT.Models.Tecaj", "Tecaj")
                         .WithMany()
                         .HasForeignKey("TecajId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("CjelinaTecaja");
 
                     b.Navigation("Tecaj");
                 });

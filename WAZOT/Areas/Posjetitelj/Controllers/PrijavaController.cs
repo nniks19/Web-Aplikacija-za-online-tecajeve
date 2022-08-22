@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using WAZOT.DataAccess.Repository.IRepository;
 using WAZOT.Models;
 using WAZOT.Services;
 
@@ -10,8 +11,10 @@ namespace WAZOT.Controllers
     public class PrijavaController : Controller
     {
         private OsobaService osobaService;
-        public PrijavaController(OsobaService _osobaService)
+        private readonly IUnitOfWork _unitOfWork;
+        public PrijavaController(IUnitOfWork unitOfWork, OsobaService _osobaService)
         {
+            _unitOfWork = unitOfWork;
             osobaService = _osobaService;
         }
 
@@ -19,16 +22,69 @@ namespace WAZOT.Controllers
         {
             return View();
         }
+
+
+        public IActionResult ResetPassword()
+        {
+            Osoba osoba = new Osoba();
+            return View(osoba);
+        }
+
+
         public IActionResult Login()
         {
             Osoba osoba = new Osoba();
             return View(osoba);
         }
+
+
         [HttpPost]
-        public IActionResult Login(string email, string lozinka)
+        public IActionResult ResetPassword(string email, string pin)
         {
-            var account = osobaService.Login(email, lozinka);
+            var account = _unitOfWork.Osoba.GetAll().Where(x => x.email == email && x.pin == pin).FirstOrDefault();
+                
+            if (account == null)
+            {
+                TempData["error"] = "Upisali ste pogrešan PIN ili Email!";
+                return View("Index");
+            }
             if (account != null)
+            {
+                account.lozinka = null;
+                return RedirectToAction("ResetConfirm", new {oib= account.Oib});
+            }
+            return View("Login");
+        }
+
+        public IActionResult ResetConfirm(string oib)
+        {
+            var account = _unitOfWork.Osoba.GetAll().Where(x => x.Oib == oib).FirstOrDefault();
+            return View(account);
+        }
+        [HttpPost]
+        public IActionResult ResetConfirm(Osoba oOsoba)
+        {
+            if(oOsoba.lozinka != null)
+            {
+                var account = _unitOfWork.Osoba.GetAll().Where(x => x.Oib == oOsoba.Oib).FirstOrDefault();
+                account.lozinka = oOsoba.lozinka;
+                _unitOfWork.Osoba.Update(account);
+                _unitOfWork.Save();
+                TempData["success"] = "Uspješno ste resetirali lozinku!";
+                return RedirectToAction("index");
+            }
+            else
+            {
+                TempData["error"] = "Polje za unos lozinke je obavezno!";
+                return RedirectToAction("index");
+            }
+            return View(oOsoba);
+        }
+        [HttpPost]
+        public IActionResult Login(string email, string lozinka, string pin)
+        {
+            var account = osobaService.Login(email, lozinka, pin);
+            if (account != null && account.odobreno == 1)
             {
                 HttpContext.Session.SetString("email", email);
                 HttpContext.Session.SetString("oib", account.Oib);
@@ -49,7 +105,12 @@ namespace WAZOT.Controllers
                     return RedirectToAction("Index", "HomeKreatorTecaja", new { area = "Kreator_Tecaja" });
                 }
             }
-            ViewBag.msgaaa = "Neispravan email ili lozinka!";
+            if (account != null && account.odobreno == 0)
+            {
+                ViewBag.PrijavaMsg = "Vaš korisnički račun još nije odobren od strane administratora!";
+                return View("Login");
+            }
+            ViewBag.PrijavaMsg = "Neispravan pin, email ili lozinka!";
             return View("Login");
         }
         public IActionResult Logout()

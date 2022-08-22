@@ -8,12 +8,12 @@ namespace WAZOT.Services
         private readonly IUnitOfWork _unitOfWork;
 
         public OsobaServiceImpl(IUnitOfWork unitOfWork)
-        {;
+        {
             _unitOfWork = unitOfWork;
         }
-        public Osoba Login(string email, string password)
+        public Osoba Login(string email, string password, string pin)
         {
-            return _unitOfWork.Osoba.GetFirstOrDefault(u => u.email == email && u.lozinka == password);
+            return _unitOfWork.Osoba.GetFirstOrDefault(u => u.email == email && u.lozinka == password && u.pin == pin);        
         }
         public Osoba CheckPermissionAndLogin(string? email, string? razinaprava)
         {

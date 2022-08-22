@@ -39,7 +39,6 @@ namespace WAZOT.Areas.Posjetitelj.Controllers
                 })
             };
 
-            //ViewData["RazinaPravaList"] = RazinaPravaList;
             return View(osobaVM);
         }
         //POST
@@ -87,7 +86,6 @@ namespace WAZOT.Areas.Posjetitelj.Controllers
                     Selected=i.Id == 3,
                 })
             };
-            //ViewData["RazinaPravaList"] = RazinaPravaList;
             return View(osobaVM);
         }
         //POST

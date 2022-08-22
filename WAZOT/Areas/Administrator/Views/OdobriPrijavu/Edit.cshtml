@@ -1,0 +1,42 @@
+﻿@model WAZOT.Models.ViewModels.OsobaVM
+@{
+    ViewData["Title"] = "Odobravanje korisničkog računa";
+}
+<form method="post" asp-action="Edit">
+     <input asp-for="Osoba.Oib" hidden/>
+     <input asp-for="Osoba.Oib" hidden class="form-control" disabled/>
+     <input asp-for="Osoba.ime" hidden class="form-control"/>
+     <input asp-for="Osoba.prezime" hidden class="form-control"/>
+     <input asp-for="Osoba.Razina_PravaId" hidden class="form-control"/>
+     <input asp-for="Osoba.email" hidden class="form-control" type="email"/>
+     <input asp-for="Osoba.lozinka" hidden class="form-control"/>
+     <input asp-for="Osoba.pin" hidden class="form-control"/>
+
+   <div class="border p-3 mt-4">
+       <div class="row pb-2">
+           <h2 class="text-primary">Odobravanje korisničkih računa</h2>
+           <hr />
+       </div>
+       <div class="mb-3">
+            <label asp-for="Osoba.odobreno">Status</label>
+            <select asp-for="Osoba.odobreno" class="form-select">
+                <option disabled selected>--Odaberi status--</option>
+                <option value="1">Odobri prijavu</option>
+                <option value="0">Zaključaj račun</option>
+            </select>
+            <span asp-validation-for="Osoba.odobreno" class="text-danger"></span>
+        </div>
+        <div class="row pt-4">
+            <div class="col-6">
+                <button type="submit" class="btn btn-outline-primary">Odobri/zaključaj račun</button>
+            </div>
+            <div class="col-6 text-end">
+                <a asp-controller="OdobriPrijavu" asp-action="Index" class="btn btn-outline-secondary w-auto">Povratak na popis osoba</a>
+            </div>
+        </div>
+   </div>
+
+</form>
+
+<section Scripts><partial name="_ValidationScriptsPartial" />
+</section>

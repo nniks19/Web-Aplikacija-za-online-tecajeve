@@ -9,8 +9,6 @@ namespace WAZOT.Models
         public int Id { get; set; }
         [Required(ErrorMessage = "Osoba mora biti odabrana!")]
         public string OsobaOib { get; set; }
-        [Required]
-        public float cijena { get; set; }
         [ValidateNever]
         public Osoba Osoba { get; set; }
         [Required(ErrorMessage = "Naziv je obavezan!")]
@@ -23,6 +21,7 @@ namespace WAZOT.Models
         public Kategorija? Kategorija { get; set; }
         [Required(ErrorMessage = "Tečaj mora imati sliku!")]
         public String slika { get; set; }
+        public float prosjecna_ocjena { get; set; }
 
     }
 }

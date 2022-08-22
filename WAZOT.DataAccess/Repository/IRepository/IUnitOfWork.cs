@@ -10,14 +10,18 @@ namespace WAZOT.DataAccess.Repository.IRepository
     public interface IUnitOfWork
     {
         IRazinaPravaRepository RazinaPrava { get; }
-        IStatusNarudzbeRepository StatusNarudzbe { get; }
-        INacinPlacanjaRepository NacinPlacanja { get; }
+        IStatusPrijaveRepository StatusPrijave { get; }
         IOsobaRepository Osoba { get; }
         ITecajRepository Tecaj { get; }
         IOcjenaTecajaRepository OcjenaTecaja { get; }
         IVideozapisRepository Videozapis { get; }
-        INarudzbaRepository Narudzba { get; }
+        IPrijavaNaTecajRepository PrijavaNaTecaj { get; }
         IKategorijaRepository Kategorija { get; }
+        IPracenjeKorisnikaRepository PracenjeKorisnika { get; }
+        ICjelinaTecajaRepository CjelinaTecaja { get; }
+        IRazgovorRepository Razgovor { get; }
+        IPorukaRepository Poruka { get; }
+        INeprikladniKomentarRepository NeprikladniKomentar { get; }
         void Save();
     }
 }

@@ -27,8 +27,8 @@ namespace WAZOT.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            var popisNarudzbi = _unitOfWork.Narudzba.GetAll(includeProperties:"Tecaj,Osoba,Status_narudzbe,Nacin_placanja").Where(x=>x.OsobaOib == HttpContext.Session.GetString("oib"));
-            return Json(new { data = popisNarudzbi });
+            var popisPrijava = _unitOfWork.PrijavaNaTecaj.GetAll(includeProperties:"Tecaj,Osoba,Status_prijave").Where(x=>x.OsobaOib == HttpContext.Session.GetString("oib"));
+            return Json(new { data = popisPrijava });
         }
         #endregion
     }

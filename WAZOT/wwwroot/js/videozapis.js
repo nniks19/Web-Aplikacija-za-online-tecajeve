@@ -9,11 +9,12 @@ function loadDataTable() {
             "url": "/Administrator/Videozapis/GetAll"
         },
         "columns": [
-            { "data": "id", "width": "18%" },
-            { "data": "videozapis_naziv", "width":"18%"},
-            { "data": "tecaj.naziv", "width": "18%" },
-            { "data": "videozapis_putanja", "width": "18%" },
-            { "data": "videozapis_tip", "width": "18%" },
+            { "data": "id", "width": "15%" },
+            { "data": "videozapis_naziv", "width":"15%"},
+            { "data": "tecaj.naziv", "width": "15%" },
+            { "data": "videozapis_putanja", "width": "15%" },
+            { "data": "videozapis_tip", "width": "15%" },
+            { "data": "cjelinaTecaja.naziv_cjeline", "width": "15%" },
             {
                 "data": "id",
                 "render": function (data) {

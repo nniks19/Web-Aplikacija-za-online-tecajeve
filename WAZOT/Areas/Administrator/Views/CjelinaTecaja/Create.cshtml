@@ -1,0 +1,35 @@
+﻿@model WAZOT.Models.ViewModels.CjelinaTecajaVM
+@{
+    ViewData["Title"] = "Kreiranje cjeline";
+}
+<form method="post" enctype="multipart/form-data">
+    <input asp-for="Cjelina_tecaja.TecajId" hidden/>
+   <div class="border p-3 mt-4">
+       <div class="row pb-2">
+           <h2 class="text-primary">Kreiranje cjeline</h2>
+           <hr />
+       </div>
+        <div class="mb-3">
+            <label asp-for="Cjelina_tecaja.naziv_cjeline">Naziv cjeline tečaja</label>
+            <input asp-for="Cjelina_tecaja.naziv_cjeline" class="form-control"/>
+            <span asp-validation-for="Cjelina_tecaja.naziv_cjeline" class="text-danger"></span>
+        </div>
+       <div class="mb-3">
+            <label asp-for="Cjelina_tecaja.opis_cjeline">Opis cjeline tečaja</label>
+            <input asp-for="Cjelina_tecaja.opis_cjeline" class="form-control"/>
+            <span asp-validation-for="Cjelina_tecaja.opis_cjeline" class="text-danger"></span>
+        </div>
+        <div class="row pt-4">
+            <div class="col-6">
+                <button type="submit" class="btn btn-outline-primary">Kreiraj cjelinu</button>
+            </div>
+            <div class="col-6 text-end">
+                <a asp-controller="CjelinaTecaja" asp-action="Index" class="btn btn-outline-secondary w-auto">Povratak na popis tečaja</a>
+            </div>
+        </div>
+   </div>
+
+</form>
+
+<section Scripts><partial name="_ValidationScriptsPartial" />
+</section>

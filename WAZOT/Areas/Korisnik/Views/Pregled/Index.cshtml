@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Narudzba>
+﻿@model IEnumerable<Prijava_Na_Tecaj>
 @{
     ViewData["Title"] = "Pregled prijava na tečaj";
 }
@@ -12,11 +12,11 @@
     </div>
 </div>
     <br />
-<table id="tblNarudzba" class="table table-bordered table-striped" style="width:100%">
+<table id="tblPrijava" class="table table-bordered table-striped" style="width:100%">
     <thead>
         <tr>
             <th>
-                ID narudžbe
+                ID prijave
             </th>
             <th>
                 Naziv tečaja
@@ -25,10 +25,7 @@
                 Osoba
             </th>
             <th>
-                Status narudžbe
-            </th>
-            <th>
-                Način plaćanja
+                Status prijave
             </th>
             <th></th>
             <th></th>

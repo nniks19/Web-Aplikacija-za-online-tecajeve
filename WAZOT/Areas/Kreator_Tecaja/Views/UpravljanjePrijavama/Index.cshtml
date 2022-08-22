@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Prijava_Na_Tecaj>
+@{
+    ViewData["Title"] = "Prikaz prijava";
+}
+<partial name="_Notification" />
+<div class="container p-3">
+
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Popis prijava na tečaj</h2>
+        </div>
+    </div>
+</div>
+    <br />
+<table id="tblPrijava" class="table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                ID prijave
+            </th>
+            <th>
+                Naziv tečaja
+            </th>
+            <th>
+                Osoba
+            </th>
+            <th>
+                Status prijave
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    
+    </tbody>
+</table>
+@section Scripts{
+    <script src="~/js/upravljanjeprijava.js"></script>
+}

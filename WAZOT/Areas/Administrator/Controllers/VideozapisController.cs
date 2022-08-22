@@ -69,6 +69,8 @@ namespace WAZOT.Controllers
                 }
                 obj.Videozapis.videozapis_putanja = @"\videozapisi\tecajevi\" + obj.Videozapis.TecajId.ToString() + @"\" + filename + extension;
                 obj.Videozapis.videozapis_tip = extension;
+                IEnumerable<Cjelina_tecaja> _cjelineTecaja = _unitOfWork.CjelinaTecaja.GetAll().Where(x=>x.TecajId == obj.Videozapis.TecajId);
+                obj.Videozapis.CjelinaTecajaId = _cjelineTecaja.First().Id;
                 _unitOfWork.Videozapis.Update(obj.Videozapis);
                 _unitOfWork.Save();
                 return RedirectToAction("Index");
@@ -96,6 +98,11 @@ namespace WAZOT.Controllers
                     Text = i.naziv,
                     Value = i.Id.ToString(),
                 }),
+                CjelinaList = _unitOfWork.CjelinaTecaja.GetAll().Where(x=>x.TecajId == Videozapis.TecajId).Select(i => new SelectListItem
+                {
+                    Text = i.naziv_cjeline,
+                    Value = i.Id.ToString(),
+                }),
             };
             if (VideozapisVM.Videozapis == null)
             {
@@ -120,6 +127,11 @@ namespace WAZOT.Controllers
                 Text = i.naziv,
                 Value = i.Id.ToString(),
             });
+            obj.CjelinaList = _unitOfWork.CjelinaTecaja.GetAll().Select(i => new SelectListItem
+            {
+                Text = i.naziv_cjeline,
+                Value = i.Id.ToString(),
+            });
             return View(obj);
         }
 
@@ -133,6 +145,12 @@ namespace WAZOT.Controllers
                 TecajList = _unitOfWork.Tecaj.GetAll().Select(i => new SelectListItem
                 {
                     Text = i.naziv,
+                    Value = i.Id.ToString(),
+                    Disabled = true,
+                }),
+                CjelinaList = _unitOfWork.CjelinaTecaja.GetAll().Select(i => new SelectListItem
+                {
+                    Text = i.naziv_cjeline,
                     Value = i.Id.ToString(),
                     Disabled = true,
                 }),
@@ -171,7 +189,7 @@ namespace WAZOT.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            var popisVideozapisa = _unitOfWork.Videozapis.GetAll(includeProperties:"Tecaj");
+            var popisVideozapisa = _unitOfWork.Videozapis.GetAll(includeProperties:"Tecaj,CjelinaTecaja");
             return Json(new { data = popisVideozapisa });
         }
         #endregion
