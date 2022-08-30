@@ -11,7 +11,7 @@ using WAZOT.DataAccess;
 namespace WAZOT.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220821135313_v1")]
+    [Migration("20220829160145_v1")]
     partial class v1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -67,9 +67,6 @@ namespace WAZOT.DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("OcjenaId")
-                        .HasColumnType("int");
-
                     b.Property<int>("Ocjena_tecajaId")
                         .HasColumnType("int");
 
@@ -80,10 +77,6 @@ namespace WAZOT.DataAccess.Migrations
                     b.Property<string>("PrijavljenOsobaOib")
                         .IsRequired()
                         .HasColumnType("varchar(11)");
-
-                    b.Property<string>("PrijavljujeOsobaOib")
-                        .IsRequired()
-                        .HasColumnType("longtext");
 
                     b.HasKey("Id");
 
@@ -102,11 +95,8 @@ namespace WAZOT.DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int?>("CjelinaTecajaId")
+                    b.Property<int?>("Cjelina_tecajaId")
                         .IsRequired()
-                        .HasColumnType("int");
-
-                    b.Property<int>("Cjelina_tecajaId")
                         .HasColumnType("int");
 
                     b.Property<string>("OsobaOib")
@@ -185,6 +175,10 @@ namespace WAZOT.DataAccess.Migrations
                     b.Property<long>("Datum_slanja")
                         .HasColumnType("bigint");
 
+                    b.Property<string>("PosiljateljOsobaOib")
+                        .IsRequired()
+                        .HasColumnType("varchar(11)");
+
                     b.Property<int>("RazgovorId")
                         .HasColumnType("int");
 
@@ -193,6 +187,8 @@ namespace WAZOT.DataAccess.Migrations
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("PosiljateljOsobaOib");
 
                     b.HasIndex("RazgovorId");
 
@@ -360,7 +356,7 @@ namespace WAZOT.DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int?>("CjelinaTecajaId")
+                    b.Property<int?>("Cjelina_TecajaId")
                         .HasColumnType("int");
 
                     b.Property<int?>("TecajId")
@@ -381,7 +377,7 @@ namespace WAZOT.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CjelinaTecajaId");
+                    b.HasIndex("Cjelina_TecajaId");
 
                     b.HasIndex("TecajId");
 
@@ -466,11 +462,19 @@ namespace WAZOT.DataAccess.Migrations
 
             modelBuilder.Entity("WAZOT.Models.Poruka", b =>
                 {
+                    b.HasOne("WAZOT.Models.Osoba", "PosiljateljOsoba")
+                        .WithMany()
+                        .HasForeignKey("PosiljateljOsobaOib")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("WAZOT.Models.Razgovor", "Razgovor")
                         .WithMany()
                         .HasForeignKey("RazgovorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("PosiljateljOsoba");
 
                     b.Navigation("Razgovor");
                 });
@@ -563,7 +567,7 @@ namespace WAZOT.DataAccess.Migrations
                 {
                     b.HasOne("WAZOT.Models.Cjelina_tecaja", "CjelinaTecaja")
                         .WithMany()
-                        .HasForeignKey("CjelinaTecajaId");
+                        .HasForeignKey("Cjelina_TecajaId");
 
                     b.HasOne("WAZOT.Models.Tecaj", "Tecaj")
                         .WithMany()

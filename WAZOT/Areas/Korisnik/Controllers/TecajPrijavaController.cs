@@ -70,7 +70,7 @@ namespace WAZOT.Controllers
         {
             if (obj.PrijavaNaTecaj == null)
             {
-                ViewBag.notfilled = "Potrebno je odabrati ponuđene stavke.";
+                ViewBag.notfilled = "Nešto je pošlo po zlu.";
             }
             if (obj.PrijavaNaTecaj != null & ModelState.IsValid)
             {

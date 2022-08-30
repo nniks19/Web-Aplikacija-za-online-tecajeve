@@ -21,6 +21,7 @@ namespace WAZOT.Repository
                 objFromDb.Tekst = obj.Tekst;
                 objFromDb.Datum_slanja = obj.Datum_slanja;
                 objFromDb.RazgovorId = obj.RazgovorId;
+                objFromDb.PosiljateljOsobaOib = obj.PosiljateljOsobaOib;
             }
         }
     }

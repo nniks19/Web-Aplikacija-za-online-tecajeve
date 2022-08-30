@@ -18,18 +18,23 @@ function loadDataTable() {
             {
                 "data": "oib",
                 "render": function (data) {
-                    return `<div class="w-75 btn-group" role="group">
-                        <a href="/Administrator/Osoba/Edit?oib=${data}"
-                    class="btn btn-outline-primary mx-2" > <i class="bi bi-pencil-square"></i></a>
-                        <a href="/Administrator/Osoba/Delete?oib=${data}"
-                        class="btn btn-outline-danger mx-2"> <i class="bi bi-trash-fill"></i></a>
-                    </div > `
+                    return `<a href="/Administrator/Osoba/Edit?oib=${data}"
+                    class="btn btn-outline-primary mx-2" > <i class="bi bi-pencil-square"></i></a>`
                 },
-                "width": "10%"
+                "width": "5%"
+            },
+            {
+                "data": "oib",
+                "render": function (data) {
+                    return `
+                        <a href="/Administrator/Osoba/Delete?oib=${data}"
+                        class="btn btn-outline-danger mx-2"> <i class="bi bi-trash-fill"></i></a>`
+                },
+                "width": "5%"
             }
         ],
         "columnDefs": [
-            { bSortable: false, targets: [6] }
+            { bSortable: false, targets: [6,7] }
         ],
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.12.0/i18n/hr.json"

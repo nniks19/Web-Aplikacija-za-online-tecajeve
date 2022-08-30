@@ -1,0 +1,48 @@
+﻿@model WAZOT.Models.ViewModels.ProfilVM
+@{
+	ViewData["Title"] = "Profil";
+}
+<partial name="_Notification" />
+<div class="container">
+	<div class="row">
+		<div class="">
+			<h2 class="text-primary text-center"><strong>Profil</strong></h2>
+		</div>
+	</div>
+	<div class="row pt-4">
+		<div class="card text-white bg-primary mb-3" style="max-width: 40rem;">
+			<div class="card-header text-center"><strong>Ime i prezime</strong></div>
+			<div class="card-body">
+				<h4 class="card-title text-center">@Model.Osoba.ime @Model.Osoba.prezime</h4>
+			</div>
+		</div>
+		<div class="card text-white bg-primary mb-3" style="max-width: 40rem;">
+			<div class="card-header text-center"><strong>Email</strong></div>
+			<div class="card-body">
+				<h4 class="card-title text-center">@Model.Osoba.email</h4>
+			</div>
+		</div>
+	</div>
+	<div class="row pt-4">
+		<div class="card text-white bg-primary mb-3" style="max-width: 40rem;">
+			<div class="card-header text-center"><strong>Razina Prava</strong></div>
+			<div class="card-body">
+				<h4 class="card-title text-center">@Model.Osoba.Razina_Prava.Naziv</h4>
+			</div>
+		</div>
+
+		<div class="card text-white bg-primary mb-3" style="max-width: 40rem;">
+			<div class="card-header text-center"><strong>Status Računa</strong></div>
+			<div class="card-body">
+					@if (Model.Osoba.odobreno == 1)
+					{
+						<h4 class="card-title text-center">Status: Odobreno</h4>
+					}
+					else
+					{
+						<h4 class="card-title text-center">Status: Nije odobreno</h4>
+					}
+				</div>
+			</div>
+		</div>
+</div>

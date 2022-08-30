@@ -34,6 +34,7 @@ namespace WAZOT.Controllers
                 Tecaj = oTecaj,
                 VideozapisList = videozapisList,
                 OcjenaTecajaList = ocjenetecajaList,
+                CjelinaTecajaList = _unitOfWork.CjelinaTecaja.GetAll().Where(x => x.TecajId == oTecaj.Id),
                 OsobaList = _unitOfWork.Osoba.GetAll().Where(x => x.Oib == oTecaj.OsobaOib).Select(i => new SelectListItem
                 {
                     Text = i.ime + " " + i.prezime,

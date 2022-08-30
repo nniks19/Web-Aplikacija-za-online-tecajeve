@@ -18,8 +18,8 @@ namespace WAZOT.Repository
             if (objFromDb != null)
             {
                 objFromDb.Id = obj.Id;
-                objFromDb.OcjenaId = obj.OcjenaId;
-                objFromDb.PrijavljujeOsobaOib = obj.PrijavljujeOsobaOib;
+                objFromDb.Ocjena_tecajaId = obj.Ocjena_tecajaId;
+                objFromDb.PrijavaOsobaOib = obj.PrijavaOsobaOib;
                 objFromDb.PrijavljenOsobaOib = obj.PrijavljenOsobaOib;
             }
         }

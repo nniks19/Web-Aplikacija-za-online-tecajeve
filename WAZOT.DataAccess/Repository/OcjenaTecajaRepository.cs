@@ -22,7 +22,7 @@ namespace WAZOT.Repository
                 objFromDb.ocjena = obj.ocjena;
                 objFromDb.OsobaOib = obj.OsobaOib;
                 objFromDb.TecajId = obj.TecajId;
-                objFromDb.CjelinaTecajaId = obj.CjelinaTecajaId;
+                objFromDb.Cjelina_tecajaId = obj.Cjelina_tecajaId;
             }
         }
     }

@@ -1,0 +1,25 @@
+﻿@model WAZOT.Models.ViewModels.OcjenaTecajaVM
+@{
+    ViewData["Title"] = "Potvrda";
+}
+<form method="post">
+    <input hidden asp-for="Ocjena_tecaja.Id" />
+   <div class="border p-3 mt-4">
+       <div class="row pb-2">
+           <h2 class="text-primary">Jeste li sigurni da želite komentar označiti kao prikladan?</h2>
+           <hr />
+       </div>
+        <div class="row pt-4">
+            <div class="col-6">
+                <button type="submit" class="btn btn-outline-primary">Potvrda</button>
+            </div>
+            <div class="col-6 text-end">
+                <a asp-controller="NeprikladniKomentari" asp-action="Index" class="btn btn-outline-secondary w-auto">Povratak na popis neprikladnih komentara</a>
+            </div>
+        </div>
+   </div>
+
+</form>
+
+<section Scripts><partial name="_ValidationScriptsPartial" />
+</section>

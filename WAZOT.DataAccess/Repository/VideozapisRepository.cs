@@ -22,7 +22,7 @@ namespace WAZOT.Repository
                 objFromDb.videozapis_putanja = obj.videozapis_putanja;
                 objFromDb.videozapis_naziv = obj.videozapis_naziv;
                 objFromDb.TecajId = obj.TecajId;
-                objFromDb.CjelinaTecajaId = obj.CjelinaTecajaId;
+                objFromDb.Cjelina_TecajaId = obj.Cjelina_TecajaId;
             }
         }
         public int Max()

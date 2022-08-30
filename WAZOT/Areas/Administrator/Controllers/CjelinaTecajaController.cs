@@ -9,13 +9,13 @@ using WAZOT.Repository.IRepository;
 namespace WAZOT.Controllers
 {
     [Area("Administrator")]
-    public class CjelinaTecajaController : Controller
+    public class CjelinaTecaja : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IWebHostEnvironment _hostEnvironment;
 
 
-        public CjelinaTecajaController(IUnitOfWork unitOfWork, IWebHostEnvironment hostEnvironment)
+        public CjelinaTecaja(IUnitOfWork unitOfWork, IWebHostEnvironment hostEnvironment)
         {
             _unitOfWork = unitOfWork;
             _hostEnvironment = hostEnvironment;
@@ -120,7 +120,7 @@ namespace WAZOT.Controllers
         {
             var obj = _unitOfWork.CjelinaTecaja.GetFirstOrDefault(u => u.Id == cjelinaTecajaVM.Cjelina_tecaja.Id);
             int brCjelina = _unitOfWork.CjelinaTecaja.GetAll().Where(u => u.TecajId == cjelinaTecajaVM.Cjelina_tecaja.TecajId).Count();
-            int brVideozapisa = _unitOfWork.Videozapis.GetAll().Where(u => u.CjelinaTecajaId == cjelinaTecajaVM.Cjelina_tecaja.Id).Count();
+            int brVideozapisa = _unitOfWork.Videozapis.GetAll().Where(u => u.Cjelina_TecajaId == cjelinaTecajaVM.Cjelina_tecaja.Id).Count();
             if(brCjelina > 1)
             {
                 if (brVideozapisa == 0)

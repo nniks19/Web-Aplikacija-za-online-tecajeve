@@ -4,9 +4,9 @@ $(document).ready(function () {
 });
 
 function loadDataTable() {
-    dataTable = $('#tblOcjenaTecaja').DataTable({
+    dataTable = $('#tblNeprikladniKomentari').DataTable({
         "ajax": {
-            "url": "/Administrator/OcjenaTecaja/GetAll"
+            "url": "/Administrator/NeprikladniKomentari/GetAll"
         },
         "columns": [
             { "data": "id", "width": "18%" },
@@ -17,18 +17,23 @@ function loadDataTable() {
             {
                 "data": "id",
                 "render": function (data) {
-                    return `<div class="w-75 btn-group" role="group">
-                        <a href="/Administrator/OcjenaTecaja/Edit?id=${data}"
-                    class="btn btn-outline-primary mx-2" > <i class="bi bi-pencil-square"></i></a>
-                        <a href="/Administrator/OcjenaTecaja/Delete?id=${data}"
-                        class="btn btn-outline-danger mx-2"> <i class="bi bi-trash-fill"></i></a>
-                    </div > `
+                    return `<a href="/Administrator/NeprikladniKomentari/Unmark?id=${data}"
+                    class="btn btn-outline-primary mx-2" > <i class="fa fa-check"></i></a>`
                 },
-                "width": "10%"
+                "width": "5%"
+            },
+            {
+                "data": "id",
+                "render": function (data) {
+                    return `
+                        <a href="/Administrator/NeprikladniKomentari/Delete?id=${data}"
+                        class="btn btn-outline-danger mx-2"> <i class="bi bi-trash-fill"></i></a>`
+                },
+                "width": "5%"
             }
         ],
         "columnDefs": [
-            { bSortable: false, targets: [5] }
+            { bSortable: false, targets: [5,6] }
         ],
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.12.0/i18n/hr.json"

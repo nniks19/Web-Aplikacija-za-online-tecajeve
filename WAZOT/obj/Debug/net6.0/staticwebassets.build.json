@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Cru6pfiB0IChTF/n2l6rH2ZsbVIQVob9ckX4x7bgUAQ=",
+  "Hash": "lJnlxtobKHJfwMuVhslkXXShCPdHF/IuRd1PN83l23Q=",
   "Source": "WAZOT",
   "BasePath": "_content/WAZOT",
   "Mode": "Default",
@@ -170,6 +170,23 @@
       "OriginalItemSpec": "wwwroot\\js\\korisniktecajprijava.js"
     },
     {
+      "Identity": "C:\\Users\\nniik\\Desktop\\Web-Aplikacija-za-online-tecajeve\\WAZOT\\wwwroot\\js\\kreatorcjelina.js",
+      "SourceId": "WAZOT",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\nniik\\Desktop\\Web-Aplikacija-za-online-tecajeve\\WAZOT\\wwwroot\\",
+      "BasePath": "_content/WAZOT",
+      "RelativePath": "js/kreatorcjelina.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\kreatorcjelina.js"
+    },
+    {
       "Identity": "C:\\Users\\nniik\\Desktop\\Web-Aplikacija-za-online-tecajeve\\WAZOT\\wwwroot\\js\\kreatortecaj.js",
       "SourceId": "WAZOT",
       "SourceType": "Discovered",
@@ -185,6 +202,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\kreatortecaj.js"
+    },
+    {
+      "Identity": "C:\\Users\\nniik\\Desktop\\Web-Aplikacija-za-online-tecajeve\\WAZOT\\wwwroot\\js\\kreatortecajcjelina.js",
+      "SourceId": "WAZOT",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\nniik\\Desktop\\Web-Aplikacija-za-online-tecajeve\\WAZOT\\wwwroot\\",
+      "BasePath": "_content/WAZOT",
+      "RelativePath": "js/kreatortecajcjelina.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\kreatortecajcjelina.js"
     },
     {
       "Identity": "C:\\Users\\nniik\\Desktop\\Web-Aplikacija-za-online-tecajeve\\WAZOT\\wwwroot\\js\\kreatortecajpretpregled.js",
@@ -221,12 +255,12 @@
       "OriginalItemSpec": "wwwroot\\js\\kreatorvideozapis.js"
     },
     {
-      "Identity": "C:\\Users\\nniik\\Desktop\\Web-Aplikacija-za-online-tecajeve\\WAZOT\\wwwroot\\js\\ocjenatecaja.js",
+      "Identity": "C:\\Users\\nniik\\Desktop\\Web-Aplikacija-za-online-tecajeve\\WAZOT\\wwwroot\\js\\neprikladnikomentari.js",
       "SourceId": "WAZOT",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\nniik\\Desktop\\Web-Aplikacija-za-online-tecajeve\\WAZOT\\wwwroot\\",
       "BasePath": "_content/WAZOT",
-      "RelativePath": "js/ocjenatecaja.js",
+      "RelativePath": "js/neprikladnikomentari.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -235,7 +269,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\ocjenatecaja.js"
+      "OriginalItemSpec": "wwwroot\\js\\neprikladnikomentari.js"
     },
     {
       "Identity": "C:\\Users\\nniik\\Desktop\\Web-Aplikacija-za-online-tecajeve\\WAZOT\\wwwroot\\js\\odobriprijavu.js",
@@ -304,6 +338,57 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\prijavanatecaj.js"
+    },
+    {
+      "Identity": "C:\\Users\\nniik\\Desktop\\Web-Aplikacija-za-online-tecajeve\\WAZOT\\wwwroot\\js\\razgovoriadmin.js",
+      "SourceId": "WAZOT",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\nniik\\Desktop\\Web-Aplikacija-za-online-tecajeve\\WAZOT\\wwwroot\\",
+      "BasePath": "_content/WAZOT",
+      "RelativePath": "js/razgovoriadmin.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\razgovoriadmin.js"
+    },
+    {
+      "Identity": "C:\\Users\\nniik\\Desktop\\Web-Aplikacija-za-online-tecajeve\\WAZOT\\wwwroot\\js\\razgovorikorisnik.js",
+      "SourceId": "WAZOT",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\nniik\\Desktop\\Web-Aplikacija-za-online-tecajeve\\WAZOT\\wwwroot\\",
+      "BasePath": "_content/WAZOT",
+      "RelativePath": "js/razgovorikorisnik.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\razgovorikorisnik.js"
+    },
+    {
+      "Identity": "C:\\Users\\nniik\\Desktop\\Web-Aplikacija-za-online-tecajeve\\WAZOT\\wwwroot\\js\\razgovorikreator.js",
+      "SourceId": "WAZOT",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\nniik\\Desktop\\Web-Aplikacija-za-online-tecajeve\\WAZOT\\wwwroot\\",
+      "BasePath": "_content/WAZOT",
+      "RelativePath": "js/razgovorikreator.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\razgovorikreator.js"
     },
     {
       "Identity": "C:\\Users\\nniik\\Desktop\\Web-Aplikacija-za-online-tecajeve\\WAZOT\\wwwroot\\js\\razinaprava.js",
@@ -1443,40 +1528,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\slike\\tecajevi\\1.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\nniik\\Desktop\\Web-Aplikacija-za-online-tecajeve\\WAZOT\\wwwroot\\slike\\tecajevi\\2.jpg",
-      "SourceId": "WAZOT",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\nniik\\Desktop\\Web-Aplikacija-za-online-tecajeve\\WAZOT\\wwwroot\\",
-      "BasePath": "_content/WAZOT",
-      "RelativePath": "slike/tecajevi/2.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\slike\\tecajevi\\2.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\nniik\\Desktop\\Web-Aplikacija-za-online-tecajeve\\WAZOT\\wwwroot\\slike\\tecajevi\\4.jpg",
-      "SourceId": "WAZOT",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\nniik\\Desktop\\Web-Aplikacija-za-online-tecajeve\\WAZOT\\wwwroot\\",
-      "BasePath": "_content/WAZOT",
-      "RelativePath": "slike/tecajevi/4.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\slike\\tecajevi\\4.jpg"
     }
   ]
 }

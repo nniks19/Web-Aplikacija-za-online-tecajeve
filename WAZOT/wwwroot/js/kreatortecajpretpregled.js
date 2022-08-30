@@ -13,7 +13,6 @@ function loadDataCards() {
             } else {
                 //console.log(data.data);
                 for (var i = 0; i < data.data.length; i++) {
-                    console.log(data.data[i]);
                     $("#kontenjer_tecajevi").append(buildCard(data.data[i].slika, data.data[i].naziv, data.data[i].opis, data.data[i].id));
                     if (i + 1 == data.data.length) {
                         $("#kontenjer_tecajevi").append("</div>");

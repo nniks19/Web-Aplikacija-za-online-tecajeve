@@ -29,14 +29,8 @@ namespace WAZOT.Controllers
             Tecaj oTecaj = _unitOfWork.Tecaj.GetFirstOrDefault(u => u.Id == Convert.ToInt32(id));
             IEnumerable<Videozapis> videozapisList = _unitOfWork.Videozapis.GetAll().Where(x => x.TecajId == oTecaj.Id);
             IEnumerable<Ocjena_tecaja> ocjenetecajaList = _unitOfWork.OcjenaTecaja.GetAll(includeProperties: "Osoba").Where(x => x.TecajId == oTecaj.Id);
-            IEnumerable<Ocjena_tecaja> ocjenaTecajaKorisnika = ocjenetecajaList.Where(x => x.OsobaOib == HttpContext.Session.GetString("oib"));
-            bool vecKomentirao = false;
-            if (ocjenaTecajaKorisnika.Count()>0)
-            {
-                vecKomentirao = true;
-            }
             IEnumerable<Pracenje_Korisnika> pracenjeKorisnikaList = _unitOfWork.PracenjeKorisnika.GetAll().Where(x=> x.OsobaOib == HttpContext.Session.GetString("oib") && Convert.ToInt32(id) == x.TecajId);
-            if(pracenjeKorisnikaList == null)
+            if(pracenjeKorisnikaList.Count() == 0)
             {
                 Pracenje_Korisnika oPracenjeKorisnika = new Pracenje_Korisnika();
                 oPracenjeKorisnika.OsobaOib = HttpContext.Session.GetString("oib");
@@ -46,17 +40,30 @@ namespace WAZOT.Controllers
                 _unitOfWork.PracenjeKorisnika.Add(oPracenjeKorisnika);
                 _unitOfWork.Save();
             }
+            else
+            {
+                Pracenje_Korisnika oPracenjeKorisnika = new Pracenje_Korisnika();
+                oPracenjeKorisnika = pracenjeKorisnikaList.First();
+                oPracenjeKorisnika.Datum_posjete = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();
+                _unitOfWork.PracenjeKorisnika.Update(oPracenjeKorisnika);
+                _unitOfWork.Save();
+            }
             TecajPreviewVM tecajPreviewVM = new TecajPreviewVM()
             {
                 Tecaj = oTecaj,
                 VideozapisList = videozapisList,
                 OcjenaTecajaList = ocjenetecajaList,
-                vecKomentirao = vecKomentirao,
+                CjelinaTecajaList = _unitOfWork.CjelinaTecaja.GetAll().Where(x => x.TecajId == oTecaj.Id),
                 oibosobe= HttpContext.Session.GetString("oib"),
                 OsobaList = _unitOfWork.Osoba.GetAll().Where(x => x.Oib == oTecaj.OsobaOib).Select(i => new SelectListItem
                 {
                     Text = i.ime + " " + i.prezime,
                     Value = i.Oib
+                }),
+                CjelinaList = _unitOfWork.CjelinaTecaja.GetAll().Where(x => x.TecajId == oTecaj.Id).Select(i => new SelectListItem
+                {
+                    Text = i.naziv_cjeline,
+                    Value = i.Id.ToString(),
                 }),
                 KategorijaList = _unitOfWork.Kategorija.GetAll().Where(x => x.Id == oTecaj.KategorijaId).Select(i => new SelectListItem
                 {
@@ -75,7 +82,7 @@ namespace WAZOT.Controllers
         [ValidateAntiForgeryToken] //Zastita od Cross Site Forgery
         public IActionResult OcjeniTecaj(IFormCollection? form)
         {
-            if (form["komentar"].ToString().Count()>0)
+             if (form["komentar"].ToString().Count()>0)
             {
                 if (form["ocjena"].ToString().Count() > 0 && form["ocjena"].ToString() != 0.ToString())
                 {
@@ -86,6 +93,7 @@ namespace WAZOT.Controllers
                         ocjenaTecaja.komentar = form["komentar"].ToString();
                         ocjenaTecaja.OsobaOib = form["oibosobe"].ToString();
                         ocjenaTecaja.TecajId = Convert.ToInt32(form["tecajid"].ToString());
+                        ocjenaTecaja.Cjelina_tecajaId = Convert.ToInt32(form["Ocjena_Tecaja.Cjelina_tecajaId"].ToString());
                         _unitOfWork.OcjenaTecaja.Add(ocjenaTecaja);
                         _unitOfWork.Save();
                         TempData["success"] = "Uspješno ste ocjenili tečaj!";
@@ -96,6 +104,28 @@ namespace WAZOT.Controllers
 
 
             return RedirectToAction("Index");
+        }
+        //POST
+        [HttpPost]
+        [ValidateAntiForgeryToken] //Zastita od Cross Site Forgery
+        public IActionResult PrijavaKomentara(int idocjene, string oibkorisnika, string oibprijava)
+        {
+            string message = "";
+            Neprikladni_komentar oNeprikladni_komentar = new Neprikladni_komentar();
+            oNeprikladni_komentar.Ocjena_tecajaId = idocjene;
+            oNeprikladni_komentar.PrijavaOsobaOib = oibkorisnika;
+            oNeprikladni_komentar.PrijavljenOsobaOib = oibprijava;
+            if(_unitOfWork.NeprikladniKomentar.GetAll().Where(x=>x.Ocjena_tecajaId == idocjene).Count() < 1)
+            {
+                _unitOfWork.NeprikladniKomentar.Add(oNeprikladni_komentar);
+                _unitOfWork.Save();
+                message = "Uspješno ste označili komentar kao neprikladan!";
+            }
+            else
+            {
+                message = "Ovaj komentar je već označen kao neprikladan. Administrator ga provjerava.";
+            }
+            return Json(new { message=message});
         }
         #region API Calls
         [HttpGet]

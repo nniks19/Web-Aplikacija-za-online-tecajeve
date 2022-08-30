@@ -27,7 +27,7 @@ function loadDataTable() {
             }
         ],
         "columnDefs": [
-            { bSortable: false, targets: [5] }
+            { bSortable: false, targets: [6] }
         ],
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.12.0/i18n/hr.json"

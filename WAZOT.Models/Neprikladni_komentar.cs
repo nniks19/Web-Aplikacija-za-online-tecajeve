@@ -9,7 +9,7 @@ namespace WAZOT.Models
         [Key]
         public int Id { get; set; }
         [Required(ErrorMessage = "Korisnik koji prijavljuje mora biti odabran!")]
-        public string PrijavljujeOsobaOib { get; set; }
+        public string PrijavaOsobaOib { get; set; }
         [ValidateNever]
         public Osoba PrijavaOsoba { get; set; }
         [Required(ErrorMessage = "Korisnik koji je napisao komentar mora biti odabran!")]
@@ -17,7 +17,7 @@ namespace WAZOT.Models
         [ValidateNever]
         public Osoba PrijavljenOsoba { get; set; }
         [Required(ErrorMessage = "Komentar  koji se prijavljuje mora biti odabran!")]
-        public int OcjenaId { get; set; }
+        public int Ocjena_tecajaId { get; set; }
         [ValidateNever]
         public Ocjena_tecaja Ocjena_tecaja { get; set; }
     }

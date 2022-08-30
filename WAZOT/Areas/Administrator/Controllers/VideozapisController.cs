@@ -70,7 +70,7 @@ namespace WAZOT.Controllers
                 obj.Videozapis.videozapis_putanja = @"\videozapisi\tecajevi\" + obj.Videozapis.TecajId.ToString() + @"\" + filename + extension;
                 obj.Videozapis.videozapis_tip = extension;
                 IEnumerable<Cjelina_tecaja> _cjelineTecaja = _unitOfWork.CjelinaTecaja.GetAll().Where(x=>x.TecajId == obj.Videozapis.TecajId);
-                obj.Videozapis.CjelinaTecajaId = _cjelineTecaja.First().Id;
+                obj.Videozapis.Cjelina_TecajaId = _cjelineTecaja.First().Id;
                 _unitOfWork.Videozapis.Update(obj.Videozapis);
                 _unitOfWork.Save();
                 return RedirectToAction("Index");

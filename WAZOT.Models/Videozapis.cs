@@ -17,7 +17,7 @@ namespace WAZOT.Models
         public string videozapis_tip { get; set; }
         [Required(ErrorMessage = "Videozapis mora imati naziv!")]
         public string videozapis_naziv { get; set; }
-        public int? CjelinaTecajaId { get; set; }
+        public int? Cjelina_TecajaId { get; set; }
         [ValidateNever]
         public Cjelina_tecaja CjelinaTecaja { get; set; }
     }

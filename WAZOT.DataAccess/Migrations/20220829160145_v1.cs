@@ -161,11 +161,19 @@ namespace WAZOT.DataAccess.Migrations
                     Tekst = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     RazgovorId = table.Column<int>(type: "int", nullable: false),
-                    Datum_slanja = table.Column<long>(type: "bigint", nullable: false)
+                    Datum_slanja = table.Column<long>(type: "bigint", nullable: false),
+                    PosiljateljOsobaOib = table.Column<string>(type: "varchar(11)", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Poruka", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Poruka_Osoba_PosiljateljOsobaOib",
+                        column: x => x.PosiljateljOsobaOib,
+                        principalTable: "Osoba",
+                        principalColumn: "Oib",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Poruka_Razgovor_RazgovorId",
                         column: x => x.RazgovorId,
@@ -275,7 +283,6 @@ namespace WAZOT.DataAccess.Migrations
                     OsobaOib = table.Column<string>(type: "varchar(11)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     TecajId = table.Column<int>(type: "int", nullable: false),
-                    CjelinaTecajaId = table.Column<int>(type: "int", nullable: false),
                     Cjelina_tecajaId = table.Column<int>(type: "int", nullable: false),
                     komentar = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
@@ -318,14 +325,14 @@ namespace WAZOT.DataAccess.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     videozapis_naziv = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    CjelinaTecajaId = table.Column<int>(type: "int", nullable: true)
+                    Cjelina_TecajaId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Videozapis", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Videozapis_CjelinaTecaja_CjelinaTecajaId",
-                        column: x => x.CjelinaTecajaId,
+                        name: "FK_Videozapis_CjelinaTecaja_Cjelina_TecajaId",
+                        column: x => x.Cjelina_TecajaId,
                         principalTable: "CjelinaTecaja",
                         principalColumn: "Id");
                     table.ForeignKey(
@@ -343,13 +350,10 @@ namespace WAZOT.DataAccess.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    PrijavljujeOsobaOib = table.Column<string>(type: "longtext", nullable: false)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
                     PrijavaOsobaOib = table.Column<string>(type: "varchar(11)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     PrijavljenOsobaOib = table.Column<string>(type: "varchar(11)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    OcjenaId = table.Column<int>(type: "int", nullable: false),
                     Ocjena_tecajaId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -417,6 +421,11 @@ namespace WAZOT.DataAccess.Migrations
                 column: "Razina_PravaId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Poruka_PosiljateljOsobaOib",
+                table: "Poruka",
+                column: "PosiljateljOsobaOib");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Poruka_RazgovorId",
                 table: "Poruka",
                 column: "RazgovorId");
@@ -467,9 +476,9 @@ namespace WAZOT.DataAccess.Migrations
                 column: "OsobaOib");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Videozapis_CjelinaTecajaId",
+                name: "IX_Videozapis_Cjelina_TecajaId",
                 table: "Videozapis",
-                column: "CjelinaTecajaId");
+                column: "Cjelina_TecajaId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Videozapis_TecajId",

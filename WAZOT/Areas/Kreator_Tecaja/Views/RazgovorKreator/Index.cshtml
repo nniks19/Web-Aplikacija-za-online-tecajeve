@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Razgovor>
+@{
+    ViewData["Title"] = "Razgovori";
+}
+<partial name="_Notification" />
+<div class="container p-3">
+
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Popis razgovora</h2>
+        </div>
+    </div>
+</div>
+<br />
+<table id="tblRazgovoriKreator" class="table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                ID Razgovora
+            </th>
+            <th>
+                Primatelj
+            </th>
+            <th>
+                Pošiljatelj
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+@section Scripts{
+    <script src="~/js/razgovorikreator.js"></script>
+}

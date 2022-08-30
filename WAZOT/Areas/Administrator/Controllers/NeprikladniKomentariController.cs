@@ -9,11 +9,11 @@ using WAZOT.Repository.IRepository;
 namespace WAZOT.Controllers
 {
     [Area("Administrator")]
-    public class OcjenaTecajaController : Controller
+    public class NeprikladniKomentariController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
 
-        public OcjenaTecajaController(IUnitOfWork unitOfWork)
+        public NeprikladniKomentariController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
 
@@ -25,7 +25,7 @@ namespace WAZOT.Controllers
 
 
         //GET
-        public IActionResult Edit(string? id)
+        public IActionResult Unmark(string? id)
         {
             Ocjena_tecaja Ocjena_tecaja = _unitOfWork.OcjenaTecaja.GetFirstOrDefault(u => u.Id == Convert.ToInt32(id));
             OcjenaTecajaVM ocjenaTecajaVM = new OcjenaTecajaVM()
@@ -51,25 +51,15 @@ namespace WAZOT.Controllers
         //POST
         [HttpPost]
         [ValidateAntiForgeryToken] //Zastita od Cross Site Forgery
-        public IActionResult Edit(OcjenaTecajaVM obj)
+        public IActionResult Unmark(OcjenaTecajaVM obj)
         {
-            if (ModelState.IsValid)
-            {
-                _unitOfWork.OcjenaTecaja.Update(obj.Ocjena_tecaja);
-                _unitOfWork.Save();
-                TempData["success"] = "Podaci o ocjeni tečaja su uspješno uređeni!";
-                return RedirectToAction("Index");
-            }
-            obj.TecajList = _unitOfWork.Tecaj.GetAll().Select(i => new SelectListItem
-            {
-                Text = i.naziv,
-                Value = i.Id.ToString(),
-            });
-            obj.OsobaList = _unitOfWork.Osoba.GetAll().Where(x => x.Razina_PravaId == 2).Select(i => new SelectListItem
-            {
-                Text = i.ime + " " + i.prezime,
-                Value = i.Oib
-            });
+            var nprkom = _unitOfWork.NeprikladniKomentar.GetAll().Where(x => x.Ocjena_tecajaId == obj.Ocjena_tecaja.Id).FirstOrDefault();
+
+            _unitOfWork.NeprikladniKomentar.Remove(nprkom);
+            _unitOfWork.Save();
+            TempData["success"] = "Komentar više nije označen kao neprikladan!";
+            return RedirectToAction("Index");
+
             return View(obj);
         }
 

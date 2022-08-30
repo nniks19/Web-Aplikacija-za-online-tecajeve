@@ -1,0 +1,35 @@
+﻿@model WAZOT.Models.ViewModels.RazgovorVM
+@{
+    ViewData["Title"] = "Razgovor";
+}
+<div class="container">
+    <div class="row">
+        <div class="col msg-window-container">
+            <div class="card" id="msgWindow">
+                <div class="card-header"><span class="card-title">Razgovor sa: @Model.imeprezime</span></div>
+                <div class="card-body" id="msgs">
+                    @foreach (var poruka in Model.porukaList){
+                        if(poruka.PosiljateljOsobaOib == Model.Razgovor.PosiljateljOsobaOib){
+                             <div class="msg to">@poruka.Tekst</div>
+                        }
+                        if (poruka.PosiljateljOsobaOib == Model.Razgovor.PrimateljOsobaOib)
+                        {
+                            <div class="msg from">@poruka.Tekst</div>
+                        }
+                    }
+                </div>
+                <form method="post">
+                    <div class="card-footer">
+                        <div class="input-group" id="msgForm" data-sender="me">
+                            <input name="id" value="@Model.Razgovor.Id" hidden />
+                            <input class="form-control" type="text" required name="poruka" placeholder="Upišite poruku i pritisnite [Enter] za slanje.">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="submit">Pošalji</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

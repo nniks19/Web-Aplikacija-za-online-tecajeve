@@ -23,5 +23,10 @@ namespace WAZOT.Repository
                 objFromDb.PrimateljOsobaOib = obj.PrimateljOsobaOib;
             }
         }
+        public int Max()
+        {
+            var idFromDb = _db.Razgovor.Max(item => item.Id);
+            return idFromDb;
+        }
     }
 }

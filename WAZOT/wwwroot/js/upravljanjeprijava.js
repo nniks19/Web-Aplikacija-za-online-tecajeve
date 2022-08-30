@@ -9,23 +9,21 @@ function loadDataTable() {
             "url": "/Kreator_Tecaja/UpravljanjePrijavama/GetAll"
         },
         "columns": [
-            { "data": "id", "width": "20%" },
-            { "data": "tecaj.naziv", "width": "20%" },
-            { "targets": 2, "data": "osoba", "render": function (data) { return data.ime + ' ' + data.prezime; }, "width": "19%", },
-            { "data": "status_prijave.naziv", "width":"20%"},
+            { "data": "id", "width": "22%" },
+            { "data": "tecaj.naziv", "width": "22%" },
+            { "targets": 2, "data": "osoba", "render": function (data) { return data.ime + ' ' + data.prezime; }, "width": "22%", },
+            { "data": "status_prijave.naziv", "width": "22%" },
             {
                 "data": "id",
                 "render": function (data) {
-                    return `<div class="w-75 btn-group" role="group">
-                        <a href="/Kreator_Tecaja/UpravljanjePrijavama/Edit?id=${data}"
-                    class="btn btn-outline-primary mx-2" > <i class="bi bi-pencil-square"></i></a>
-                    </div > `
+                    return `<a href="/Kreator_Tecaja/UpravljanjePrijavama/Edit?id=${data}"
+                    class="btn btn-outline-primary mx-2"> <i class="bi bi-pencil-square"></i></a>`
                 },
-                "width": "18%"
+                "width": "12%"
             }
         ],
         "columnDefs": [
-            { bSortable: false, targets: [5] }
+            { bSortable: false, targets: [4] }
         ],
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.12.0/i18n/hr.json"

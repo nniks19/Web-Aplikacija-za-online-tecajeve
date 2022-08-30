@@ -19,5 +19,9 @@ namespace WAZOT.Models
         [ValidateNever]
         public Razgovor Razgovor { get; set; }
         public long Datum_slanja { get; set; }
+        [Required(ErrorMessage = "Osoba koja šalje poruka mora biti odabrana!")]
+        public string PosiljateljOsobaOib { get; set; }
+        [ValidateNever]
+        public Osoba PosiljateljOsoba { get; set; }
     }
 }
