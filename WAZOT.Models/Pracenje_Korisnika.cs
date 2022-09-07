@@ -15,8 +15,9 @@ namespace WAZOT.Models
         public int? TecajId { get; set; }
         [ValidateNever]
         public Tecaj? Tecaj { get; set; }
+        public int brPosjeta { get; set; }
         public long Datum_posjete { get; set; }
-        public long Vrijeme_videozapis { get; set; }
+        public int brPokretanjaVideozapisa { get; set; }
 
     }
 }

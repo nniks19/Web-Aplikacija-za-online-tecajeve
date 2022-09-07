@@ -68,6 +68,20 @@ namespace WAZOT.Controllers
                 obj.Videozapis.videozapis_putanja = @"\videozapisi\tecajevi\" + obj.Videozapis.TecajId.ToString() + @"\" + filename + extension;
                 obj.Videozapis.videozapis_tip = extension;
                 IEnumerable<Cjelina_tecaja> _cjelineTecaja = _unitOfWork.CjelinaTecaja.GetAll().Where(x => x.TecajId == obj.Videozapis.TecajId);
+                if (_cjelineTecaja.Count() > 0)
+                {
+                    obj.Videozapis.Cjelina_TecajaId = _cjelineTecaja.First().Id;
+                }
+                else
+                {
+                    Cjelina_tecaja objCjelina = new Cjelina_tecaja();
+                    objCjelina.TecajId = obj.Videozapis.TecajId;
+                    objCjelina.naziv_cjeline = "Nekategorizirano";
+                    objCjelina.opis_cjeline = "Nekategorizirano";
+                    _unitOfWork.CjelinaTecaja.Add(objCjelina);
+                    _unitOfWork.Save();
+                }
+                _cjelineTecaja = _unitOfWork.CjelinaTecaja.GetAll().Where(x => x.TecajId == obj.Videozapis.TecajId);
                 obj.Videozapis.Cjelina_TecajaId = _cjelineTecaja.First().Id;
                 _unitOfWork.Videozapis.Update(obj.Videozapis);
                 _unitOfWork.Save();

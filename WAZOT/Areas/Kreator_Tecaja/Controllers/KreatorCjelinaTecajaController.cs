@@ -121,29 +121,22 @@ namespace WAZOT.Controllers
             var obj = _unitOfWork.CjelinaTecaja.GetFirstOrDefault(u => u.Id == cjelinaTecajaVM.Cjelina_tecaja.Id);
             int brCjelina = _unitOfWork.CjelinaTecaja.GetAll().Where(u => u.TecajId == cjelinaTecajaVM.Cjelina_tecaja.TecajId).Count();
             int brVideozapisa = _unitOfWork.Videozapis.GetAll().Where(u => u.Cjelina_TecajaId == cjelinaTecajaVM.Cjelina_tecaja.Id).Count();
-            if(brCjelina > 1)
+            if (brVideozapisa == 0)
             {
-                if (brVideozapisa == 0)
-                {
-                    _unitOfWork.CjelinaTecaja.Remove(obj);
-                    _unitOfWork.Save();
-                    TempData["success"] = "Cjelina tečaja uspješno obrisana";
-                }
-                else
-                {
-                    TempData["error"] = "Cjelina tečaja ne može biti obrisana jer sadržava bar 1 videozapis!";
-                }
+                _unitOfWork.CjelinaTecaja.Remove(obj);
+                _unitOfWork.Save();
+                TempData["success"] = "Cjelina tečaja uspješno obrisana";
             }
             else
             {
-                TempData["error"] = "Tečaj mora imati barem jednu cjelinu!";
-                return RedirectToAction("Index");
+                TempData["error"] = "Cjelina tečaja ne može biti obrisana jer sadržava bar 1 videozapis!";
             }
+
             if (obj == null)
             {
                 return NotFound();
             }
-            
+
             return RedirectToAction("Index");
         }
         #region API Calls

@@ -8,19 +8,19 @@ namespace WAZOT.Models
         [Key]
         public int Id { get; set; }
         [Required(ErrorMessage = "Osoba mora biti odabrana!")]
-        public string OsobaOib { get; set; }
+        public string? OsobaOib { get; set; }
         [ValidateNever]
-        public Osoba Osoba { get; set; }
+        public Osoba? Osoba { get; set; }
         [Required(ErrorMessage = "Naziv je obavezan!")]
-        public string naziv { get; set; }
+        public string? naziv { get; set; }
         [Required(ErrorMessage = "Opis je obavezan!")]
-        public string opis { get; set; }
+        public string? opis { get; set; }
         [Required(ErrorMessage = "Kategorija mora biti odabrana!")]
         public int? KategorijaId { get; set; }
         [ValidateNever]
         public Kategorija? Kategorija { get; set; }
         [Required(ErrorMessage = "Tečaj mora imati sliku!")]
-        public String slika { get; set; }
+        public String? slika { get; set; }
         public float prosjecna_ocjena { get; set; }
 
     }

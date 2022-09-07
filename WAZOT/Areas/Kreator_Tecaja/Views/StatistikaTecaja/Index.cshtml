@@ -1,0 +1,45 @@
+﻿@model WAZOT.Models.ViewModels.StatistikaKreatoraVM
+
+@{
+	ViewData["Title"] = "Statistika";
+}
+<partial name="_Notification" />
+<div class="container-fluid">
+	<div class="row text-center">
+		<div class="row text-center"><h1>Statistika:</h1></div>
+	</div>
+	<div class="progress mb-4">
+		<div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+	</div>
+	<form asp-action="StatistikaTecaj" class="text-center">
+		<div class="row text-center">
+			<div class="row text-center"><h1>Odaberite tečaj:</h1></div>
+		</div>
+		<div class="mb-3">
+			<select asp-items="Model.TecajList" asp-for="@Model.TecajId" class="form-select" required>
+				<option disabled selected>--Odaberi tečaj--</option>
+			</select>
+		</div>
+		<button type="submit" class="btn btn-outline-primary"><i class="bi bi-graph-up"></i></button>
+	</form>
+	<div class="progress mt-4">
+		<div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+	</div>
+		<form asp-action="StatistikaKorisnik" class="text-center" method="post">
+			<div class="row text-center mt-4">
+				<div class="row text-center"><h1>Odaberite korisnika:</h1></div>
+			</div>
+			<div class="mb-3">
+			<select asp-items="Model.OsobaList" class="form-select" asp-for="@Model.OsobaOib" required>
+					<option disabled selected>--Odaberi osobu--</option>
+				</select>
+			</div>
+		<button type="submit" class="btn btn-outline-primary"><i class="bi bi-graph-up"></i></button>
+
+		</form>
+
+	<div class="progress mt-4">
+		<div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+	</div>
+
+</div>

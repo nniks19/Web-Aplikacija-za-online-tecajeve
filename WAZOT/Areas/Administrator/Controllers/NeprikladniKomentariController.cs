@@ -60,7 +60,6 @@ namespace WAZOT.Controllers
             TempData["success"] = "Komentar više nije označen kao neprikladan!";
             return RedirectToAction("Index");
 
-            return View(obj);
         }
 
         //GET
@@ -102,13 +101,25 @@ namespace WAZOT.Controllers
             _unitOfWork.OcjenaTecaja.Remove(obj);
             _unitOfWork.Save();
             TempData["success"] = "Ocjena tečaja uspješno obrisana!";
+            var tecaj = _unitOfWork.Tecaj.GetFirstOrDefault(x => x.Id == obj.TecajId);
+            var ocjene = _unitOfWork.OcjenaTecaja.GetAll().Where(x => x.TecajId == tecaj.Id);
+            float ukupno_ocjena = ocjene.Count();
+            float zbroj_ocjena = ocjene.Sum(x => x.ocjena);
+            if (zbroj_ocjena != null)
+            {
+                tecaj.prosjecna_ocjena = zbroj_ocjena / ukupno_ocjena;
+                tecaj.prosjecna_ocjena = (float)Math.Round(tecaj.prosjecna_ocjena * 100f) / 100f;
+                _unitOfWork.Tecaj.Update(tecaj);
+                _unitOfWork.Save();
+            }
             return RedirectToAction("Index");
         }
         #region API Calls
         [HttpGet]
         public IActionResult GetAll()
         {
-            var popisOcjenaTecaja = _unitOfWork.OcjenaTecaja.GetAll(includeProperties:"Tecaj,Osoba");
+            var popisNeprikladnihKomentara = _unitOfWork.NeprikladniKomentar.GetAll();
+            var popisOcjenaTecaja = _unitOfWork.OcjenaTecaja.GetAll(includeProperties:"Tecaj,Osoba").Where(x=> popisNeprikladnihKomentara.Any(y=>y.Ocjena_tecajaId == x.Id));
             return Json(new { data = popisOcjenaTecaja });
         }
         #endregion

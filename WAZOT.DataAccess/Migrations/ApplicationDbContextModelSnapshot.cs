@@ -210,8 +210,11 @@ namespace WAZOT.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("int");
 
-                    b.Property<long>("Vrijeme_videozapis")
-                        .HasColumnType("bigint");
+                    b.Property<int>("brPokretanjaVideozapisa")
+                        .HasColumnType("int");
+
+                    b.Property<int>("brPosjeta")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -239,12 +242,6 @@ namespace WAZOT.DataAccess.Migrations
                     b.Property<int?>("TecajId")
                         .IsRequired()
                         .HasColumnType("int");
-
-                    b.Property<long>("datum_pocetak")
-                        .HasColumnType("bigint");
-
-                    b.Property<long>("datum_zavrsetak")
-                        .HasColumnType("bigint");
 
                     b.HasKey("Id");
 

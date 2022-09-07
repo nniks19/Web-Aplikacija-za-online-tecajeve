@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "lJnlxtobKHJfwMuVhslkXXShCPdHF/IuRd1PN83l23Q=",
+  "Hash": "228SnSUAoRwMx3hEPvW53xUriXxCBBMRVDD9gXUrmzs=",
   "Source": "WAZOT",
   "BasePath": "_content/WAZOT",
   "Mode": "Default",
@@ -1528,6 +1528,57 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\slike\\tecajevi\\1.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\nniik\\Desktop\\Web-Aplikacija-za-online-tecajeve\\WAZOT\\wwwroot\\slike\\tecajevi\\2.jpg",
+      "SourceId": "WAZOT",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\nniik\\Desktop\\Web-Aplikacija-za-online-tecajeve\\WAZOT\\wwwroot\\",
+      "BasePath": "_content/WAZOT",
+      "RelativePath": "slike/tecajevi/2.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\slike\\tecajevi\\2.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\nniik\\Desktop\\Web-Aplikacija-za-online-tecajeve\\WAZOT\\wwwroot\\videozapisi\\tecajevi\\1\\1.mp4",
+      "SourceId": "WAZOT",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\nniik\\Desktop\\Web-Aplikacija-za-online-tecajeve\\WAZOT\\wwwroot\\",
+      "BasePath": "_content/WAZOT",
+      "RelativePath": "videozapisi/tecajevi/1/1.mp4",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\videozapisi\\tecajevi\\1\\1.mp4"
+    },
+    {
+      "Identity": "C:\\Users\\nniik\\Desktop\\Web-Aplikacija-za-online-tecajeve\\WAZOT\\wwwroot\\videozapisi\\tecajevi\\1\\2.mp4",
+      "SourceId": "WAZOT",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\nniik\\Desktop\\Web-Aplikacija-za-online-tecajeve\\WAZOT\\wwwroot\\",
+      "BasePath": "_content/WAZOT",
+      "RelativePath": "videozapisi/tecajevi/1/2.mp4",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\videozapisi\\tecajevi\\1\\2.mp4"
     }
   ]
 }

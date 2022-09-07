@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using WAZOT.DataAccess;
 using WAZOT.DataAccess.Repository.IRepository;
@@ -36,7 +37,8 @@ namespace WAZOT.Controllers
                 oPracenjeKorisnika.OsobaOib = HttpContext.Session.GetString("oib");
                 oPracenjeKorisnika.TecajId = Convert.ToInt32(id);
                 oPracenjeKorisnika.Datum_posjete = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();
-                oPracenjeKorisnika.Vrijeme_videozapis = 0;
+                oPracenjeKorisnika.brPosjeta = 1;
+                oPracenjeKorisnika.brPokretanjaVideozapisa = 0;
                 _unitOfWork.PracenjeKorisnika.Add(oPracenjeKorisnika);
                 _unitOfWork.Save();
             }
@@ -44,6 +46,7 @@ namespace WAZOT.Controllers
             {
                 Pracenje_Korisnika oPracenjeKorisnika = new Pracenje_Korisnika();
                 oPracenjeKorisnika = pracenjeKorisnikaList.First();
+                oPracenjeKorisnika.brPosjeta = oPracenjeKorisnika.brPosjeta + 1;
                 oPracenjeKorisnika.Datum_posjete = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();
                 _unitOfWork.PracenjeKorisnika.Update(oPracenjeKorisnika);
                 _unitOfWork.Save();
@@ -96,6 +99,18 @@ namespace WAZOT.Controllers
                         ocjenaTecaja.Cjelina_tecajaId = Convert.ToInt32(form["Ocjena_Tecaja.Cjelina_tecajaId"].ToString());
                         _unitOfWork.OcjenaTecaja.Add(ocjenaTecaja);
                         _unitOfWork.Save();
+                        var tecaj = _unitOfWork.Tecaj.GetFirstOrDefault(x => x.Id == Convert.ToInt32(form["tecajid"].ToString()));
+                        var ocjene = _unitOfWork.OcjenaTecaja.GetAll().Where(x => x.TecajId == tecaj.Id);
+                        float ukupno_ocjena = ocjene.Count();
+                        float zbroj_ocjena = ocjene.Sum(x => x.ocjena);
+                        if (zbroj_ocjena != null)
+                        {
+                            tecaj.prosjecna_ocjena = zbroj_ocjena / ukupno_ocjena;
+                            tecaj.prosjecna_ocjena = (float)Math.Round(tecaj.prosjecna_ocjena * 100f) / 100f;
+                            _unitOfWork.Tecaj.Update(tecaj);
+                            _unitOfWork.Save();
+                        }
+
                         TempData["success"] = "Uspješno ste ocjenili tečaj!";
                         return RedirectToAction("Index");
                     }
@@ -107,25 +122,45 @@ namespace WAZOT.Controllers
         }
         //POST
         [HttpPost]
-        [ValidateAntiForgeryToken] //Zastita od Cross Site Forgery
-        public IActionResult PrijavaKomentara(int idocjene, string oibkorisnika, string oibprijava)
+        public IActionResult PrijavaKomentara(int idocjene)
         {
             string message = "";
+            var prijavljenosobaoib = _unitOfWork.OcjenaTecaja.GetAll().Where(x => x.Id == idocjene).First().OsobaOib;
             Neprikladni_komentar oNeprikladni_komentar = new Neprikladni_komentar();
             oNeprikladni_komentar.Ocjena_tecajaId = idocjene;
-            oNeprikladni_komentar.PrijavaOsobaOib = oibkorisnika;
-            oNeprikladni_komentar.PrijavljenOsobaOib = oibprijava;
-            if(_unitOfWork.NeprikladniKomentar.GetAll().Where(x=>x.Ocjena_tecajaId == idocjene).Count() < 1)
+            oNeprikladni_komentar.PrijavaOsobaOib = HttpContext.Session.GetString("oib");
+            oNeprikladni_komentar.PrijavljenOsobaOib = prijavljenosobaoib;
+            if(oNeprikladni_komentar.PrijavaOsobaOib == oNeprikladni_komentar.PrijavljenOsobaOib)
             {
-                _unitOfWork.NeprikladniKomentar.Add(oNeprikladni_komentar);
-                _unitOfWork.Save();
-                message = "Uspješno ste označili komentar kao neprikladan!";
+                message = "Ne možete prijaviti sami svoj komentar.";
             }
             else
             {
-                message = "Ovaj komentar je već označen kao neprikladan. Administrator ga provjerava.";
+                if (_unitOfWork.NeprikladniKomentar.GetAll().Where(x => x.Ocjena_tecajaId == idocjene).Count() < 1)
+                {
+                    _unitOfWork.NeprikladniKomentar.Add(oNeprikladni_komentar);
+                    _unitOfWork.Save();
+                    message = "Uspješno ste označili komentar kao neprikladan!";
+                }
+                else
+                {
+                    message = "Ovaj komentar je već označen kao neprikladan. Administrator ga provjerava.";
+                }
             }
             return Json(new { message=message});
+        }
+        //POST
+        [HttpPost]
+        public IActionResult PokretanjeVideozapisa(int idtecaja)
+        {
+            string message = "";
+            var prijavljenosobaoib = HttpContext.Session.GetString("oib");
+            var pracenjekorisnika = _unitOfWork.PracenjeKorisnika.GetAll().Where(x=>x.OsobaOib == prijavljenosobaoib && x.TecajId == idtecaja).First();
+            
+            pracenjekorisnika.brPokretanjaVideozapisa = pracenjekorisnika.brPokretanjaVideozapisa + 1;
+            _unitOfWork.PracenjeKorisnika.Update(pracenjekorisnika);
+            _unitOfWork.Save();
+            return Json(new { message = message });
         }
         #region API Calls
         [HttpGet]

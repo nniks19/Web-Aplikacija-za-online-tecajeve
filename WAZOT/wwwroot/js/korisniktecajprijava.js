@@ -14,7 +14,7 @@ function loadDataCards() {
                 //console.log(data.data);
                 for (var i = 0; i < data.data.length; i++) {
                     console.log(data.data[i]);
-                    $("#kontenjer_tecajevi").append(buildCard(data.data[i].slika, data.data[i].naziv, data.data[i].opis, data.data[i].id));
+                    $("#kontenjer_tecajevi").append(buildCard(data.data[i].slika, data.data[i].naziv, data.data[i].opis, data.data[i].id, data.data[i].prosjecna_ocjena));
                     if (i + 1 == data.data.length) {
                         $("#kontenjer_tecajevi").append("</div>");
                     }
@@ -23,10 +23,10 @@ function loadDataCards() {
             }
         })
         .fail(function () {
-            alert("uh oh it failed");
+            alert("Dogodila se pogreška!");
         })
 }
-function buildCard(slika, naziv, opis, id) {
+function buildCard(slika, naziv, opis, id, prosjecna_ocjena) {
     return `
         <div class="col-md-6 col-lg-4">
             <!--Bootstrap 5 card box-->
@@ -36,7 +36,10 @@ function buildCard(slika, naziv, opis, id) {
                 </div>
                 <h3><a href="/Korisnik/TecajPrijava/Preview?id=${id}" class="mt-2 card-title">` + naziv + `</a></h3>
                 <p class="card-text">` + opis.slice(0, 134) + `...</p>
-                <a href="/Korisnik/TecajPrijava/Preview?id=${id}" class="btn btn-outline-light">Pregledaj tečaj</a>
+              <div class="btn-wrapper text-center d-flex justify-content-between">
+                <a  href="/Korisnik/TecajPrijava/Preview?id=${id}" class="btn btn-secondary  btn-sm d-flex align-items-center">Pregledaj tečaj</a>
+                <a class="btn btn-warning" style="">Prosječna ocjena ${prosjecna_ocjena}</a>
+              </div>
             </div>
         </div>
     `;

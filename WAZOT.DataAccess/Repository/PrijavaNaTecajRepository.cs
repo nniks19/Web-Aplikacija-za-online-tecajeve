@@ -19,8 +19,6 @@ namespace WAZOT.Repository
             {
                 objFromDb.OsobaOib = obj.OsobaOib;
                 objFromDb.Status_PrijaveId = obj.Status_PrijaveId;
-                objFromDb.datum_pocetak = obj.datum_pocetak;
-                objFromDb.datum_zavrsetak = obj.datum_zavrsetak;
                 objFromDb.Id = obj.Id;
                 objFromDb.TecajId = obj.TecajId;
             }

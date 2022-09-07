@@ -22,12 +22,14 @@ namespace WAZOT.Controllers
 
             return View(objRazinaPravaList);
         }
+
         //GET
         public IActionResult Create()
         {
 
             return View();
         }
+
         //POST
         [HttpPost]
         [ValidateAntiForgeryToken] //Zastita od Cross Site Forgery
@@ -43,9 +45,6 @@ namespace WAZOT.Controllers
             return View(obj);
         }
 
-
-
-
         //GET
         public IActionResult Edit(int? id)
         {
@@ -60,6 +59,7 @@ namespace WAZOT.Controllers
             }
             return View(razinaPravaFromDb);
         }
+
         //POST
         [HttpPost]
         [ValidateAntiForgeryToken] //Zastita od Cross Site Forgery
@@ -74,8 +74,6 @@ namespace WAZOT.Controllers
             }
             return View(obj);
         }
-
-
 
         //GET
         public IActionResult Delete(int? id)

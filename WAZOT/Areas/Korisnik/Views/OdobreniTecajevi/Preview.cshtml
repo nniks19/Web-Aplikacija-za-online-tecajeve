@@ -74,7 +74,7 @@
 												<div class="col-sm-6">
 													<div class="card mb-3">
 														<h3 class="card-header">@objv.videozapis_naziv</h3>
-														<video controls>
+														<video onplay="PokretanjeVideozapisa(@objv.TecajId)" controls>
 															<source src="@objv.videozapis_putanja" type="video/@objv.videozapis_tip.Replace(".","")">
 															Vaš browser ne podržava ovaj videozapis
 														</video>
@@ -156,7 +156,7 @@
 																}
 															</div>
 															<div class="col col-4 d-flex justify-content-end">
-																<i class="fa fa-flag" aria-hidden="true" onclick="prijaviKomentar('@objoct.Osoba.ime','@objoct.Osoba.prezime', @objoct.Id, '@objoct.OsobaOib', '@Model.oibosobe')"></i>
+																<i class="fa fa-flag" aria-hidden="true" onclick="prijaviKomentar('@objoct.Osoba.ime','@objoct.Osoba.prezime', @objoct.Id)"></i>
 															</div>
 														</div>
 													</div>
@@ -193,13 +193,13 @@
 	</div>
 </div>
 <script>
-	function prijaviKomentar(ime, prezime, idocjene, oibkorisnika, oibprijava) {
+	function prijaviKomentar(ime, prezime, idocjene) {
 		let confirmAction = confirm("Jeste li sigurni da želite prijaviti komentar od " + ime + " " + prezime + " ?");
 		if (confirmAction) {
 			$.ajax(
 				{
 					type: "POST",
-					url: '/Korisnik/OdobreniTecajevi/PrijavaKomentara?idocjene=' + idocjene + '&oibkorisnika=' + oibkorisnika + '&oibprijava=' + oibprijava,
+					url: '/Korisnik/OdobreniTecajevi/PrijavaKomentara?idocjene=' + idocjene,
 					success: function (data) {   // success callback function
 						alert(data['message']);
 					},
@@ -211,4 +211,17 @@
 			alert("Odustali ste od prijavljivanja komentara!");
 		}
 	}
+	function PokretanjeVideozapisa(idtecaja){
+		$.ajax(
+			{
+				type: "POST",
+				url: '/Korisnik/OdobreniTecajevi/PokretanjeVideozapisa?idtecaja=' + idtecaja,
+				success: function (data) {   // success callback function
+				},
+				error: function (jqXhr, textStatus, errorMessage) { // error callback
+					alert("Nešto je pošlo po zlu!");
+				}
+			});
+	}
+
 </script>

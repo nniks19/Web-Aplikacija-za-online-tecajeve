@@ -74,7 +74,6 @@ namespace WAZOT.Controllers
             }
             if (obj.PrijavaNaTecaj != null & ModelState.IsValid)
             {
-                obj.PrijavaNaTecaj.datum_pocetak = new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();
                 _unitOfWork.PrijavaNaTecaj.Add(obj.PrijavaNaTecaj);
                 _unitOfWork.Save();
                 TempData["success"] = "Uspješno ste se prijavili na tečaj!";

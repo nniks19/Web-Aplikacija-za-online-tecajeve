@@ -20,8 +20,9 @@ namespace WAZOT.Repository
                 objFromDb.Id = obj.Id;
                 objFromDb.OsobaOib = obj.OsobaOib;
                 objFromDb.TecajId = obj.TecajId;
-                objFromDb.Vrijeme_videozapis = obj.Vrijeme_videozapis;
+                objFromDb.brPosjeta = obj.brPosjeta;
                 objFromDb.Datum_posjete = obj.Datum_posjete;
+                objFromDb.brPokretanjaVideozapisa = obj.brPokretanjaVideozapisa;
             }
         }
     }

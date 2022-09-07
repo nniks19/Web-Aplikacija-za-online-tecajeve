@@ -19,10 +19,6 @@ namespace WAZOT.Models
         public int? TecajId { get; set; }
         [ValidateNever]
         public Tecaj? Tecaj { get; set; }
-        [Required]
-        public long datum_pocetak { get; set; }
-        [Required]
-        public long datum_zavrsetak { get; set; }
     }
 }
 /*

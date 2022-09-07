@@ -10,18 +10,26 @@ function loadDataTable() {
             "url": "/Kreator_Tecaja/KreatorCjelinaTecaja/GetCjeline/" + getUrlParameter("id")
         },
         "columns": [
-            { "data": "id", "width": "47%" },
-            { "data": "naziv_cjeline", "width": "47%" },
+            { "data": "id", "width": "45%" },
+            { "data": "naziv_cjeline", "width": "45%" },
             {
                 "data": "id",
                 "render": function (data) {
-                    return `<div class="w-75 btn-group" role="group">
+                    return `
                         <a href="/Kreator_Tecaja/KreatorCjelinaTecaja/Edit?id=${data}"
-                    class="btn btn-outline-primary mx-2" > <i class="bi bi-pencil-square"></i></a>
-                   <a href="/Kreator_Tecaja/KreatorCjelinaTecaja/Delete?id=${data}"
-                        class="btn btn-outline-danger mx-2"> <i class="bi bi-trash-fill"></i></a></div> `
+                    class="btn btn-outline-primary mx-2" > <i class="bi bi-pencil-square"></i></a>`
                 },
-                "width": "6%"
+                "width": "5%"
+            },
+            {
+                "data": "id",
+                "render": function (data) {
+                    return `
+                        <a href="/Kreator_Tecaja/KreatorCjelinaTecaja/Delete?id=${data}"
+                        class="btn btn-outline-danger mx-2"> <i class="bi bi-trash-fill"></i></a>
+                    `
+                },
+                "width": "5%"
             }
         ],
         "columnDefs": [

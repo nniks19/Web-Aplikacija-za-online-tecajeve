@@ -9,10 +9,10 @@ using WAZOT.Repository.IRepository;
 namespace WAZOT.Controllers
 {
     [Area("Korisnik")]
-    public class RazgovorKreatorTecajaController : Controller
+    public class RazgovorKorisnikController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
-        public RazgovorKreatorTecajaController(IUnitOfWork unitOfWork)
+        public RazgovorKorisnikController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }

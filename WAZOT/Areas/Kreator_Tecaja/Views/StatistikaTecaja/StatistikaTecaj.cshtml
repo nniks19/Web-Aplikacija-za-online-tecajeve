@@ -1,0 +1,145 @@
+﻿@model WAZOT.Models.ViewModels.StatistikaKreatoraVM
+
+@{
+	ViewData["Title"] = "Statistika tečaja";
+}
+
+<partial name="_Notification" />
+<div class="container-fluid">
+	<div class="row text-center">
+		<div class="row text-center"><h1>Statistika odabranog tečaja:</h1></div>
+	</div>
+	<div class="progress mb-4">
+		<div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+	</div>
+	<div class="row">
+		<div class="col-xl-3 col-sm-6 col-12 mb-4">
+			<div class="card">
+				<div class="card-body">
+					<div class="d-flex justify-content-between px-md-1">
+						<div class="align-self-center">
+							<i class="fa-solid fa-computer-mouse fa-2xl"></i>
+						</div>
+						<div class="text-end">
+							<h3 class="text-info">@Model.brKlikovaNaTecaju</h3>
+							<p class="mb-0">Posjete polaznika tečajeva</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-xl-3 col-sm-6 col-12 mb-4">
+			<div class="card">
+				<div class="card-body">
+					<div class="d-flex justify-content-between px-md-1">
+						<div class="align-self-center">
+							<i class="far fa-star text-warning fa-3x"></i>
+						</div>
+						<div class="text-end">
+							<h3 class="text-warning">@Model.prosjecnaOcjena</h3>
+							<p class="mb-0">Prosječna ocjena</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-xl-3 col-sm-6 col-12 mb-4">
+			<div class="card">
+				<div class="card-body">
+					<div class="d-flex justify-content-between px-md-1">
+						<div class="align-self-center">
+							<i class="fas fa-credit-card text-success fa-3x"></i>
+						</div>
+						<div class="text-end">
+							<h3 class="text-success">@Model.brOdobrenihPrijava</h3>
+							<p class="mb-0">Broj odobrenih prijava na tečaj</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-xl-3 col-sm-6 col-12 mb-4">
+			<div class="card">
+				<div class="card-body">
+					<div class="d-flex justify-content-between px-md-1">
+						<div class="align-self-center">
+							<i class="fas fa-file-video text-danger fa-3x"></i>
+						</div>
+						<div class="text-end">
+							<h3 class="text-danger">@Model.brVideozapisa</h3>
+							<p class="mb-0">Broj videozapisa</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="progress mt-4 mb-4">
+		<div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+	</div>
+	<div class="row">
+		<div class="col-xl-3 col-sm-6 col-12 mb-4">
+			<div class="card">
+				<div class="card-body">
+					<div class="d-flex justify-content-between px-md-1">
+						<div class="align-self-center">
+							<i class="fa-solid fa-computer-mouse fa-2xl"></i>
+						</div>
+						<div class="text-end">
+							<h3 class="text-info">@Model.brKlikovaNaVideozapise</h3>
+							<p class="mb-0">Broj pokretanja videozapisa</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-xl-3 col-sm-6 col-12 mb-4">
+			<div class="card">
+				<div class="card-body">
+					<div class="d-flex justify-content-between px-md-1">
+						<div class="align-self-center">
+							<i class="far fa-star text-warning fa-3x"></i>
+						</div>
+						<div class="text-end">
+							<h3 class="text-warning">@Model.brOcjenaTecaja</h3>
+							<p class="mb-0">Broj ocjena tečaja</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-xl-3 col-sm-6 col-12 mb-4">
+			<div class="card">
+				<div class="card-body">
+					<div class="d-flex justify-content-between px-md-1">
+						<div class="align-self-center">
+							<i class="fas fa-user-secret fa-3x"></i>
+						</div>
+						<div class="text-end">
+							<h3 class="text-success">@Model.brKorisnika</h3>
+							<p class="mb-0">Broj polaznika tečaja</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-xl-3 col-sm-6 col-12 mb-4">
+			<div class="card">
+				<div class="card-body">
+					<div class="d-flex justify-content-between px-md-1">
+						<div class="align-self-center">
+							<i class="fa fa-list text-danger fa-3x"></i>
+						</div>
+						<div class="text-end">
+							<h3 class="text-danger">@Model.brCjelina</h3>
+							<p class="mb-0">Broj cjelina</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="progress mt-4 mb-4">
+		<div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+	</div>
+</div>
