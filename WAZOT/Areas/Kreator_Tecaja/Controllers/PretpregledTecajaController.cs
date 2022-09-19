@@ -48,7 +48,7 @@ namespace WAZOT.Controllers
             };
             if (tecajPreviewVM.Tecaj == null)
             {
-                return NotFound();
+                return RedirectToAction("Index");
             }
             return View(tecajPreviewVM);
         }

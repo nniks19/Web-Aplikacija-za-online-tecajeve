@@ -35,7 +35,7 @@ namespace WAZOT.Controllers
             };
             if (osobaVM.Osoba == null)
             {
-                return NotFound();
+                return RedirectToAction("Index");
             }
             return View(osobaVM);
         }
@@ -46,6 +46,11 @@ namespace WAZOT.Controllers
         {
             if (ModelState.IsValid)
             {
+                if(obj.Osoba.Razina_PravaId == 1)
+                {
+                    TempData["error"] = "Administratoru nije moguće zaključati račun!";
+                    return RedirectToAction("Index");
+                }
                 _unitOfWork.Osoba.Update(obj.Osoba);
                 _unitOfWork.Save();
                 if (obj.Osoba.email == HttpContext.Session.GetString("email") && obj.Osoba.Razina_PravaId != 1)

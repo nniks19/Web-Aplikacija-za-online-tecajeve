@@ -12,7 +12,7 @@
             <label asp-for="Osoba.Oib">Oib</label>
             <input asp-for="Osoba.Oib" class="form-control" pattern="[0-9]{11}" maxlength="11" title="Obavezan je unos 11 znamenki vašega OIB-a!" />
             <span asp-validation-for="Osoba.Oib" class="text-danger"></span>
-            @ViewBag.msgOsobaPostoji
+            <p class="text-danger">@ViewBag.msgOsobaPostoji</p>
         </div>
         <div class="mb-3">
             <label asp-for="Osoba.ime">Ime</label>
@@ -35,7 +35,7 @@
             <label asp-for="Osoba.email">Email</label>
             <input asp-for="Osoba.email" class="form-control" type="email"/>
             <span asp-validation-for="Osoba.email" class="text-danger"></span>
-            @ViewBag.msgEmailPostoji
+            <p class="text-danger">@ViewBag.msgEmailPostoji</p>
 
         </div>
         <div class="mb-3">

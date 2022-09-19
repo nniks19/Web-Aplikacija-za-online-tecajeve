@@ -1,4 +1,5 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System;
+using System.Runtime.CompilerServices;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using WAZOT.DataAccess;
@@ -31,13 +32,12 @@ namespace WAZOT.Controllers
             IEnumerable<Prijava_Na_Tecaj> objPrijavaList = _unitOfWork.PrijavaNaTecaj.GetAll();
             objPrijavaList = objPrijavaList.Where(x => objTecajlist.Any(y => y.Id == x.TecajId));
             IEnumerable<Ocjena_tecaja> objOcjenaTecajaList = _unitOfWork.OcjenaTecaja.GetAll();
-            objOcjenaTecajaList = objOcjenaTecajaList.Where(x => objTecajlist.Any(y => y.Id == x.TecajId));
+            objOcjenaTecajaList = objOcjenaTecajaList.Where(x => x.TecajId == statistikaKreatoraVM.TecajId);
             IEnumerable<Videozapis> objVideozapisList = _unitOfWork.Videozapis.GetAll();
-            objVideozapisList = objVideozapisList.Where(x => objTecajlist.Any(y => y.Id == x.TecajId));
             statistikaKreatoraVM.brPrijava = objPrijavaList.Count();
             statistikaKreatoraVM.brOcjenaTecaja = objOcjenaTecajaList.Count();
             statistikaKreatoraVM.brTecaja = objTecajlist.Count();
-            statistikaKreatoraVM.brVideozapisa = objVideozapisList.Count();
+            statistikaKreatoraVM.brVideozapisa = objVideozapisList.Where(x => x.TecajId == statistikaKreatoraVM.TecajId).Count();
             var listOsoba = _unitOfWork.Osoba.GetAll().Where(x => objPrijavaList.Any(y => x.Oib == y.OsobaOib && y.Status_PrijaveId == 1));
             statistikaKreatoraVM.OsobaList = listOsoba.Select(i => new SelectListItem
             {
@@ -63,14 +63,36 @@ namespace WAZOT.Controllers
                 statistikaKreatoraVM.brTecajeva = _unitOfWork.PrijavaNaTecaj.GetAll().Where(x => x.OsobaOib == statistikaKreatoraVM.OsobaOib && x.Status_PrijaveId == 1 && objTecajlist.Any(y => y.Id == x.TecajId)).Count();
                 statistikaKreatoraVM.brPrijava = _unitOfWork.PrijavaNaTecaj.GetAll().Where(x => x.OsobaOib == statistikaKreatoraVM.OsobaOib && objTecajlist.Any(y => y.Id == x.TecajId)).Count();
                 statistikaKreatoraVM.brOcjenaTecaja = _unitOfWork.OcjenaTecaja.GetAll().Where(x => x.OsobaOib == statistikaKreatoraVM.OsobaOib && objTecajlist.Any(y => y.Id == x.TecajId)).Count();
+                statistikaKreatoraVM.email = _unitOfWork.Osoba.GetAll().Where(x => x.Oib == statistikaKreatoraVM.OsobaOib).First().email;
                 var _aktivnosti = _unitOfWork.PracenjeKorisnika.GetAll().Where(x => objTecajlist.Any(y => y.Id == x.TecajId) && x.OsobaOib == statistikaKreatoraVM.OsobaOib);
-                System.DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
-                dtDateTime = dtDateTime.AddMilliseconds(_aktivnosti.Max(x => x.Datum_posjete)*1000).ToLocalTime();
-                statistikaKreatoraVM.posljednjaAktivnost = dtDateTime.ToString();
-                var najvecibroj = _unitOfWork.PracenjeKorisnika.GetAll().Where(x => x.OsobaOib == statistikaKreatoraVM.OsobaOib && objTecajlist.Any(y => y.Id == x.TecajId)).Max(x=>x.brPosjeta);
-                statistikaKreatoraVM.najvisePosjeta = najvecibroj;
-                var najvecibr = _unitOfWork.PracenjeKorisnika.GetAll().Where(x => x.OsobaOib == statistikaKreatoraVM.OsobaOib && objTecajlist.Any(y => y.Id == x.TecajId)).Max(x => x.brPokretanjaVideozapisa);
-                statistikaKreatoraVM.najvisePregleda = najvecibr;
+                if(_aktivnosti.Count() >0)
+                {
+                    System.DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, System.DateTimeKind.Utc);
+                    dtDateTime = dtDateTime.AddMilliseconds(_aktivnosti.Max(x => x.Datum_posjete) * 1000).ToLocalTime();
+                    statistikaKreatoraVM.posljednjaAktivnost = dtDateTime.ToString();
+                }
+                else
+                {
+                    statistikaKreatoraVM.posljednjaAktivnost = "Korisnik još nije posjetio tečaj";
+                }
+                var listpregledi = _unitOfWork.PracenjeKorisnika.GetAll().Where(x => x.OsobaOib == statistikaKreatoraVM.OsobaOib && objTecajlist.Any(y => y.Id == x.TecajId));
+                if (listpregledi.Count() > 0)
+                {
+                    statistikaKreatoraVM.najvisePosjeta = listpregledi.Max(x => x.brPosjeta);
+                }
+                else
+                {
+                    statistikaKreatoraVM.najvisePosjeta = 0;
+                }
+                var listP = _unitOfWork.PracenjeKorisnika.GetAll().Where(x => x.OsobaOib == statistikaKreatoraVM.OsobaOib && objTecajlist.Any(y => y.Id == x.TecajId));
+                if(listP.Count() > 0)
+                {
+                    statistikaKreatoraVM.najvisePregleda = listP.Max(x => x.brPokretanjaVideozapisa);
+                }
+                else
+                {
+                    statistikaKreatoraVM.najvisePregleda = 0;
+                }
                 return View(statistikaKreatoraVM);
             }
             else
@@ -81,7 +103,6 @@ namespace WAZOT.Controllers
         }
         public IActionResult StatistikaTecaj(StatistikaKreatoraVM statistikaKreatoraVM)
         {
-            statistikaKreatoraVM = findStatistikaKreatoraVM(statistikaKreatoraVM);
             if (statistikaKreatoraVM.TecajId != null)
             {
                 statistikaKreatoraVM = findStatistikaKreatoraVM(statistikaKreatoraVM);

@@ -47,5 +47,7 @@ namespace WAZOT.Models.ViewModels
         public int? najvisePosjeta { get; set; }
         [ValidateNever]
         public string? posljednjaAktivnost { get; set; }
+        [ValidateNever]
+        public string? email { get; set; }
     }
 }

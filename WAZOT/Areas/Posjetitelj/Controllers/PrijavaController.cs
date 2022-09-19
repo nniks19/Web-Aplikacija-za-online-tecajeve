@@ -107,10 +107,10 @@ namespace WAZOT.Controllers
             }
             if (account != null && account.odobreno == 0)
             {
-                ViewBag.PrijavaMsg = "Vaš korisnički račun još nije odobren od strane administratora!";
+                TempData["error"] = "Vaš korisnički račun još nije odobren od strane administratora!";
                 return View("Login");
             }
-            ViewBag.PrijavaMsg = "Neispravan pin, email ili lozinka!";
+            TempData["error"] = "Neispravan pin, email ili lozinka!";
             return View("Login");
         }
         public IActionResult Logout()

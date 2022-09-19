@@ -54,13 +54,36 @@ namespace WAZOT.Controllers
         {
             if(obj.PrijavaNaTecaj == null)
             {
-                ViewBag.notfilled = "Potrebno je odabrati ponuđene stavke.";
+                TempData["error"] = "Potrebno je odabrati tečaj, osobu i status prijave!";
+                obj.TecajList = _unitOfWork.Tecaj.GetAll().Select(i => new SelectListItem
+                {
+                    Text = i.naziv,
+                    Value = i.Id.ToString(),
+                });
+                obj.StatusPrijavaList = _unitOfWork.StatusPrijave.GetAll().Select(i => new SelectListItem
+                {
+                    Text = i.naziv,
+                    Value = i.Id.ToString(),
+                });
+                obj.OsobaList = _unitOfWork.Osoba.GetAll().Where(x => x.Razina_PravaId == 2).Select(i => new SelectListItem
+                {
+                    Text = i.ime + " " + i.prezime,
+                    Value = i.Oib,
+                });
+                return View(obj);
             }
-            if (obj.PrijavaNaTecaj != null & ModelState.IsValid)
+            var prijavaNaTecajList = _unitOfWork.PrijavaNaTecaj.GetAll();
+            var vecPostoji = prijavaNaTecajList.Any(x => x.OsobaOib == obj.PrijavaNaTecaj.OsobaOib && x.TecajId == obj.PrijavaNaTecaj.TecajId);
+            if (vecPostoji)
+            {
+                TempData["error"] = "Osoba već ima prijavu na odabrani tečaj!";
+                return RedirectToAction("Index");
+            }
+            if (obj.PrijavaNaTecaj != null & ModelState.IsValid && vecPostoji == false)
             {
                 _unitOfWork.PrijavaNaTecaj.Add(obj.PrijavaNaTecaj);
                 _unitOfWork.Save();
-                TempData["success"] = "Prijava na tečaj je suspješno kreirana!";
+                TempData["success"] = "Prijava na tečaj je uspješno kreirana!";
                 return RedirectToAction("Index");
             }
             obj.TecajList = _unitOfWork.Tecaj.GetAll().Select(i => new SelectListItem
@@ -81,9 +104,6 @@ namespace WAZOT.Controllers
             return View(obj);
         }
 
-
-
-
         //GET
         public IActionResult Edit(int? id)
         {
@@ -91,25 +111,15 @@ namespace WAZOT.Controllers
             PrijavaNaTecajVM PrijavaNaTecajVM = new PrijavaNaTecajVM()
             {
                 PrijavaNaTecaj = PrijavaNaTecaj,
-                TecajList = _unitOfWork.Tecaj.GetAll().Select(i => new SelectListItem
-                {
-                    Text = i.naziv,
-                    Value = i.Id.ToString(),
-                }),
                 StatusPrijavaList = _unitOfWork.StatusPrijave.GetAll().Select(i => new SelectListItem
                 {
                     Text = i.naziv,
                     Value = i.Id.ToString(),
                 }),
-                OsobaList = _unitOfWork.Osoba.GetAll().Where(x => x.Razina_PravaId == 2).Select(i => new SelectListItem
-                {
-                    Text = i.ime + " " + i.prezime,
-                    Value = i.Oib,
-                }),
             };
             if (PrijavaNaTecajVM.PrijavaNaTecaj == null)
             {
-                return NotFound();
+                return RedirectToAction("Index");
             }
             return View(PrijavaNaTecajVM);
         }
@@ -125,20 +135,10 @@ namespace WAZOT.Controllers
                 TempData["success"] = "Podaci o prijavi uspješno uređeni!";
                 return RedirectToAction("Index");
             }
-            obj.TecajList = _unitOfWork.Tecaj.GetAll().Select(i => new SelectListItem
-            {
-                Text = i.naziv,
-                Value = i.Id.ToString(),
-            });
             obj.StatusPrijavaList = _unitOfWork.StatusPrijave.GetAll().Select(i => new SelectListItem
             {
                 Text = i.naziv,
                 Value = i.Id.ToString(),
-            });
-            obj.OsobaList = _unitOfWork.Osoba.GetAll().Where(x => x.Razina_PravaId == 2).Select(i => new SelectListItem
-            {
-                Text = i.ime + " " + i.prezime,
-                Value = i.Oib,
             });
             return View(obj);
         }
@@ -171,7 +171,7 @@ namespace WAZOT.Controllers
             };
             if (PrijavaNaTecajVM.PrijavaNaTecaj == null)
             {
-                return NotFound();
+                return RedirectToAction("Index");
             }
             return View(PrijavaNaTecajVM);
         }
@@ -183,7 +183,7 @@ namespace WAZOT.Controllers
             var obj = _unitOfWork.PrijavaNaTecaj.GetFirstOrDefault(u => u.Id == PrijavaNaTecaj.Id);
             if (obj == null)
             {
-                return NotFound();
+                return RedirectToAction("Index");
             }
             _unitOfWork.PrijavaNaTecaj.Remove(obj);
             _unitOfWork.Save();

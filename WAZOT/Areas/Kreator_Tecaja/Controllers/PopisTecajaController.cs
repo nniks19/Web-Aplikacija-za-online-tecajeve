@@ -120,7 +120,7 @@ namespace WAZOT.Controllers
             };
             if (tecajVM.Tecaj == null)
             {
-                return NotFound();
+                return RedirectToAction("Index");
             }
             return View(tecajVM);
         }
@@ -170,7 +170,7 @@ namespace WAZOT.Controllers
             };
             if (tecajVM.Tecaj == null)
             {
-                return NotFound();
+                return RedirectToAction("Index");
             }
             return View(tecajVM);
         }
@@ -182,7 +182,13 @@ namespace WAZOT.Controllers
             var obj = _unitOfWork.Tecaj.GetFirstOrDefault(u => u.Id == Tecaj.Id);
             if (obj == null)
             {
-                return NotFound();
+                return RedirectToAction("Index");
+            }
+            var cjelineTecaja = _unitOfWork.CjelinaTecaja.GetAll().Where(x => x.TecajId == Tecaj.Id);
+            if (cjelineTecaja.Count() > 0)
+            {
+                TempData["error"] = "Tečaj ne može biti obrisan jer ima barem jednu cjelinu!";
+                return RedirectToAction("Index");
             }
             string wwwRootPath = _hostEnvironment.WebRootPath;
             var putanjaDoSlike = wwwRootPath + obj.slika;

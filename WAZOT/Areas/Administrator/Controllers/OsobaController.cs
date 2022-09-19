@@ -94,7 +94,7 @@ namespace WAZOT.Controllers
             };
             if (osobaVM.Osoba == null)
             {
-                return NotFound();
+                return RedirectToAction("Index");
             }
             return View(osobaVM);
         }
@@ -143,7 +143,7 @@ namespace WAZOT.Controllers
             };
             if (osobaVM.Osoba == null)
             {
-                return NotFound();
+                return RedirectToAction("Index");
             }
             return View(osobaVM);
         }
@@ -155,10 +155,23 @@ namespace WAZOT.Controllers
             var obj = _unitOfWork.Osoba.GetFirstOrDefault(u => u.Oib == Osoba.Oib);
             if (obj == null)
             {
-                return NotFound();
+                return RedirectToAction("Index");
+            }
+            var administratori = _unitOfWork.Osoba.GetAll().Where(x => x.Oib == HttpContext.Session.GetString("oib") && x.Razina_PravaId == 1 && Osoba.Oib == x.Oib);
+            if (administratori.Count() > 0)
+            {
+                TempData["error"] = "Ne možete obrisati svoj račun!";
+                return RedirectToAction("Index");
+            }
+            var ocjene = _unitOfWork.OcjenaTecaja.GetAll().Where(x => x.OsobaOib == Osoba.Oib);
+            if(ocjene.Count() > 0)
+            {
+                TempData["error"] = "Korisnik ima barem jednu ocjenu tečaja!";
+                return RedirectToAction("Index");
             }
             _unitOfWork.Osoba.Remove(obj);
             _unitOfWork.Save();
+
             if (obj.email == HttpContext.Session.GetString("email"))
             {
                 HttpContext.Session.Remove("email");

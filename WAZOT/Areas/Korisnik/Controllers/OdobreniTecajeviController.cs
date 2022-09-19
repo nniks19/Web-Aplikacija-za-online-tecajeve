@@ -76,7 +76,7 @@ namespace WAZOT.Controllers
             };
             if (tecajPreviewVM.Tecaj == null)
             {
-                return NotFound();
+                return RedirectToAction("Index");
             }
             return View(tecajPreviewVM);
         }
@@ -111,7 +111,7 @@ namespace WAZOT.Controllers
                             _unitOfWork.Save();
                         }
 
-                        TempData["success"] = "Uspješno ste ocjenili tečaj!";
+                        TempData["success"] = "Uspješno ste ocjenili cjelinu tečaja!";
                         return RedirectToAction("Index");
                     }
                 }

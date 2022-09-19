@@ -44,7 +44,7 @@ namespace WAZOT.Controllers
             };
             if (ocjenaTecajaVM.Ocjena_tecaja == null)
             {
-                return NotFound();
+                return RedirectToAction("Index");
             }
             return View(ocjenaTecajaVM);
         }
@@ -84,7 +84,7 @@ namespace WAZOT.Controllers
             };
             if (ocjenaTecajaVM.Ocjena_tecaja == null)
             {
-                return NotFound();
+                return RedirectToAction("Index");
             }
             return View(ocjenaTecajaVM);
         }
@@ -96,7 +96,7 @@ namespace WAZOT.Controllers
             var obj = _unitOfWork.OcjenaTecaja.GetFirstOrDefault(u => u.Id == Ocjena_tecaja.Id);
             if (obj == null)
             {
-                return NotFound();
+                return RedirectToAction("Index");
             }
             _unitOfWork.OcjenaTecaja.Remove(obj);
             _unitOfWork.Save();

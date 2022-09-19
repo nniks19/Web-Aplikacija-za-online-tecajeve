@@ -50,12 +50,12 @@ namespace WAZOT.Controllers
         {
             if (id == null || id == 0)
             {
-                return NotFound();
+                return RedirectToAction("Index");
             }
             var razinaPravaFromDb = _unitOfWork.RazinaPrava.GetFirstOrDefault(u => u.Id == id);
             if (razinaPravaFromDb == null)
             {
-                return NotFound();
+                return RedirectToAction("Index");
             }
             return View(razinaPravaFromDb);
         }
@@ -80,12 +80,12 @@ namespace WAZOT.Controllers
         {
             if (id == null || id == 0)
             {
-                return NotFound();
+                return RedirectToAction("Index");
             }
             var razinaPravaFromDbFirst = _unitOfWork.RazinaPrava.GetFirstOrDefault(u=>u.Id==id);
             if (razinaPravaFromDbFirst == null)
             {
-                return NotFound();
+                return RedirectToAction("Index");
             }
             return View(razinaPravaFromDbFirst);
         }
@@ -97,7 +97,13 @@ namespace WAZOT.Controllers
             var obj = _unitOfWork.RazinaPrava.GetFirstOrDefault(u => u.Id == id);
             if (obj == null)
             {
-                return NotFound();
+                return RedirectToAction("Index");
+            }
+            var _osobe = _unitOfWork.Osoba.GetAll().Where(x => x.Razina_PravaId == id);
+            if(_osobe.Count() > 0)
+            {
+                TempData["error"] = "Postoje osobe sa ovom razinom prava!";
+                return RedirectToAction("Index");
             }
             _unitOfWork.RazinaPrava.Remove(obj);
             _unitOfWork.Save();

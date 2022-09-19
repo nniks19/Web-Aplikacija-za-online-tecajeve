@@ -70,7 +70,7 @@ namespace WAZOT.Controllers
             };
             if (cjelinaTecajaVM.Cjelina_tecaja == null)
             {
-                return NotFound();
+                return RedirectToAction("Index");
             }
             return View(cjelinaTecajaVM);
         }
@@ -109,7 +109,7 @@ namespace WAZOT.Controllers
             };
             if (cjelinaTecajaVM.Cjelina_tecaja == null)
             {
-                return NotFound();
+                return RedirectToAction("Index");
             }
             return View(cjelinaTecajaVM);
         }
@@ -135,7 +135,7 @@ namespace WAZOT.Controllers
 
             if (obj == null)
             {
-                return NotFound();
+                return RedirectToAction("Index");
             }
             
             return RedirectToAction("Index");

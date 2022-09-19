@@ -1,7 +1,7 @@
 ﻿@model WAZOT.Models.ViewModels.StatistikaKreatoraVM
 
 @{
-	ViewData["Title"] = "Statistika tečaja";
+	ViewData["Title"] = "Statistika korisnika";
 }
 
 <partial name="_Notification" />
@@ -133,6 +133,7 @@
 						<div class="text-end">    
 							<h4 class="text-danger">@Model.posljednjaAktivnost</h4> 
 							<p class="mb-0">Posljednja aktivnost</p>
+							<p><a href="mailto:@Model.email">Kontakt</p>
 						</div>
 					</div>
 				</div>

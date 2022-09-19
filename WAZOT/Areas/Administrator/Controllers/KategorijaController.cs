@@ -51,12 +51,12 @@ namespace WAZOT.Controllers
         {
             if (id == null || id == 0)
             {
-                return NotFound();
+                return RedirectToAction("Index");
             }
             var kategorijaFromDb = _unitOfWork.Kategorija.GetFirstOrDefault(u => u.Id == id);
             if (kategorijaFromDb == null)
             {
-                return NotFound();
+                return RedirectToAction("Index");
             }
             return View(kategorijaFromDb);
         }
@@ -82,12 +82,12 @@ namespace WAZOT.Controllers
         {
             if (id == null || id == 0)
             {
-                return NotFound();
+                return RedirectToAction("Index");
             }
             var kategorijaFromDbFirst = _unitOfWork.Kategorija.GetFirstOrDefault(u=>u.Id==id);
             if (kategorijaFromDbFirst == null)
             {
-                return NotFound();
+                return RedirectToAction("Index");
             }
             return View(kategorijaFromDbFirst);
         }
@@ -99,7 +99,13 @@ namespace WAZOT.Controllers
             var obj = _unitOfWork.Kategorija.GetFirstOrDefault(u => u.Id == id);
             if (obj == null)
             {
-                return NotFound();
+                return RedirectToAction("Index");
+            }
+            var listaTecajeva = _unitOfWork.Tecaj.GetAll().Where(x => x.KategorijaId == id);
+            if (listaTecajeva.Count() > 0)
+            {
+                TempData["error"] = "Postoje tečajevi u odabranoj kategoriji!";
+                return RedirectToAction("Index");
             }
             _unitOfWork.Kategorija.Remove(obj);
             _unitOfWork.Save();

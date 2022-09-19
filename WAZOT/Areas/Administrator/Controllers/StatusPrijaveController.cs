@@ -51,12 +51,12 @@ namespace WAZOT.Controllers
         {
             if (id == null || id == 0)
             {
-                return NotFound();
+                return RedirectToAction("Index");
             }
             var statusPrijaveFromDb = _unitOfWork.StatusPrijave.GetFirstOrDefault(u => u.Id == id);
             if (statusPrijaveFromDb == null)
             {
-                return NotFound();
+                return RedirectToAction("Index");
             }
             return View(statusPrijaveFromDb);
         }
@@ -82,12 +82,12 @@ namespace WAZOT.Controllers
         {
             if (id == null || id == 0)
             {
-                return NotFound();
+                return RedirectToAction("Index");
             }
             var statusPrijaveFromDbFirst = _unitOfWork.StatusPrijave.GetFirstOrDefault(u=>u.Id==id);
             if (statusPrijaveFromDbFirst == null)
             {
-                return NotFound();
+                return RedirectToAction("Index");
             }
             return View(statusPrijaveFromDbFirst);
         }
@@ -99,7 +99,13 @@ namespace WAZOT.Controllers
             var obj = _unitOfWork.StatusPrijave.GetFirstOrDefault(u => u.Id == id);
             if (obj == null)
             {
-                return NotFound();
+                return RedirectToAction("Index");
+            }
+            var listaPrijava = _unitOfWork.PrijavaNaTecaj.GetAll().Where(x => x.Status_PrijaveId == id);
+            if(listaPrijava.Count() > 0)
+            {
+                TempData["error"] = "Prijave na tečaj već postoje!";
+                return RedirectToAction("Index");
             }
             _unitOfWork.StatusPrijave.Remove(obj);
             _unitOfWork.Save();

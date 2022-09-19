@@ -120,7 +120,7 @@ namespace WAZOT.Controllers
             };
             if (VideozapisVM.Videozapis == null)
             {
-                return NotFound();
+                return RedirectToAction("Index");
             }
             return View(VideozapisVM);
         }
@@ -171,7 +171,7 @@ namespace WAZOT.Controllers
             };
             if (VideozapisVM.Videozapis == null)
             {
-                return NotFound();
+                return RedirectToAction("Index");
             }
             return View(VideozapisVM);
         }
@@ -183,7 +183,7 @@ namespace WAZOT.Controllers
             var obj = _unitOfWork.Videozapis.GetFirstOrDefault(u => u.Id == Videozapis.Id);
             if (obj == null)
             {
-                return NotFound();
+                return RedirectToAction("Index");
             }
             string wwwRootPath = _hostEnvironment.WebRootPath;
             var putanjaDoVideozapisa = wwwRootPath + obj.videozapis_putanja;

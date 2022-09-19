@@ -1,9 +1,12 @@
 ﻿@model WAZOT.Models.Osoba
-<p class="text-danger">@ViewBag.PrijavaMsg</p>
+@{
+    ViewData["Title"] = "Prijava";
+}
+<partial name="_Notification" />
 <form method="post">
    <div class="border p-3 mt-4">
        <div class="row pb-2">
-           <h2 class="text-primary">Prijava</h2>
+           <h2 class="text-primary"><b>Prijava</b></h2>
            <hr />
        </div>
         <div class="mb-3">
@@ -16,7 +19,7 @@
         </div>
         <div class="mb-3">
             <label asp-for="pin">PIN (4 znamenke)</label>
-            <input asp-for="pin" maxlength="4" pattern="^[0-9]{4}$" required class="form-control"/>
+            <input asp-for="pin" maxlength="4" pattern="^[0-9]{4}$" oninvalid="this.setCustomValidity('Potrebno je upisati PIN!')" oninput="this.setCustomValidity('')" required class="form-control"/>
             <span asp-validation-for="pin" class="text-danger"></span>
         </div>
         <div class="row pt-4">

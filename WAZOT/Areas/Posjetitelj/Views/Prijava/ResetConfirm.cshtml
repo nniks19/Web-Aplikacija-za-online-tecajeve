@@ -1,4 +1,7 @@
 ﻿@model WAZOT.Models.Osoba
+@{
+    ViewData["Title"] = "Zaboravili ste lozinku";
+}
 <p class="text-danger">@ViewBag.PrijavaMsg</p>
 <form method="post">
    <input asp-for="Oib" hidden />
